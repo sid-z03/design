@@ -1,1110 +1,559 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover"/>
-<title>Azeem Mohammad — Director of Photography</title>
-<meta name="description" content="Azeem Mohammad — Director of Photography. Visual storytelling through natural light and grounded realism."/>
-<link rel="preconnect" href="https://fonts.googleapis.com"/>
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,700&family=Josefin+Sans:wght@200;300;400;500;600&display=swap" rel="stylesheet"/>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Azeem Mohammad Cinematographer</title>
+<meta name="description" content="Azeem Mohammad Cinematographer. Selected work, commercial, music video.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&display=swap" rel="stylesheet">
 <style>
-/* ══════════════════════════════════════
-   TOKENS
-══════════════════════════════════════ */
-:root {
-  --black:   #070707;
-  --ink:     #0d0d0d;
-  --panel:   #131313;
-  --surface: #1a1a1a;
-  --border:  rgba(255,255,255,.07);
-  --white:   #f2ede6;
-  --dim:     rgba(242,237,230,.52);
-  --faint:   rgba(242,237,230,.22);
-  --gold:    #c9a55a;
-  --gold-hi: #e0bb72;
-  --gold-dim:rgba(201,165,90,.45);
-  --ease:    cubic-bezier(.65,0,.35,1);
-  --easeOut: cubic-bezier(.16,1,.3,1);
-  --spring:  cubic-bezier(.34,1.56,.64,1);
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-/* ══════════════════════════════════════
-   BASE
-══════════════════════════════════════ */
-*,*::before,*::after { margin:0; padding:0; box-sizing:border-box; }
-html { scroll-behavior:smooth; font-size:16px; -webkit-text-size-adjust:100%; }
 body {
-  background:var(--black);
-  color:var(--white);
-  font-family:'Josefin Sans',sans-serif;
-  font-weight:300;
-  line-height:1.6;
-  overflow-x:hidden;
-  cursor:none;
+  background-color: #0a0a0a;
+  color: #e0e0e0;
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
 }
-@media(max-width:768px){ body { cursor:auto; } }
-img { display:block; width:100%; height:100%; object-fit:cover; }
-a { text-decoration:none; color:inherit; }
-ul { list-style:none; }
-::selection { background:var(--gold); color:var(--black); }
-::-webkit-scrollbar { width:2px; }
-::-webkit-scrollbar-track { background:var(--black); }
-::-webkit-scrollbar-thumb { background:var(--gold-dim); }
 
-/* ══════════════════════════════════════
-   CURSOR
-══════════════════════════════════════ */
-#cd {
-  position:fixed; z-index:9999; top:0; left:0;
-  width:5px; height:5px; border-radius:50%;
-  background:var(--white);
-  pointer-events:none;
-  transform:translate(-50%,-50%);
-  transition:width .25s var(--spring), height .25s var(--spring), background .3s;
-  will-change:transform;
+a {
+  text-decoration: none;
+  color: inherit;
 }
-#cr {
-  position:fixed; z-index:9998; top:0; left:0;
-  width:30px; height:30px; border-radius:50%;
-  border:1px solid rgba(242,237,230,.22);
-  pointer-events:none;
-  transform:translate(-50%,-50%);
-  will-change:transform;
-  transition:width .45s var(--ease), height .45s var(--ease), border-color .3s;
-}
-body.hov #cd { width:9px; height:9px; background:var(--gold); }
-body.hov #cr { width:50px; height:50px; border-color:var(--gold-dim); }
-@media(max-width:768px){ #cd,#cr { display:none; } }
 
-/* ══════════════════════════════════════
-   NAV
-══════════════════════════════════════ */
+/* Navigation */
 .nav {
-  position:fixed; top:0; left:0; right:0; z-index:900;
-  display:flex; align-items:center; justify-content:space-between;
-  padding:28px 48px;
-  transition:padding .4s var(--ease), background .5s, border-color .5s;
-  border-bottom:1px solid transparent;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 100;
+  padding: 32px 48px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  mix-blend-mode: difference;
+  transition: all 0.2s ease;
 }
-.nav.stuck {
-  padding:16px 48px;
-  background:rgba(7,7,7,.92);
-  backdrop-filter:blur(20px);
-  -webkit-backdrop-filter:blur(20px);
-  border-color:var(--border);
+
+.nav.scrolled {
+  background: rgba(10, 10, 10, 0.85);
+  backdrop-filter: blur(12px);
+  mix-blend-mode: normal;
+  padding: 18px 48px;
 }
-.nav-logo {
-  font-family:'Cormorant Garamond',serif;
-  font-size:1.05rem; font-weight:400;
-  letter-spacing:.12em;
-  color:var(--white);
-  opacity:.85;
+
+.logo {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.1rem;
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  color: #fff;
 }
-.nav-links { display:flex; gap:36px; }
+
+.nav-links {
+  display: flex;
+  gap: 2.5rem;
+}
+
 .nav-links a {
-  font-family:'Josefin Sans',sans-serif;
-  font-size:.6rem; font-weight:400;
-  letter-spacing:.24em; text-transform:uppercase;
-  color:var(--dim);
-  position:relative;
-  transition:color .3s;
-}
-.nav-links a::after {
-  content:''; position:absolute; bottom:-3px; left:0;
-  width:0; height:1px; background:var(--gold);
-  transition:width .35s var(--ease);
-}
-.nav-links a:hover { color:var(--white); }
-.nav-links a:hover::after { width:100%; }
-
-.burger {
-  display:none; flex-direction:column; gap:5px;
-  background:none; border:none; cursor:pointer; padding:4px;
-}
-.burger span { display:block; width:20px; height:1px; background:var(--white); transition:transform .35s, opacity .35s; }
-.burger.open span:nth-child(1){ transform:translateY(6px) rotate(45deg); }
-.burger.open span:nth-child(2){ opacity:0; }
-.burger.open span:nth-child(3){ transform:translateY(-6px) rotate(-45deg); }
-
-.mob-menu {
-  position:fixed; inset:0; z-index:899;
-  background:rgba(7,7,7,.97);
-  display:flex; flex-direction:column; align-items:center; justify-content:center; gap:32px;
-  opacity:0; pointer-events:none;
-  transition:opacity .4s var(--ease);
-}
-.mob-menu.open { opacity:1; pointer-events:all; }
-.mob-menu a {
-  font-family:'Cormorant Garamond',serif;
-  font-size:clamp(2rem,8vw,3.5rem);
-  font-weight:300; font-style:italic;
-  color:var(--white);
-  letter-spacing:.06em;
-  transition:color .3s;
-}
-.mob-menu a:hover { color:var(--gold); }
-
-@media(max-width:760px){
-  .nav { padding:18px 24px; }
-  .nav.stuck { padding:12px 24px; }
-  .nav-links { display:none; }
-  .burger { display:flex; }
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.5);
+  transition: color 0.2s;
 }
 
-/* ══════════════════════════════════════
-   HERO — full viewport, video bg
-══════════════════════════════════════ */
+.nav-links a:hover {
+  color: #fff;
+}
+
+/* Hero Section - Minimal */
 .hero {
-  position:relative;
-  height:100svh; min-height:560px;
-  display:flex;
-  flex-direction:column;
-  justify-content:flex-end;
-  overflow:hidden;
-}
-
-.hero-video {
-  position:absolute; inset:0;
-  width:100%; height:100%;
-  object-fit:cover;
-  filter:brightness(.55) contrast(1.05);
-  z-index:0;
-}
-.hero-overlay {
-  position:absolute; inset:0; z-index:1;
-  background:
-    linear-gradient(to right, rgba(7,7,7,.78) 0%, rgba(7,7,7,.08) 60%),
-    linear-gradient(to top,   rgba(7,7,7,.95) 0%, transparent 48%),
-    linear-gradient(to bottom,rgba(7,7,7,.5)  0%, transparent 30%);
-}
-
-/* ── content block ── */
-.hero-content {
-  position:relative; z-index:2;
-  padding: 0 clamp(24px,6vw,80px) clamp(48px,7vh,80px);
-  display:flex; flex-direction:column; align-items:flex-start;
-}
-
-/* ══════════════════════════════════════
-   HERO NAME — Ghost + Gold layered style
-   Matches screenshot: "Shashank" ghost behind, "Kumar" solid gold
-══════════════════════════════════════ */
-.hero-name-block {
-  position: relative;
-  line-height: 1;
-  margin-bottom: clamp(10px, 1.5vw, 22px);
+  height: 100vh;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background: #0a0a0a;
+  padding: 0 24px;
 }
 
-/* FIRST NAME — ghost outline, very large, behind */
-.hero-firstname {
+.hero-name {
   font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(4rem, 9.5vw, 10rem);
-  font-weight: 700;
-  font-style: italic;
-  letter-spacing: -.01em;
-  line-height: 0.88;
-  color: transparent;
-  -webkit-text-stroke: 1.5px rgba(242, 237, 230, 0.18);
-  text-stroke: 1.5px rgba(242, 237, 230, 0.18);
-  text-transform: none;
-  user-select: none;
-  display: block;
-  /* Animate in */
-  opacity: 0;
-  transform: translateY(30px);
-  animation: ghostIn 1.1s var(--easeOut) .1s forwards;
+  font-size: clamp(3rem, 10vw, 6rem);
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  color: #fff;
+  margin-bottom: 1rem;
 }
 
-/* LAST NAME — solid gold, bold, large, overlapping slightly */
-.hero-lastname {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(3.5rem, 8.5vw, 8rem);
-  font-weight: 700;
-  font-style: normal;
-  letter-spacing: -.01em;
-  line-height: 0.9;
-  color: var(--gold);
-  text-transform: none;
-  display: block;
-  margin-top: clamp(-12px, -1.5vw, -18px); /* pull up to create overlap effect */
-  /* Animate in */
-  opacity: 0;
-  transform: translateY(40px);
-  animation: goldIn 1.1s var(--easeOut) .3s forwards;
+.hero-title {
+  font-size: 0.75rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.4);
+  margin-bottom: 2rem;
 }
 
-@keyframes ghostIn {
-  from { opacity: 0; transform: translateY(30px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
-@keyframes goldIn {
-  from { opacity: 0; transform: translateY(40px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
-
-/* DOP subtitle */
-.hero-dop {
-  font-family:'Josefin Sans',sans-serif;
-  font-size:clamp(.55rem,1.3vw,.75rem);
-  font-weight:300;
-  letter-spacing:.52em;
-  text-transform:uppercase;
-  color:rgba(201,165,90,.7);
-  margin-bottom:clamp(10px,1.5vw,18px);
-  opacity:0;
-  animation:fadeUp .8s var(--easeOut) .85s both;
-}
-
-/* tagline lines */
-.hero-tagline {
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-  margin-bottom: clamp(24px, 4vw, 44px);
-  opacity: 0;
-  animation: fadeUp .8s var(--easeOut) 1s both;
-}
-.hero-tagline span {
-  font-family: 'Josefin Sans', sans-serif;
-  font-size: clamp(.7rem, 1.2vw, .9rem);
-  font-weight: 300;
-  letter-spacing: .04em;
-  color: rgba(242, 237, 230, 0.55);
-}
-
-/* golden rule */
-.hero-rule {
-  width:0; height:1px;
-  background:linear-gradient(to right, var(--gold), transparent);
-  margin-bottom:clamp(10px,1.5vw,20px);
-  animation:ruleExpand .9s var(--ease) .9s both;
-}
-@keyframes ruleExpand {
-  from { width:0; opacity:0; }
-  to   { width:clamp(60px,10vw,120px); opacity:1; }
-}
-
-/* ENTER button */
 .hero-enter {
-  display:inline-flex; align-items:center; gap:14px;
-  font-family:'Josefin Sans',sans-serif;
-  font-size:.62rem; font-weight:400;
-  letter-spacing:.32em; text-transform:uppercase;
-  color:var(--gold);
-  border:1px solid var(--gold-dim);
-  padding:12px 28px;
-  position:relative; overflow:hidden;
-  opacity:0;
-  animation:fadeUp .8s var(--easeOut) 1.1s both;
-  transition:color .45s var(--ease), letter-spacing .45s var(--ease), border-color .3s;
-  cursor:pointer;
-}
-.hero-enter::before {
-  content:''; position:absolute; inset:0;
-  background:linear-gradient(135deg,#d4a843,#a07828);
-  transform:translateX(-101%);
-  transition:transform .5s var(--ease);
-  z-index:0;
-}
-.hero-enter span, .hero-enter svg { position:relative; z-index:1; }
-.hero-enter:hover { color:var(--black); border-color:var(--gold); letter-spacing:.38em; }
-.hero-enter:hover::before { transform:translateX(0); }
-.hero-enter svg { width:14px; height:14px; stroke:currentColor; stroke-width:1.5; fill:none; transition:transform .3s var(--spring); }
-.hero-enter:hover svg { transform:translateX(4px); }
-
-/* scroll hint */
-.hero-scroll {
-  position:absolute; bottom:22px; left:clamp(24px,6vw,80px); z-index:2;
-  display:flex; align-items:center; gap:12px;
-  font-size:.52rem; letter-spacing:.24em; text-transform:uppercase;
-  color:var(--faint);
-  opacity:0;
-  animation:fadeIn .9s var(--ease) 1.5s both;
-}
-.hero-scroll-line {
-  width:36px; height:1px;
-  background:linear-gradient(to right, var(--gold-dim), transparent);
-  animation:pulse 2.4s ease-in-out infinite;
-}
-@keyframes pulse { 0%,100%{opacity:.3} 50%{opacity:1} }
-
-@keyframes fadeUp { from{opacity:0;transform:translateY(22px)} to{opacity:1;transform:translateY(0)} }
-@keyframes fadeIn { from{opacity:0} to{opacity:1} }
-
-/* ══════════════════════════════════════
-   REVEAL SYSTEM
-══════════════════════════════════════ */
-.rv { opacity:0; transform:translateY(44px); transition:opacity .9s var(--easeOut), transform .9s var(--easeOut); }
-.rv.in { opacity:1; transform:translateY(0); }
-.rv:nth-child(2){ transition-delay:.1s; }
-.rv:nth-child(3){ transition-delay:.2s; }
-.rv:nth-child(4){ transition-delay:.3s; }
-.rv:nth-child(5){ transition-delay:.4s; }
-.rv:nth-child(6){ transition-delay:.5s; }
-
-/* ══════════════════════════════════════
-   SECTION SHARED
-══════════════════════════════════════ */
-.sec {
-  padding:clamp(60px,8vw,110px) clamp(24px,6vw,80px);
-}
-.sec-head {
-  display:flex; justify-content:space-between; align-items:flex-end;
-  margin-bottom:clamp(28px,4vw,52px);
-  padding-bottom:14px;
-  border-bottom:1px solid var(--border);
-}
-.sec-tag {
-  font-family:'Josefin Sans',sans-serif;
-  font-size:.6rem; font-weight:400;
-  letter-spacing:.34em; text-transform:uppercase;
-  color:var(--gold-dim);
-  display:flex; align-items:center; gap:12px;
-}
-.sec-tag::before { content:''; display:inline-block; width:20px; height:1px; background:var(--gold-dim); }
-.sec-title {
-  font-family:'Cormorant Garamond',serif;
-  font-size:clamp(1.8rem,3.5vw,3.2rem);
-  font-weight:300;
-  line-height:1.1;
-  color:var(--white);
-}
-.sec-title em { font-style:italic; color:transparent; -webkit-text-stroke:1px rgba(242,237,230,.4); }
-.sec-aux {
-  font-size:.6rem; letter-spacing:.2em; text-transform:uppercase;
-  color:var(--faint);
-}
-.sec-aux a { color:var(--faint); transition:color .3s; }
-.sec-aux a:hover { color:var(--white); }
-
-/* ══════════════════════════════════════
-   FRAMES — 2 per row, 16:9, horizontal
-══════════════════════════════════════ */
-.frames-grid {
-  display:grid;
-  grid-template-columns:repeat(2,1fr);
-  gap:clamp(3px,1vw,10px);
-}
-.frame-card {
-  position:relative; overflow:hidden;
-  aspect-ratio:16/10;
-  background:var(--surface);
-  cursor:pointer;
-}
-.frame-card img {
-  width:100%; height:100%; object-fit:cover;
-  filter:saturate(.8) brightness(.8);
-  transform:scale(1.03);
-  transition:transform .9s var(--ease), filter .6s;
-}
-.frame-card:hover img { transform:scale(1.08); filter:saturate(.95) brightness(.95); }
-.frame-card::after {
-  content:''; position:absolute; inset:0;
-  background:linear-gradient(105deg,transparent 38%,rgba(201,165,90,.07) 50%,transparent 62%);
-  transform:translateX(-120%);
-  transition:transform .8s var(--ease);
-  pointer-events:none;
-}
-.frame-card:hover::after { transform:translateX(120%); }
-
-@media(max-width:640px){
-  .frames-grid { grid-template-columns:1fr; gap:4px; }
+  display: inline-block;
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 10px 28px;
+  transition: all 0.3s ease;
 }
 
-/* ══════════════════════════════════════
-   SHOWREEL
-══════════════════════════════════════ */
-.reel-wrap {
-  position:relative; padding-bottom:56.25%;
-  background:var(--panel);
-  border:1px solid var(--border);
-  overflow:hidden;
-}
-.reel-wrap iframe { position:absolute; inset:0; width:100%; height:100%; border:none; }
-.reel-note {
-  text-align:center; margin-top:14px;
-  font-size:.58rem; letter-spacing:.24em; text-transform:uppercase;
-  color:var(--faint);
+.hero-enter:hover {
+  background: #fff;
+  color: #0a0a0a;
+  border-color: #fff;
 }
 
-/* ══════════════════════════════════════
-   FILMS (4 horizontal cards)
-══════════════════════════════════════ */
-.films-grid {
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:2px;
-}
-.film-card {
-  position:relative; overflow:hidden;
-  aspect-ratio:2/3; background:var(--surface);
-  cursor:pointer;
-}
-.film-card img {
-  width:100%; height:100%; object-fit:cover;
-  filter:saturate(.7) brightness(.7);
-  transform:scale(1.04);
-  transition:transform 1s var(--ease), filter .6s;
-}
-.film-card:hover img { transform:scale(1.1); filter:saturate(.88) brightness(.82); }
-.film-card::before {
-  content:''; position:absolute; top:0; left:-80%;
-  width:50%; height:100%;
-  background:linear-gradient(105deg,transparent 40%,rgba(255,255,255,.05) 50%,transparent 60%);
-  transition:left .8s var(--ease);
-  z-index:2; pointer-events:none;
-}
-.film-card:hover::before { left:150%; }
-.film-info {
-  position:absolute; bottom:0; left:0; right:0;
-  padding:clamp(30px,6vw,60px) clamp(14px,2vw,22px) clamp(14px,2vw,22px);
-  background:linear-gradient(to top,rgba(7,7,7,.94) 0%,transparent 100%);
-  z-index:1;
-  transform:translateY(6px);
-  transition:transform .4s var(--ease);
-}
-.film-card:hover .film-info { transform:translateY(0); }
-.film-year { font-size:.52rem; letter-spacing:.2em; text-transform:uppercase; color:var(--gold-dim); margin-bottom:5px; }
-.film-title {
-  font-family:'Cormorant Garamond',serif;
-  font-size:clamp(.9rem,1.8vw,1.3rem);
-  font-weight:400; letter-spacing:.06em; text-transform:uppercase;
-  color:var(--white); line-height:1.1; margin-bottom:4px;
-}
-.film-role { font-size:.52rem; letter-spacing:.18em; text-transform:uppercase; color:var(--dim); }
-
-@media(max-width:860px){ .films-grid { grid-template-columns:repeat(2,1fr); } }
-@media(max-width:480px){ .films-grid { grid-template-columns:1fr; gap:3px; } }
-
-/* ══════════════════════════════════════
-   BIO
-══════════════════════════════════════ */
-.bio-grid {
-  display:grid;
-  grid-template-columns:1fr 1.5fr;
-  gap:clamp(40px,6vw,100px);
-  align-items:start;
-}
-.bio-portrait {
-  position:sticky; top:100px;
-  aspect-ratio:3/4; overflow:hidden;
-  background:var(--surface);
-}
-.bio-portrait img {
-  width:100%; height:100%;
-  object-fit:cover; object-position:center top;
-  filter:saturate(.6) contrast(1.05);
-  transition:filter .6s, transform .8s var(--ease);
-}
-.bio-portrait:hover img { filter:saturate(.8) contrast(1.08); transform:scale(1.03); }
-.bio-chip {
-  position:absolute; bottom:14px; left:14px;
-  font-size:.52rem; letter-spacing:.2em; text-transform:uppercase;
-  background:rgba(7,7,7,.88); padding:6px 12px;
-  color:var(--gold-dim);
-  border:1px solid rgba(201,165,90,.2);
+/* Container */
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 48px;
 }
 
-.bio-right { display:flex; flex-direction:column; gap:40px; }
-.bio-quote {
-  font-family:'Cormorant Garamond',serif;
-  font-size:clamp(1.6rem,3vw,2.6rem);
-  font-weight:300; font-style:italic;
-  line-height:1.2; color:var(--white);
-}
-.bio-quote em { font-style:normal; color:var(--gold); font-weight:400; }
-
-.bio-block { display:flex; flex-direction:column; gap:16px; }
-.bio-label {
-  font-size:.58rem; letter-spacing:.28em; text-transform:uppercase;
-  color:var(--gold-dim);
-  display:flex; align-items:center; gap:10px;
-}
-.bio-label::before { content:''; display:inline-block; width:14px; height:1px; background:var(--gold-dim); }
-.bio-block p { font-size:.9rem; color:var(--dim); line-height:1.9; }
-
-.skills { display:flex; flex-direction:column; }
-.skill-item {
-  display:flex; align-items:center; gap:14px;
-  padding:11px 0; border-bottom:1px solid var(--border);
-  font-size:.85rem; color:var(--dim);
-  transition:color .3s, padding-left .3s;
-}
-.skill-item:hover { color:var(--white); padding-left:6px; }
-.skill-item::before {
-  content:'—'; color:var(--gold-dim); font-size:.65rem; flex-shrink:0;
-  transition:color .3s, transform .3s;
-}
-.skill-item:hover::before { color:var(--gold); transform:translateX(3px); }
-
-.edu-block {
-  background:var(--panel);
-  border:1px solid var(--border);
-  border-left:2px solid var(--gold-dim);
-  padding:22px 24px;
-  display:flex; gap:20px; align-items:flex-start;
-}
-.edu-badge {
-  font-family:'Josefin Sans',sans-serif;
-  font-size:1rem; font-weight:600; letter-spacing:.1em;
-  color:var(--gold); padding:8px 10px;
-  border:1px solid rgba(201,165,90,.3);
-  flex-shrink:0; line-height:1;
-}
-.edu-info { display:flex; flex-direction:column; gap:5px; }
-.edu-info strong { font-size:.88rem; font-weight:400; color:var(--white); }
-.edu-info span { font-size:.78rem; color:var(--dim); }
-.edu-info small { font-size:.7rem; color:var(--faint); font-style:italic; }
-
-@media(max-width:860px){
-  .bio-grid { grid-template-columns:1fr; }
-  .bio-portrait { position:static; aspect-ratio:4/3; }
+/* Section Headers (like reference: SELECTED WORK, COMMERCIAL, MUSIC VIDEO) */
+.section-header {
+  margin: 80px 0 40px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  padding-bottom: 12px;
 }
 
-/* STATS ROW */
-.stats-row {
-  display:flex; gap:0;
-  border-top:1px solid var(--border);
-  border-bottom:1px solid var(--border);
-  margin-top:32px;
+.section-title {
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.4);
 }
-.stat {
-  flex:1; padding:24px clamp(16px,3vw,32px);
-  border-right:1px solid var(--border);
-  transition:background .3s;
-}
-.stat:last-child { border-right:none; }
-.stat:hover { background:rgba(201,165,90,.04); }
-.stat-num {
-  font-family:'Cormorant Garamond',serif;
-  font-size:clamp(1.6rem,3vw,2.4rem);
-  font-weight:400; color:var(--gold); line-height:1;
-  margin-bottom:6px;
-}
-.stat-lbl { font-size:.55rem; letter-spacing:.22em; text-transform:uppercase; color:var(--faint); }
 
-/* ══════════════════════════════════════
-   CONTACT
-══════════════════════════════════════ */
-.contact-sec { background:var(--ink); }
+/* Project Grid - 3 columns like reference */
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  margin-bottom: 60px;
+}
+
+.project-item {
+  cursor: pointer;
+  transition: opacity 0.3s;
+}
+
+.project-item:hover {
+  opacity: 0.8;
+}
+
+.project-image {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  background: #141414;
+  overflow: hidden;
+  margin-bottom: 1rem;
+}
+
+.project-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: grayscale(100%) brightness(0.7);
+  transition: transform 0.5s ease, filter 0.3s;
+}
+
+.project-item:hover .project-image img {
+  transform: scale(1.03);
+  filter: grayscale(80%) brightness(0.8);
+}
+
+.project-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  color: #fff;
+  margin-bottom: 4px;
+}
+
+.project-subtitle {
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.4);
+}
+
+/* Contact Section - Minimal */
+.contact-section {
+  margin: 100px 0 80px;
+  padding-top: 60px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
 .contact-grid {
-  display:grid;
-  grid-template-columns:1fr 1.6fr;
-  gap:clamp(40px,6vw,100px);
-  align-items:start;
-}
-.contact-heading {
-  font-family:'Cormorant Garamond',serif;
-  font-size:clamp(2.4rem,6vw,5.5rem);
-  font-weight:300;
-  line-height:.95;
-  margin-bottom:clamp(32px,5vw,56px);
-}
-.contact-heading .ch1 { display:block; color:transparent; -webkit-text-stroke:1px rgba(242,237,230,.14); }
-.contact-heading .ch2 { display:block; font-style:italic; color:var(--white); }
-.contact-heading .ch2 em { font-style:normal; color:var(--gold); }
-
-.clinks { display:flex; flex-direction:column; }
-.clink {
-  display:flex; flex-direction:column; gap:5px;
-  padding:18px 0; border-bottom:1px solid var(--border);
-  transition:padding-left .3s var(--ease);
-}
-.clink:hover { padding-left:10px; }
-.clink-lbl { font-size:.55rem; letter-spacing:.28em; text-transform:uppercase; color:var(--gold-dim); }
-.clink-val { font-size:.92rem; color:var(--white); transition:color .3s; }
-.clink:hover .clink-val { color:var(--gold); }
-.clink-static:hover { padding-left:0; }
-.clink-static:hover .clink-val { color:var(--white); }
-
-/* contact form */
-.cform { display:flex; flex-direction:column; gap:20px; }
-.frow { display:grid; grid-template-columns:1fr 1fr; gap:20px; }
-.ffld { display:flex; flex-direction:column; gap:7px; }
-.ffld label { font-size:.55rem; letter-spacing:.28em; text-transform:uppercase; color:var(--gold-dim); }
-.ffld input, .ffld textarea {
-  background:transparent; border:none;
-  border-bottom:1px solid var(--border);
-  color:var(--white);
-  font-family:'Josefin Sans',sans-serif; font-size:.88rem; font-weight:300;
-  padding:11px 0; outline:none;
-  transition:border-color .3s;
-}
-.ffld input::placeholder, .ffld textarea::placeholder { color:var(--faint); }
-.ffld input:focus, .ffld textarea:focus { border-color:var(--gold); }
-.ffld textarea { resize:none; }
-.fsubmit {
-  align-self:flex-start;
-  display:inline-flex; align-items:center; gap:14px;
-  font-family:'Josefin Sans',sans-serif;
-  font-size:.6rem; font-weight:500;
-  letter-spacing:.24em; text-transform:uppercase;
-  background:var(--gold); color:var(--black);
-  border:none; padding:14px 30px;
-  cursor:pointer; position:relative; overflow:hidden;
-  transition:gap .3s, background .3s;
-}
-.fsubmit:hover { background:var(--gold-hi); gap:20px; }
-.fsubmit svg { width:14px; height:14px; stroke:currentColor; fill:none; stroke-width:1.5; transition:transform .3s var(--spring); }
-.fsubmit:hover svg { transform:translateX(4px); }
-
-@media(max-width:860px){
-  .contact-grid { grid-template-columns:1fr; }
-  .frow { grid-template-columns:1fr; }
-  .fsubmit { width:100%; justify-content:center; }
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
 }
 
-/* ══════════════════════════════════════
-   MARQUEE
-══════════════════════════════════════ */
-.marquee { overflow:hidden; white-space:nowrap; padding:10px 0; border-top:1px solid var(--border); border-bottom:1px solid var(--border); }
-.marquee-inner {
-  display:inline-flex; gap:28px;
-  animation:marq 26s linear infinite;
-  font-size:.58rem; letter-spacing:.24em; text-transform:uppercase;
-  font-weight:400; color:var(--faint);
+.contact-left {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
 }
-.marquee-dot { color:var(--gold-dim); }
-@keyframes marq { from{transform:translateX(0)} to{transform:translateX(-50%)} }
 
-/* ══════════════════════════════════════
-   FOOTER
-══════════════════════════════════════ */
-footer {
-  padding:24px clamp(24px,6vw,80px);
-  border-top:1px solid var(--border);
-  display:flex; justify-content:space-between; align-items:center;
-  background:var(--ink);
-  flex-wrap:wrap; gap:14px;
+.contact-line {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  padding-bottom: 0.8rem;
 }
-.foot-logo { font-family:'Cormorant Garamond',serif; font-size:.9rem; font-weight:400; letter-spacing:.12em; color:var(--white); opacity:.7; }
-.foot-links { display:flex; gap:24px; }
-.foot-links a { font-size:.56rem; letter-spacing:.18em; text-transform:uppercase; color:var(--faint); transition:color .3s; }
-.foot-links a:hover { color:var(--white); }
-.foot-copy { font-size:.54rem; letter-spacing:.1em; color:rgba(242,237,230,.18); }
+
+.contact-label {
+  font-size: 0.6rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.3);
+  margin-bottom: 0.3rem;
+}
+
+.contact-value {
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.7);
+  transition: color 0.2s;
+}
+
+.contact-value:hover {
+  color: #fff;
+}
+
+.social-links {
+  display: flex;
+  gap: 2rem;
+  margin-top: 0.5rem;
+}
+
+.social-links a {
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.4);
+  transition: color 0.2s;
+}
+
+.social-links a:hover {
+  color: #fff;
+}
+
+.contact-note {
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.3);
+  font-style: italic;
+  margin-top: 1rem;
+}
+
+/* Footer */
+.footer {
+  padding: 32px 48px;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  font-size: 0.6rem;
+  letter-spacing: 0.1em;
+  color: rgba(255, 255, 255, 0.2);
+}
+
+.footer-links {
+  display: flex;
+  gap: 2rem;
+}
+
+.footer-links a {
+  color: rgba(255, 255, 255, 0.2);
+  transition: color 0.2s;
+}
+
+.footer-links a:hover {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .nav {
+    padding: 24px 28px;
+  }
+  .nav.scrolled {
+    padding: 16px 28px;
+  }
+  .container {
+    padding: 0 28px;
+  }
+  .project-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+  .contact-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .nav-links {
+    display: none;
+  }
+  .project-grid {
+    grid-template-columns: 1fr;
+  }
+  .footer {
+    flex-direction: column;
+    text-align: center;
+    padding: 24px 28px;
+  }
+}
+
+/* Fade in animation */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate {
+  opacity: 0;
+  animation: fadeIn 0.6s ease forwards;
+}
+
+.delay-1 { animation-delay: 0.1s; }
+.delay-2 { animation-delay: 0.2s; }
+.delay-3 { animation-delay: 0.3s; }
 </style>
 </head>
 <body>
 
-<!-- CURSOR -->
-<div id="cd"></div>
-<div id="cr"></div>
+<nav class="nav" id="nav">
+  <div class="logo">AZEEM MOHAMMAD</div>
+  <div class="nav-links">
+    <a href="#commercial">COMMERCIAL</a>
+    <a href="#musicvideo">MUSIC VIDEO</a>
+    <a href="#contact">CONTACT</a>
+  </div>
+</nav>
 
-<!-- NAV -->
-<header class="nav" id="nav">
-  <div class="nav-logo">Azeem Mohammad</div>
-  <nav class="nav-links">
-    <a href="#frames">Frames</a>
-    <a href="#showreel">Showreel</a>
-    <a href="#films">Films</a>
-    <a href="#bio">About</a>
-    <a href="#contact">Contact</a>
-  </nav>
-  <button class="burger" id="burger" aria-label="Menu">
-    <span></span><span></span><span></span>
-  </button>
-</header>
+<main>
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-name">Azeem Mohammad</div>
+    <div class="hero-title">CINEMATOGRAPHER</div>
+    <a href="#commercial" class="hero-enter">ENTER</a>
+  </section>
 
-<!-- MOBILE MENU -->
-<div class="mob-menu" id="mobmenu">
-  <a href="#frames"   onclick="closeMenu()">Frames</a>
-  <a href="#showreel" onclick="closeMenu()">Showreel</a>
-  <a href="#films"    onclick="closeMenu()">Films</a>
-  <a href="#bio"      onclick="closeMenu()">About</a>
-  <a href="#contact"  onclick="closeMenu()">Contact</a>
-</div>
+  <div class="container">
 
-<!-- ════ HERO ════ -->
-<img class="hero-video" src="images/t1.png" alt="Azeem Mohammad Cinematographer">
-  <div class="hero-overlay"></div>
-
-  <div class="hero-content">
-
-    <!-- NEW: Ghost + Gold layered name, matching screenshot style -->
-    <div class="hero-name-block">
-      <!-- Ghost outline first name — large, italic, transparent with stroke -->
-      <span class="hero-firstname">Azeem</span>
-      <!-- Solid gold last name — bold, overlapping -->
-      <span class="hero-lastname">Mohammad</span>
+    <!-- SELECTED WORK Header (like reference site) -->
+    <div class="section-header">
+      <div class="section-title">SELECTED WORK</div>
     </div>
 
-    <div class="hero-dop">Director of Photography</div>
-
-    <!-- Tagline lines matching screenshot style -->
-    <div class="hero-tagline">
-      <span>Visual storytelling through light, lens, and intention.</span>
-      <span>Every frame guided by lived experience and cinematic craft.</span>
+    <!-- COMMERCIAL Section -->
+    <div class="section-header" id="commercial">
+      <div class="section-title">COMMERCIAL</div>
     </div>
 
-    <a href="#frames" class="hero-enter">
-      <span>Enter</span>
-      <svg viewBox="0 0 24 24"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
-    </a>
-  </div>
+    <div class="project-grid">
+      <!-- Bound By Nothing -->
+      <div class="project-item animate delay-1">
+        <div class="project-image">
+          <img src="images/i1.jpeg" alt="Bound By Nothing">
+        </div>
+        <div class="project-title">Bound By Nothing</div>
+        <div class="project-subtitle">JENNAIR · Launch Trailer</div>
+      </div>
 
-  <div class="hero-scroll">
-    <div class="hero-scroll-line"></div>
-    Scroll to explore
-  </div>
-</section>
+      <!-- PLTFRM -->
+      <div class="project-item animate delay-2">
+        <div class="project-image">
+          <img src="https://images.unsplash.com/photo-1500210600724-67c5e2e06b0c?w=800&q=80" alt="PLTFRM">
+        </div>
+        <div class="project-title">PLTFRM</div>
+        <div class="project-subtitle">King of Collectibles · NETFLIX x EBAY</div>
+      </div>
 
-<!-- ════ FRAMES ════ -->
-<section class="sec" id="frames">
-  <div class="sec-head rv">
-    <div>
-      <div class="sec-tag">Frames</div>
-      
-    </div>
-  </div>
-  <div class="frames-grid">
-     <!-- Video 1 -->
-    <div class="frame-card rv">
-        <video autoplay loop muted playsinline style="width:100%; height:100%; object-fit:cover;">
-            <source src="vd/v1.mp4" type="video/mp4">
-        </video>
-    </div>
-     <!-- Video 2 -->
-    <div class="frame-card rv">
-        <video autoplay loop muted playsinline style="width:100%; height:100%; object-fit:cover;">
-            <source src="vd/v2.mp4" type="video/mp4">
-        </video>
-    </div>
-     <!-- Video 1 -->
-    <div class="frame-card rv">
-        <video autoplay loop muted playsinline style="width:100%; height:100%; object-fit:cover;">
-            <source src="vd/v7.mp4" type="video/mp4">
-        </video>
-    </div>
-    <div class="frame-card rv"><img src="images/i2.jpeg" alt="Frame"/></div>
-    <div class="frame-card rv"><img src="images/i3.jpeg" alt="Frame"/></div>
-    <div class="frame-card rv"><img src="images/i4.jpeg" alt="Frame"/></div>
-    <div class="frame-card rv"><img src="images/i5.jpeg" alt="Frame"/></div>
-    <div class="frame-card rv"><img src="images/i6.jpeg" alt="Frame"/></div>
-    <div class="frame-card rv"><img src="images/i7.jpeg" alt="Frame"/></div>
-    <div class="frame-card rv"><img src="images/i8.jpeg" alt="Frame"/></div>
-    <div class="frame-card rv"><img src="images/i9.jpeg" alt="Frame"/></div>
-    <div class="frame-card rv"><img src="images/i10.jpeg" alt="Frame"/></div>
-    <div class="frame-card rv"><img src="https://images.unsplash.com/photo-1440404653325-ab127d49abc1?w=900&q=85" alt="Frame"/></div>
-  </div>
-</section>
+      <!-- AMERICAN IDOL -->
+      <div class="project-item animate delay-3">
+        <div class="project-image">
+          <img src="https://images.unsplash.com/photo-1536440136628-849c177e76a1?w=800&q=80" alt="AMERICAN IDOL">
+        </div>
+        <div class="project-title">AMERICAN IDOL</div>
+        <div class="project-subtitle">Spy Films x Stept Studios · Season Trailer</div>
+      </div>
 
-<!-- ════ MARQUEE ════ -->
-<div class="marquee">
-  <div class="marquee-inner">
-    <span>Natural Light</span><span class="marquee-dot">·</span>
-    <span>Camera Operation</span><span class="marquee-dot">·</span>
-    <span>Lens Design</span><span class="marquee-dot">·</span>
-    <span>Colour Grading</span><span class="marquee-dot">·</span>
-    <span>Visual Storytelling</span><span class="marquee-dot">·</span>
-    <span>Feature Film</span><span class="marquee-dot">·</span>
-    <span>Short Film</span><span class="marquee-dot">·</span>
-    <span>India / UK</span><span class="marquee-dot">·</span>
-    <span>Natural Light</span><span class="marquee-dot">·</span>
-    <span>Camera Operation</span><span class="marquee-dot">·</span>
-    <span>Lens Design</span><span class="marquee-dot">·</span>
-    <span>Colour Grading</span><span class="marquee-dot">·</span>
-    <span>Visual Storytelling</span><span class="marquee-dot">·</span>
-    <span>Feature Film</span><span class="marquee-dot">·</span>
-    <span>Short Film</span><span class="marquee-dot">·</span>
-    <span>Hyderabad / India</span><span class="marquee-dot">·</span>
-  </div>
-</div>
+      <!-- EYE DROP -->
+      <div class="project-item animate delay-1">
+        <div class="project-image">
+          <img src="https://images.unsplash.com/photo-1478720568477-152d9b164e26?w=800&q=80" alt="EYE DROP">
+        </div>
+        <div class="project-title">EYE DROP</div>
+        <div class="project-subtitle">Prime Video Originals</div>
+      </div>
 
-<!-- ════ SHOWREEL ════ -->
-<section class="sec" id="showreel">
-  <div class="sec-head rv">
-    <div>
-      <div class="sec-tag">Showreel</div>
-      <h2 class="sec-title">My <em>Work</em></h2>
-    </div>
-    <div class="sec-aux">2023 — 2025</div>
-  </div>
-  <div class="reel-wrap rv">
-    <iframe
-      src="https://www.youtube.com/embed/mV9BBwKsSp8?si=VyHZItNn1mUjOz5b&rel=0&modestbranding=1"
-      title="Azeem Mohammad Showreel"
-      frameborder="0"
-      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-      allowfullscreen></iframe>
-  </div>
-  <p class="reel-note rv">Cinematography Showreel · Feature Film · Short Film · Commercial</p>
-</section>
+      <!-- RESPIRA -->
+      <div class="project-item animate delay-2">
+        <div class="project-image">
+          <img src="https://images.unsplash.com/photo-1440404653325-ab127d49abc1?w=800&q=80" alt="RESPIRA">
+        </div>
+        <div class="project-title">RESPIRA</div>
+        <div class="project-subtitle">DC x ESPN · BLACK ADAM Launch Trailer</div>
+      </div>
 
-<!-- ════ FILMS ════ -->
-<section class="sec" id="films" style="padding-top:0;">
-  <div class="sec-head rv">
-    <div>
-      <div class="sec-tag">Films</div>
-      <h2 class="sec-title">Film <em>Credits</em></h2>
-    </div>
-  </div>
-  <div class="films-grid">
-
-    <div class="film-card rv">
-      <img src="images/t1.png" alt="Epic"/>
-      <div class="film-info">
-        <div class="film-year">2025</div>
-        <div class="film-title">E</div>
-        <div class="film-role">Director of Photography</div>
+      <!-- EA MADDEN 24 -->
+      <div class="project-item animate delay-3">
+        <div class="project-image">
+          <img src="https://images.unsplash.com/photo-1593784991095-a205069470b6?w=800&q=80" alt="EA MADDEN 24">
+        </div>
+        <div class="project-title">EA MADDEN 24</div>
+        <div class="project-subtitle">Launch Trailer</div>
       </div>
     </div>
 
-    <div class="film-card rv">
-      <img src="https://images.unsplash.com/photo-1500210600724-67c5e2e06b0c?w=800&q=80" alt="Paper Boat"/>
-      <div class="film-info">
-        <div class="film-year">2024</div>
-        <div class="film-title">Paper Boat</div>
-        <div class="film-role">Director of Photography</div>
+    <!-- MUSIC VIDEO Section -->
+    <div class="section-header" id="musicvideo">
+      <div class="section-title">MUSIC VIDEO</div>
+    </div>
+
+    <div class="project-grid">
+      <!-- Travel By Design -->
+      <div class="project-item animate delay-1">
+        <div class="project-image">
+          <img src="https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=800&q=80" alt="Travel By Design">
+        </div>
+        <div class="project-title">Travel By Design</div>
+        <div class="project-subtitle">MARRIOTT · Global Campaign</div>
+      </div>
+
+      <!-- FANATICS -->
+      <div class="project-item animate delay-2">
+        <div class="project-image">
+          <img src="https://images.unsplash.com/photo-1514320291840-2e0a9bf2a9ae?w=800&q=80" alt="FANATICS">
+        </div>
+        <div class="project-title">FANATICS</div>
+        <div class="project-subtitle">With Ryan Reynolds</div>
+      </div>
+
+      <!-- BEDTIME STORIES -->
+      <div class="project-item animate delay-3">
+        <div class="project-image">
+          <img src="https://images.unsplash.com/photo-1565120319398-da008925fc1d?w=800&q=80" alt="BEDTIME STORIES">
+        </div>
+        <div class="project-title">BEDTIME STORIES</div>
+        <div class="project-subtitle">Season Trailer · THE KARDASHIANS</div>
       </div>
     </div>
 
-    <div class="film-card rv">
-      <img src="https://images.unsplash.com/photo-1536440136628-849c177e76a1?w=800&q=80" alt="Between Days"/>
-      <div class="film-info">
-        <div class="film-year">2024</div>
-        <div class="film-title">Between Days</div>
-        <div class="film-role">Director of Photography</div>
-      </div>
-    </div>
-
-    <div class="film-card rv">
-      <img src="https://images.unsplash.com/photo-1478720568477-152d9b164e26?w=800&q=80" alt="Footfalls"/>
-      <div class="film-info">
-        <div class="film-year">2023</div>
-        <div class="film-title">Footfalls</div>
-        <div class="film-role">Director of Photography</div>
-      </div>
-    </div>
-
-  </div>
-</section>
-
-<!-- ════ BIO ════ -->
-<section class="sec" id="bio" style="background:var(--ink);">
-  <div class="sec-head rv">
-    <div>
-      <div class="sec-tag">About</div>
-      <h2 class="sec-title">The <em>Lens</em></h2>
-    </div>
-  </div>
-
-  <div class="bio-grid">
-    <div class="bio-portrait rv">
-      <img src="images/t1.png" alt="Azeem Mohammad"/>
-      <div class="bio-chip">Hyderabad, India</div>
-    </div>
-
-    <div class="bio-right">
-      <p class="bio-quote rv">
-        &ldquo;Each frame guided by lived experience and a commitment to
-        <em>visual honesty.</em>&rdquo;
-      </p>
-
-      <div class="bio-block rv">
-        <div class="bio-label">Bio</div>
-        <p>Azeem Mohammad is a Director of Photography working between India and the United Kingdom. His work explores intimacy, memory, and time — often through natural light and grounded realism. Each frame is guided by a commitment to visual honesty, translating story into imagery that breathes.</p>
-      </div>
-
-      <div class="bio-block rv">
-        <div class="bio-label">Approach</div>
-        <p>I approach cinematography as a craft where emotion, environment, and narrative intersect through the lens. I work closely with directors to find the visual language that serves the story — never imposing style, but discovering it through the material.</p>
-      </div>
-
-      <div class="bio-block rv">
-        <div class="bio-label">Skills</div>
-        <ul class="skills">
-          <li class="skill-item">Lighting Design  Natural &amp; Artificial</li>
-          <li class="skill-item">Camera Operation &amp; Lens Selection</li>
-          <li class="skill-item">Colour Grading &amp; DI Supervision</li>
-          <li class="skill-item">Visual Story Development</li>
-          <li class="skill-item">On-Set Production Management</li>
-        </ul>
-      </div>
-
-      <div class="bio-block rv">
-        <div class="bio-label">Education</div>
-        <div class="edu-block">
-          <div class="edu-badge">MFI</div>
-          <div class="edu-info">
-            <strong>Mindscreen Film Institute</strong>
-            <span>Diploma in Cinematography  Distinction</span>
-            <small>Advanced camera operations, structured lighting setups, visual storytelling.</small>
+    <!-- CONTACT Section (minimal, like reference) -->
+    <div class="contact-section" id="contact">
+      <div class="contact-grid">
+        <div class="contact-left">
+          <div class="contact-line">
+            <div class="contact-label">EMAIL</div>
+            <a href="mailto:azeem.mohd@gmail.com" class="contact-value">azeem.mohd@gmail.com →</a>
+          </div>
+          <div class="contact-line">
+            <div class="contact-label">BASED</div>
+            <div class="contact-value">India / United Kingdom</div>
+          </div>
+          <div class="contact-line">
+            <div class="contact-label">SOCIAL</div>
+            <div class="social-links">
+              <a href="#" target="_blank">INSTAGRAM</a>
+              <a href="#" target="_blank">VIMEO</a>
+            </div>
+          </div>
+        </div>
+        <div class="contact-left">
+          <div class="contact-note">
+            Azeem Mohammad is a cinematographer working between India and the UK.<br>
+            His work explores intimacy, memory, and time — often through natural light and grounded realism.
+          </div>
+          <div class="contact-line" style="border-bottom: none; margin-top: 1rem;">
+            <div class="contact-label">OPEN TO</div>
+            <div class="contact-value" style="font-size: 0.8rem;">Commercial · Music Video · Feature Film · Collaborations</div>
           </div>
         </div>
       </div>
-
-      <div class="stats-row rv">
-        <div class="stat">
-          <div class="stat-num">3+</div>
-          <div class="stat-lbl">Years on set</div>
-        </div>
-        <div class="stat">
-          <div class="stat-num">10+</div>
-          <div class="stat-lbl">Films shot</div>
-        </div>
-        <div class="stat">
-          <div class="stat-num">2</div>
-          <div class="stat-lbl">Countries</div>
-        </div>
-        <div class="stat">
-          <div class="stat-num">★</div>
-          <div class="stat-lbl">Distinction</div>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<!-- ════ CONTACT ════ -->
-<section class="sec contact-sec" id="contact">
-  <div class="contact-grid">
-    <div class="rv">
-      <div class="sec-tag" style="margin-bottom:20px;">Contact</div>
-      <h2 class="contact-heading">
-        <span class="ch1">Let&rsquo;s talk</span>
-        <span class="ch2">and see <em>where</em><br/>it takes us.</span>
-      </h2>
-
-      <div class="clinks">
-        <a href="mailto:azeem.mohd@gmail.com" class="clink">
-          <span class="clink-lbl">Email</span>
-          <span class="clink-val">azeem.mohd@gmail.com →</span>
-        </a>
-        <div class="clink clink-static">
-          <span class="clink-lbl">Based</span>
-          <span class="clink-val" style="font-size:.85rem;color:var(--dim)">Hyderabad / India</span>
-        </div>
-        <a href="https://www.instagram.com/" target="_blank" rel="noopener" class="clink">
-          <span class="clink-lbl">Instagram</span>
-          <span class="clink-val">@azeemmohammad →</span>
-        </a>
-        <a href="https://vimeo.com/" target="_blank" rel="noopener" class="clink">
-          <span class="clink-lbl">Vimeo</span>
-          <span class="clink-val">vimeo.com/azeem →</span>
-        </a>
-        <div class="clink clink-static">
-          <span class="clink-lbl">Open to</span>
-          <span class="clink-val" style="font-size:.8rem;color:var(--dim)">Feature Film · Short Film · Commercial · Collaborations</span>
-        </div>
-      </div>
     </div>
 
-    <div class="rv" style="transition-delay:.1s;">
-      <form class="cform" id="cform" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
-        <div class="frow">
-          <div class="ffld">
-            <label for="fn">Name</label>
-            <input id="fn" type="text" name="name" placeholder="Your name" required/>
-          </div>
-          <div class="ffld">
-            <label for="fe">Email</label>
-            <input id="fe" type="email" name="email" placeholder="your@email.com" required/>
-          </div>
-        </div>
-        <div class="ffld">
-          <label for="fp">Project type</label>
-          <input id="fp" type="text" name="project" placeholder="Feature film, short, commercial…"/>
-        </div>
-        <div class="ffld">
-          <label for="fm">Message</label>
-          <textarea id="fm" name="message" rows="5" placeholder="Tell me about the project…" required></textarea>
-        </div>
-        <button type="submit" class="fsubmit">
-          Send Message
-          <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-        </button>
-      </form>
-    </div>
   </div>
-</section>
+</main>
 
-<!-- FOOTER -->
-<footer>
-  <span class="foot-logo">Azeem Mohammad</span>
-  <div class="foot-links">
-    <a href="https://www.instagram.com/" target="_blank">Instagram</a>
-    <a href="https://vimeo.com/" target="_blank">Vimeo</a>
-    <a href="mailto:azeem.mohd@gmail.com">Email</a>
+<footer class="footer">
+  <span>AZEEM MOHAMMAD</span>
+  <div class="footer-links">
+    <a href="#" target="_blank">INSTAGRAM</a>
+    <a href="#" target="_blank">VIMEO</a>
+    <a href="mailto:azeem.mohd@gmail.com">EMAIL</a>
   </div>
-  <span class="foot-copy">&copy; 2025 Azeem Mohammad. All rights reserved.</span>
+  <span>© 2025</span>
 </footer>
 
 <script>
-(function(){
-  /* ── cursor ── */
-  const cd=document.getElementById('cd'), cr=document.getElementById('cr');
-  if(cd && window.matchMedia('(pointer:fine)').matches){
-    let mx=0,my=0,rx=0,ry=0;
-    document.addEventListener('mousemove',e=>{
-      mx=e.clientX; my=e.clientY;
-      cd.style.left=mx+'px'; cd.style.top=my+'px';
-    },{passive:true});
-    (function lerp(){
-      rx+=(mx-rx)*.1; ry+=(my-ry)*.1;
-      cr.style.left=rx+'px'; cr.style.top=ry+'px';
-      requestAnimationFrame(lerp);
-    })();
-    document.querySelectorAll('a,button,.frame-card,.film-card,.stat').forEach(el=>{
-      el.addEventListener('mouseenter',()=>document.body.classList.add('hov'));
-      el.addEventListener('mouseleave',()=>document.body.classList.remove('hov'));
-    });
-  }
-
-  /* ── nav stuck ── */
-  const nav=document.getElementById('nav');
-  window.addEventListener('scroll',()=>nav.classList.toggle('stuck',scrollY>50),{passive:true});
-
-  /* ── burger ── */
-  const burger=document.getElementById('burger'), mm=document.getElementById('mobmenu');
-  burger.addEventListener('click',()=>{
-    const o=mm.classList.toggle('open');
-    burger.classList.toggle('open',o);
-    document.body.style.overflow=o?'hidden':'';
+  // Navbar scroll effect
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 50) {
+      nav.classList.add('scrolled');
+    } else {
+      nav.classList.remove('scrolled');
+    }
   });
-  function closeMenu(){
-    mm.classList.remove('open');
-    burger.classList.remove('open');
-    document.body.style.overflow='';
-  }
-  window.closeMenu=closeMenu;
 
-  /* ── smooth scroll ── */
-  document.querySelectorAll('a[href^="#"]').forEach(a=>{
-    a.addEventListener('click',e=>{
-      const id=a.getAttribute('href'); if(!id||id==='#') return;
-      const el=document.querySelector(id); if(!el) return;
-      e.preventDefault();
-      window.scrollTo({top:el.getBoundingClientRect().top+scrollY-72,behavior:'smooth'});
-      closeMenu();
+  // Smooth scroll for anchor links
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      const targetId = this.getAttribute('href');
+      if (targetId === "#" || targetId === "") return;
+      const target = document.querySelector(targetId);
+      if (target) {
+        e.preventDefault();
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
     });
   });
 
-  /* ── scroll reveal ── */
-  const io=new IntersectionObserver(entries=>{
-    entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});
-  },{threshold:.07,rootMargin:'0px 0px -36px 0px'});
-  document.querySelectorAll('.rv').forEach(el=>io.observe(el));
-
-  /* ── contact form ── */
-  const form=document.getElementById('cform');
-  if(form){
-    form.addEventListener('submit',async e=>{
-      e.preventDefault();
-      const btn=form.querySelector('.fsubmit');
-      btn.style.opacity='.5'; btn.style.pointerEvents='none';
-      try{
-        const r=await fetch(form.action,{method:'POST',body:new FormData(form),headers:{Accept:'application/json'}});
-        if(r.ok){ form.reset(); alert('Message sent — I\'ll be in touch soon.'); }
-      }catch(err){}
-      btn.style.opacity='1'; btn.style.pointerEvents='auto';
+  // Simple fade-in on scroll for project items
+  const animateItems = document.querySelectorAll('.project-item');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.style.opacity = '1';
+        entry.target.style.transform = 'translateY(0)';
+        observer.unobserve(entry.target);
+      }
     });
-  }
-})();
+  }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+  animateItems.forEach(item => {
+    item.style.opacity = '0';
+    item.style.transform = 'translateY(20px)';
+    item.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+    observer.observe(item);
+  });
 </script>
 </body>
 </html>
