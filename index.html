@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>Azeem Mohammad — Cinematographer</title>
-    <meta name="description" content="Azeem Mohammad — Cinematographer working between India and the UK. Visual storytelling through natural light and grounded realism.">
+    <title>Azeem Mohammad Cinematographer</title>
+    <meta name="description" content="Azeem Mohammad  Cinematographer visual storytelling through natural light and grounded realism.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
@@ -24,7 +24,6 @@
             overflow-x: hidden;
         }
 
-        /* smooth scroll behavior */
         html {
             scroll-behavior: smooth;
         }
@@ -41,7 +40,6 @@
             letter-spacing: -0.02em;
         }
 
-        /* container */
         .container {
             max-width: 1400px;
             margin: 0 auto;
@@ -62,7 +60,12 @@
             mix-blend-mode: difference;
             transition: all 0.3s ease;
         }
-
+        nav.scrolled {
+            background-color: rgba(10,10,10,0.85);
+            backdrop-filter: blur(12px);
+            mix-blend-mode: normal;
+            padding: 20px 48px;
+        }
         .logo {
             font-size: 0.85rem;
             font-weight: 500;
@@ -71,12 +74,10 @@
             color: #fff;
             opacity: 0.9;
         }
-
         .nav-links {
             display: flex;
             gap: 3rem;
         }
-
         .nav-links a {
             color: #fff;
             text-decoration: none;
@@ -87,13 +88,12 @@
             opacity: 0.6;
             transition: opacity 0.3s;
         }
-
         .nav-links a:hover {
             opacity: 1;
         }
 
-        /* hero / enter section */
-        .hero {
+        /* HERO */
+       .hero {
             height: 100vh;
             display: flex;
             flex-direction: column;
@@ -101,21 +101,24 @@
             align-items: center;
             text-align: center;
             position: relative;
-            background: #0a0a0a;
+            background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.7)), url('image/i1.jpeg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
         }
-
         .hero-name {
             font-size: clamp(3rem, 10vw, 7rem);
             font-weight: 500;
             letter-spacing: -0.03em;
             line-height: 1;
             margin-bottom: 1rem;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeUp 1s ease-out 0.3s forwards;
         }
-
         .hero-name span {
             display: block;
         }
-
         .hero-title {
             font-size: clamp(0.9rem, 3vw, 1.1rem);
             letter-spacing: 0.3em;
@@ -123,8 +126,10 @@
             color: rgba(255,255,255,0.5);
             margin-bottom: 4rem;
             font-weight: 400;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeUp 0.9s ease-out 0.5s forwards;
         }
-
         .enter-link {
             display: inline-block;
             text-decoration: none;
@@ -137,14 +142,14 @@
             transition: all 0.4s ease;
             background: transparent;
             cursor: pointer;
+            opacity: 0;
+            animation: fadeIn 0.8s ease-out 0.8s forwards;
         }
-
         .enter-link:hover {
             background: #fff;
             color: #0a0a0a;
             border-color: #fff;
         }
-
         .scroll-hint {
             position: absolute;
             bottom: 32px;
@@ -155,8 +160,17 @@
             text-transform: uppercase;
             color: rgba(255,255,255,0.4);
             animation: fadeUpDown 2s infinite;
+            opacity: 0;
+            animation: fadeUpDown 2s infinite, fadeIn 1s ease-out 1.2s forwards;
         }
-
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
         @keyframes fadeUpDown {
             0% { opacity: 0.2; transform: translateX(-50%) translateY(0); }
             50% { opacity: 0.8; transform: translateX(-50%) translateY(-8px); }
@@ -173,7 +187,6 @@
             align-items: flex-end;
             flex-wrap: wrap;
         }
-
         .section-title {
             font-size: 0.7rem;
             letter-spacing: 0.3em;
@@ -181,7 +194,6 @@
             color: rgba(255,255,255,0.5);
             font-weight: 400;
         }
-
         .view-all {
             font-size: 0.7rem;
             letter-spacing: 0.2em;
@@ -190,28 +202,57 @@
             text-decoration: none;
             transition: color 0.3s;
         }
-
         .view-all:hover {
             color: #fff;
         }
 
-        /* WORK GRID — like reference: EPIC, PAPERBOAT, BETWEEN DAYS, FOOTFALLS */
+        /* SHOWREEL SECTION */
+        .reel-section {
+            margin: 4rem 0;
+        }
+        .reel-wrap {
+            position: relative;
+            padding-bottom: 56.25%;
+            background: #111;
+            border: 1px solid rgba(255,255,255,0.08);
+            overflow: hidden;
+        }
+        .reel-wrap iframe {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+        }
+        .reel-note {
+            text-align: center;
+            margin-top: 1rem;
+            font-size: 0.65rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.25);
+        }
+
+        /* WORK GRID */
         .work-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
             gap: 2rem;
             margin: 3rem 0 5rem;
         }
-
         .work-item {
             cursor: pointer;
             transition: opacity 0.3s;
+            opacity: 0;
+            transform: translateY(40px);
+            animation: fadeUp 0.8s ease-out forwards;
         }
-
+        .work-item:nth-child(1) { animation-delay: 0.1s; }
+        .work-item:nth-child(2) { animation-delay: 0.2s; }
+        .work-item:nth-child(3) { animation-delay: 0.3s; }
+        .work-item:nth-child(4) { animation-delay: 0.4s; }
         .work-item:hover {
             opacity: 0.85;
         }
-
         .work-image {
             width: 100%;
             aspect-ratio: 4 / 3;
@@ -219,7 +260,6 @@
             margin-bottom: 1rem;
             overflow: hidden;
         }
-
         .work-image img {
             width: 100%;
             height: 100%;
@@ -227,11 +267,9 @@
             filter: grayscale(100%);
             transition: transform 0.6s ease;
         }
-
         .work-item:hover .work-image img {
             transform: scale(1.03);
         }
-
         .work-title {
             font-size: 1.2rem;
             font-weight: 500;
@@ -239,7 +277,6 @@
             margin-bottom: 0.3rem;
             color: #fff;
         }
-
         .work-category {
             font-size: 0.7rem;
             letter-spacing: 0.2em;
@@ -247,7 +284,45 @@
             color: rgba(255,255,255,0.4);
         }
 
-        /* two column layout (about + contact) */
+        /* FRAMES grid (additional stills) */
+        .frames-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            margin: 2rem 0 4rem;
+        }
+        .frame-item {
+            opacity: 0;
+            transform: scale(0.96);
+            animation: scaleIn 0.8s ease-out forwards;
+        }
+        .frame-item:nth-child(1) { animation-delay: 0.1s; }
+        .frame-item:nth-child(2) { animation-delay: 0.2s; }
+        .frame-item:nth-child(3) { animation-delay: 0.3s; }
+        .frame-item:nth-child(4) { animation-delay: 0.4s; }
+        @keyframes scaleIn {
+            from { opacity: 0; transform: scale(0.96); }
+            to { opacity: 1; transform: scale(1); }
+        }
+        .frame-image {
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            background: #141414;
+            overflow: hidden;
+        }
+        .frame-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: grayscale(100%);
+            transition: transform 0.5s ease, filter 0.4s;
+        }
+        .frame-item:hover .frame-image img {
+            transform: scale(1.02);
+            filter: grayscale(80%);
+        }
+
+        /* TWO COLUMN (about + contact) */
         .two-col {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -257,7 +332,24 @@
             border-top: 1px solid rgba(255,255,255,0.08);
             border-bottom: 1px solid rgba(255,255,255,0.08);
         }
-
+        .about-text {
+            opacity: 0;
+            transform: translateX(-20px);
+            animation: slideInLeft 0.8s ease-out 0.2s forwards;
+        }
+        .contact-info {
+            opacity: 0;
+            transform: translateX(20px);
+            animation: slideInRight 0.8s ease-out 0.3s forwards;
+        }
+        @keyframes slideInLeft {
+            from { opacity: 0; transform: translateX(-20px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        @keyframes slideInRight {
+            from { opacity: 0; transform: translateX(20px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
         .about-text p {
             font-size: 1rem;
             line-height: 1.7;
@@ -265,7 +357,6 @@
             margin-bottom: 1.5rem;
             max-width: 90%;
         }
-
         .about-highlight {
             font-size: 1.8rem;
             font-weight: 400;
@@ -273,18 +364,11 @@
             margin-bottom: 2rem;
             color: #fff;
         }
-
-        .contact-info {
-            display: flex;
-            flex-direction: column;
-            gap: 1.8rem;
-        }
-
         .contact-line {
             border-bottom: 1px solid rgba(255,255,255,0.1);
             padding-bottom: 1rem;
+            margin-bottom: 1.5rem;
         }
-
         .contact-label {
             font-size: 0.65rem;
             letter-spacing: 0.2em;
@@ -292,7 +376,6 @@
             color: rgba(255,255,255,0.4);
             margin-bottom: 0.5rem;
         }
-
         .contact-value {
             font-size: 1rem;
             color: rgba(255,255,255,0.85);
@@ -300,17 +383,14 @@
             display: inline-block;
             transition: color 0.2s;
         }
-
         .contact-value:hover {
             color: #fff;
         }
-
         .social-links {
             display: flex;
             gap: 2rem;
-            margin-top: 1rem;
+            margin-top: 0.5rem;
         }
-
         .social-links a {
             text-decoration: none;
             font-size: 0.75rem;
@@ -319,11 +399,9 @@
             color: rgba(255,255,255,0.5);
             transition: color 0.3s;
         }
-
         .social-links a:hover {
             color: #fff;
         }
-
         .credit-note {
             font-size: 0.7rem;
             text-align: center;
@@ -336,82 +414,36 @@
 
         /* responsive */
         @media (max-width: 900px) {
-            nav {
-                padding: 24px 24px;
-            }
-            .nav-links {
-                gap: 1.8rem;
-            }
-            .container {
-                padding: 0 24px;
-            }
-            .work-grid {
-                grid-template-columns: 1fr;
-                gap: 2rem;
-            }
-            .two-col {
-                grid-template-columns: 1fr;
-                gap: 3rem;
-            }
-            .about-text p {
-                max-width: 100%;
-            }
-            .hero-name {
-                font-size: clamp(2.5rem, 12vw, 5rem);
-            }
+            nav { padding: 24px 24px; }
+            nav.scrolled { padding: 16px 24px; }
+            .nav-links { gap: 1.8rem; }
+            .container { padding: 0 24px; }
+            .work-grid, .frames-grid { grid-template-columns: 1fr; gap: 2rem; }
+            .two-col { grid-template-columns: 1fr; gap: 3rem; }
+            .about-text p { max-width: 100%; }
+            .hero-name { font-size: clamp(2.5rem, 12vw, 5rem); }
         }
-
         @media (max-width: 600px) {
-            .nav-links {
-                display: none;
-            }
-            /* simple fallback: keep nav minimal */
-            .section-header {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 0.5rem;
-            }
+            .nav-links { display: none; }
+            .section-header { flex-direction: column; align-items: flex-start; gap: 0.5rem; }
         }
-
-        /* placeholder image fallback */
-        .work-image img {
-            background: #1e1e1e;
-        }
-
-        /* hide scrollbar hint on touch devices */
-        @media (hover: none) {
-            .scroll-hint {
-                display: none;
-            }
-        }
-
-        /* frame for images (grayscale) */
-        img {
-            display: block;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        /* no education, no experience — only pure cinematography */
-        .no-extra {
-            display: none;
-        }
+        img { display: block; width: 100%; height: 100%; object-fit: cover; }
     </style>
 </head>
 <body>
 
-<nav>
+<nav id="navbar">
     <div class="logo">AZEEM MOHAMMAD</div>
     <div class="nav-links">
         <a href="#work">WORK</a>
         <a href="#frames">FRAMES</a>
+        <a href="#showreel">SHOWREEL</a>
         <a href="#about">ABOUT</a>
         <a href="#contact">CONTACT</a>
     </div>
 </nav>
 
-<!-- HERO / ENTRANCE SECTION -->
+<!-- HERO SECTION -->
 <section class="hero" id="enter">
     <div class="hero-name">
         <span>AZEEM</span>
@@ -429,17 +461,14 @@
             <div class="section-title">WORK</div>
             <a href="#" class="view-all" id="viewAllLink">VIEW ALL WORK →</a>
         </div>
-
         <div class="work-grid">
-            <!-- EPIC - feature film -->
             <div class="work-item">
                 <div class="work-image">
-                    <img src="https://images.unsplash.com/photo-1485846234645-a62644f84728?w=800&q=80" alt="Epic film still">
+                    <img src="images/i1.jpeg" alt="Epic film still">
                 </div>
                 <div class="work-title">EPIC</div>
                 <div class="work-category">FEATURE FILM</div>
             </div>
-            <!-- PAPERBOAT - short film -->
             <div class="work-item">
                 <div class="work-image">
                     <img src="https://images.unsplash.com/photo-1500210600724-67c5e2e06b0c?w=800&q=80" alt="Paperboat still">
@@ -447,7 +476,6 @@
                 <div class="work-title">PAPERBOAT</div>
                 <div class="work-category">SHORT FILM</div>
             </div>
-            <!-- BETWEEN DAYS - feature film -->
             <div class="work-item">
                 <div class="work-image">
                     <img src="https://images.unsplash.com/photo-1536440136628-849c177e76a1?w=800&q=80" alt="Between Days still">
@@ -455,7 +483,6 @@
                 <div class="work-title">BETWEEN DAYS</div>
                 <div class="work-category">FEATURE FILM</div>
             </div>
-            <!-- FOOTFALLS - short film -->
             <div class="work-item">
                 <div class="work-image">
                     <img src="https://images.unsplash.com/photo-1478720568477-152d9b164e26?w=800&q=80" alt="Footfalls still">
@@ -466,41 +493,79 @@
         </div>
     </div>
 
-    <!-- FRAMES SECTION (minimal grid of stills) -->
+    <!-- SHOWREEL SECTION (restored with animations) -->
+    <div class="container" id="showreel">
+        <div class="section-header">
+            <div class="section-title">SHOWREEL</div>
+        </div>
+        <div class="reel-section" style="opacity: 0; animation: fadeIn 0.9s ease-out 0.2s forwards;">
+            <div class="reel-wrap">
+                <iframe src="https://www.youtube.com/embed/mV9BBwKsSp8?si=VyHZItNn1mUjOz5b" title="Azeem Mohammad Showreel" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+            <p class="reel-note">CINEMATOGRAPHY SHOWREEL</p>
+        </div>
+    </div>
+
+    <!-- FRAMES SECTION -->
     <div class="container" id="frames">
         <div class="section-header">
             <div class="section-title">FRAMES</div>
         </div>
-        <div class="work-grid" style="margin-top: 1rem;">
-            <div class="work-item">
-                <div class="work-image">
-                    <img src="https://images.unsplash.com/photo-1440404653325-ab127d49abc1?w=800&q=80" alt="Frame still 1">
+        <div class="frames-grid">
+            <div class="frame-item">
+                <div class="frame-image">
+                    <img src="images/i2.jpeg" alt="Frame still 1">
                 </div>
             </div>
-            <div class="work-item">
-                <div class="work-image">
-                    <img src="https://images.unsplash.com/photo-1593784991095-a205069470b6?w=800&q=80" alt="Frame still 2">
+            <div class="frame-item">
+                <div class="frame-image">
+                    <img src="images/i3.jpeg" alt="Frame still 2">
                 </div>
             </div>
-            <div class="work-item">
-                <div class="work-image">
-                    <img src="https://images.unsplash.com/photo-1565120319398-da008925fc1d?w=800&q=80" alt="Frame still 3">
+            <div class="frame-item">
+                <div class="frame-image">
+                    <img src="images/i4.jpeg" alt="Frame still 3">
                 </div>
             </div>
-            <div class="work-item">
-                <div class="work-image">
-                    <img src="https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=800&q=80" alt="Frame still 4">
+            <div class="frame-item">
+                <div class="frame-image">
+                    <img src="images/i5.jpeg" alt="Frame still 4">
+                </div>
+            </div>
+             <div class="frame-item">
+                <div class="frame-image">
+                    <img src="images/i6.jpeg" alt="Frame still 3">
+                </div>
+            </div>
+             <div class="frame-item">
+                <div class="frame-image">
+                    <img src="images/i7.jpeg" alt="Frame still 3">
+                </div>
+            </div>
+             <div class="frame-item">
+                <div class="frame-image">
+                    <img src="images/i8.jpeg" alt="Frame still 3">
+                </div>
+            </div>
+             <div class="frame-item">
+                <div class="frame-image">
+                    <img src="images/i9.jpeg" alt="Frame still 3">
+                </div>
+            </div>
+             <div class="frame-item">
+                <div class="frame-image">
+                    <img src="images/i10.jpeg" alt="Frame still 3">
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- ABOUT + CONTACT (two column, no education, no work experience list) -->
+    <!-- ABOUT + CONTACT (no education, no experience) -->
     <div class="container" id="about">
         <div class="two-col">
             <div class="about-text">
                 <div class="about-highlight">Azeem Mohammad is a cinematographer working between India and the UK.</div>
-                <p>His work explores intimacy, memory, and time — often through natural light and grounded realism. Each frame is guided by a commitment to visual honesty, translating story into imagery that breathes.</p>
+                <p>His work explores intimacy, memory, and time often through natural light and grounded realism. Each frame is guided by a commitment to visual honesty, translating story into imagery that breathes.</p>
                 <p style="font-style: italic; color: rgba(255,255,255,0.5);">Let's create something honest.</p>
             </div>
             <div class="contact-info" id="contact">
@@ -521,23 +586,22 @@
                 </div>
                 <div class="contact-line">
                     <div class="contact-label">MORE</div>
-                    <a href="#" class="contact-value" style="font-size: 0.85rem;">MORE ABOUT AZEEM →</a>
+                    <a href="#" class="contact-value" id="moreAboutLink" style="font-size: 0.85rem;">MORE ABOUT AZEEM →</a>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- subtle credit line (design by field theory reference) -->
     <div class="container">
         <div class="credit-note">
-            DESIGN BY FIELD THEORY / AZEEM MOHAMMAD — 2024
+            DESIGN BY FIELD THEORY / AZEEM MOHAMMAD — 2025
         </div>
     </div>
 </main>
 
 <script>
     (function() {
-        // Smooth scroll for internal anchor links + "ENTER" button
+        // Smooth scroll for all anchor links
         const allLinks = document.querySelectorAll('a[href^="#"]');
         allLinks.forEach(link => {
             link.addEventListener('click', function(e) {
@@ -550,13 +614,12 @@
                         behavior: 'smooth',
                         block: 'start'
                     });
-                    // optional: update URL without jump
                     history.pushState(null, null, targetId);
                 }
             });
         });
 
-        // "VIEW ALL WORK" just scrolls to work section or could be a placeholder
+        // View all work button scrolls to work section
         const viewAll = document.getElementById('viewAllLink');
         if(viewAll) {
             viewAll.addEventListener('click', (e) => {
@@ -566,41 +629,44 @@
             });
         }
 
-        // subtle parallax / minimal effect: no extra fluff
-        // ensure that images are visible (fallback)
-        const images = document.querySelectorAll('.work-image img');
-        images.forEach(img => {
-            if(!img.src || img.src === window.location.href) {
-                // dummy placeholder inline — but unsplash urls already set, all good
-            }
-        });
-
-        // nav background on scroll (optional: subtle)
-        const nav = document.querySelector('nav');
-        if(nav) {
-            window.addEventListener('scroll', () => {
-                if(window.scrollY > 50) {
-                    nav.style.backgroundColor = 'rgba(10,10,10,0.8)';
-                    nav.style.backdropFilter = 'blur(12px)';
-                } else {
-                    nav.style.backgroundColor = 'transparent';
-                    nav.style.backdropFilter = 'none';
-                }
-            });
-        }
-
-        // make "MORE ABOUT AZEEM" link simple alert? no, just a placeholder scroll to about
-        const moreLink = document.querySelector('.contact-line a.contact-value[href="#"]');
-        if(moreLink && moreLink.innerText.includes('MORE ABOUT AZEEM')) {
+        // More about Azeem link scrolls to about section
+        const moreLink = document.getElementById('moreAboutLink');
+        if(moreLink) {
             moreLink.addEventListener('click', (e) => {
                 e.preventDefault();
                 const aboutSection = document.getElementById('about');
                 if(aboutSection) aboutSection.scrollIntoView({ behavior: 'smooth' });
             });
         }
+
+        // Navbar background on scroll
+        const navbar = document.getElementById('navbar');
+        if(navbar) {
+            window.addEventListener('scroll', () => {
+                if(window.scrollY > 50) {
+                    navbar.classList.add('scrolled');
+                } else {
+                    navbar.classList.remove('scrolled');
+                }
+            });
+        }
+
+        // Additional fade-in for any element that might have been missed (safety)
+        const animatedElements = document.querySelectorAll('.work-item, .frame-item, .about-text, .contact-info, .reel-section');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if(entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1 });
         
-        // For any external social links keep them # but we can set realistic later
-        // ensure that all placeholders are unobtrusive
+        animatedElements.forEach(el => {
+            if(getComputedStyle(el).opacity === '0') {
+                observer.observe(el);
+            }
+        });
     })();
 </script>
 </body>
