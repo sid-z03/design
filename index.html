@@ -1,107 +1,1117 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<title>Azeem - Director of Photography</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Azeem Mohammad — Director of Photography</title>
+<meta name="description" content="Azeem Mohammad — Director of Photography. Visual storytelling through natural light and grounded realism.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,700&family=Josefin+Sans:wght@200;300;400;500;600&display=swap" rel="stylesheet">
 <style>
-  /* Basic Reset & Base Styles */
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  body { background: #000; color: #eee; font-family: sans-serif; line-height: 1.6; }
-  .container { max-width: 1400px; margin: 0 auto; padding: 2rem; }
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-  /* Hero Section */
-  .hero { height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; }
-  .hero h1 { font-size: 4rem; margin-bottom: 0.5rem; }
-  .hero p { font-size: 1rem; letter-spacing: 4px; text-transform: uppercase; color: #aaa;}
+:root {
+  --gold-bright: #ffd060;
+  --gold-mid: #e8b84b;
+  --gold-dark: #c9a040;
+  --gold-deep: #a07828;
+  --gold-section: rgba(201,165,90,0.5);
+  --bg: #050505;
+  --text: #e8e8e8;
+  --subtle: rgba(255,255,255,0.45);
+  --border: rgba(255,255,255,0.06);
+}
 
-  /* Project Grid */
-  .projects-section { margin: 5rem 0; }
-  .category-title { font-size: 1.5rem; margin-bottom: 2rem; padding-bottom: 0.5rem; border-bottom: 1px solid #333; text-transform: uppercase; letter-spacing: 2px; }
-  .project-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); gap: 2rem; margin-bottom: 4rem; }
-  .project-item { cursor: pointer; }
-  .project-thumb { background: #222; aspect-ratio: 16/9; margin-bottom: 0.5rem; overflow: hidden; }
-  .project-thumb img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s ease; }
-  .project-item:hover .project-thumb img { transform: scale(1.05); }
-  .project-title { font-weight: bold; }
-  .project-client { font-size: 0.8rem; color: #aaa; }
+html {
+  scroll-behavior: smooth;
+}
 
-  /* Showreel Section */
-  .showreel { margin: 5rem 0; }
-  .video-wrapper { position: relative; padding-bottom: 56.25%; height: 0; }
-  .video-wrapper iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; }
+body {
+  background-color: var(--bg);
+  color: var(--text);
+  font-family: 'Josefin Sans', sans-serif;
+  font-weight: 300;
+  line-height: 1.6;
+  overflow-x: hidden;
+  cursor: none;
+}
 
-  /* Footer / Contact */
-  .footer { margin-top: 5rem; padding-top: 2rem; border-top: 1px solid #333; text-align: center; }
-  .footer a { color: #aaa; text-decoration: none; margin: 0 1rem; }
-  .footer a:hover { color: #fff; }
+img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
 
-  @media (max-width: 768px) {
-    .project-grid { grid-template-columns: 1fr; }
-    .container { padding: 1rem; }
-    .hero h1 { font-size: 2.5rem; }
+a {
+  text-decoration: none;
+  color: inherit;
+  cursor: none;
+}
+
+/* ─── PAGE LOAD PROGRESS BAR ─── */
+#progress-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 1px;
+  width: 0%;
+  background: linear-gradient(to right, var(--gold-dark), var(--gold-bright), var(--gold-dark));
+  z-index: 9999;
+  transition: width 0.4s ease;
+  box-shadow: 0 0 8px rgba(255,208,96,0.4);
+}
+
+/* ─── CUSTOM CURSOR ─── */
+#cursor-dot {
+  position: fixed;
+  width: 6px;
+  height: 6px;
+  background: #fff;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9998;
+  transform: translate(-50%, -50%);
+  transition: transform 0.1s ease, background 0.2s ease, width 0.2s ease, height 0.2s ease;
+}
+
+#cursor-ring {
+  position: fixed;
+  width: 32px;
+  height: 32px;
+  border: 1px solid rgba(255,255,255,0.5);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9997;
+  transform: translate(-50%, -50%);
+  transition: transform 0.12s cubic-bezier(0.2,0.9,0.4,1.1), width 0.25s ease, height 0.25s ease, border-color 0.25s ease, opacity 0.25s ease;
+}
+
+body:hover #cursor-ring {
+  opacity: 1;
+}
+
+/* Cursor hover states */
+body.cursor-hover #cursor-dot {
+  width: 10px;
+  height: 10px;
+  background: var(--gold-bright);
+}
+
+body.cursor-hover #cursor-ring {
+  width: 48px;
+  height: 48px;
+  border-color: rgba(201,165,90,0.6);
+}
+
+/* ─── FIXED NAV ─── */
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  padding: 22px 48px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: background 0.4s ease, padding 0.3s ease;
+}
+
+nav.scrolled {
+  background: rgba(5,5,5,0.92);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  padding: 16px 48px;
+  border-bottom: 1px solid var(--border);
+}
+
+.nav-logo {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.2rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  background: linear-gradient(135deg, var(--gold-bright) 0%, var(--gold-dark) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  cursor: none;
+}
+
+.nav-links {
+  display: flex;
+  gap: 2.4rem;
+  list-style: none;
+}
+
+.nav-links a {
+  font-size: 0.62rem;
+  font-weight: 400;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.45);
+  transition: color 0.2s;
+  cursor: none;
+}
+
+.nav-links a:hover {
+  color: #fff;
+}
+
+/* Hamburger */
+.nav-hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: none;
+  background: none;
+  border: none;
+  padding: 4px;
+}
+
+.nav-hamburger span {
+  display: block;
+  width: 22px;
+  height: 1px;
+  background: rgba(255,255,255,0.6);
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.nav-hamburger.open span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+.nav-hamburger.open span:nth-child(2) { opacity: 0; }
+.nav-hamburger.open span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+
+.nav-mobile-menu {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(5,5,5,0.97);
+  z-index: 999;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2.5rem;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.nav-mobile-menu.open {
+  display: flex;
+  opacity: 1;
+  pointer-events: all;
+}
+
+.nav-mobile-menu a {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2.5rem;
+  font-weight: 300;
+  letter-spacing: 0.12em;
+  color: rgba(255,255,255,0.6);
+  text-transform: uppercase;
+  transition: color 0.2s;
+  cursor: none;
+}
+
+.nav-mobile-menu a:hover {
+  color: #fff;
+}
+
+/* ─── HERO SECTION ─── */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background: var(--bg);
+  padding: 0 24px;
+  overflow: hidden;
+}
+
+/* Background image */
+.hero::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background-image: url('images/t1.png');
+  background-size: cover;
+  background-position: center 30%;
+  background-repeat: no-repeat;
+  opacity: 0.35;
+  z-index: 0;
+}
+
+/* Film grain overlay */
+.hero-grain {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  z-index: 1;
+  pointer-events: none;
+  opacity: 0.55;
+  animation: grainShift 0.08s steps(1) infinite;
+}
+
+@keyframes grainShift {
+  0%   { transform: translate(0, 0); }
+  10%  { transform: translate(-2%, -2%); }
+  20%  { transform: translate(2%, 2%); }
+  30%  { transform: translate(-1%, 1%); }
+  40%  { transform: translate(1%, -1%); }
+  50%  { transform: translate(-2%, 1%); }
+  60%  { transform: translate(2%, -2%); }
+  70%  { transform: translate(0%, 2%); }
+  80%  { transform: translate(-1%, -1%); }
+  90%  { transform: translate(1%, 0%); }
+  100% { transform: translate(0, 0); }
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 90%;
+}
+
+/* NAME BLOCK */
+.hero-name-block {
+  position: relative;
+  line-height: 1;
+  margin-bottom: 20px;
+}
+
+.hero-firstname {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(3rem, 12vw, 9rem);
+  font-weight: 700;
+  font-style: normal;
+  letter-spacing: -0.02em;
+  line-height: 0.88;
+  background: linear-gradient(135deg, var(--gold-bright) 0%, var(--gold-mid) 35%, var(--gold-dark) 65%, var(--gold-deep) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  text-transform: uppercase;
+  display: block;
+  opacity: 0;
+  transform: translateY(50px);
+  filter: blur(8px);
+  animation: slideUpBlur 1s cubic-bezier(0.2, 0.9, 0.4, 1.1) forwards;
+}
+
+.hero-lastname {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2.5rem, 10vw, 7.5rem);
+  font-weight: 700;
+  font-style: normal;
+  letter-spacing: -0.02em;
+  line-height: 0.9;
+  background: linear-gradient(135deg, var(--gold-bright) 0%, var(--gold-mid) 35%, var(--gold-dark) 65%, var(--gold-deep) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  text-transform: uppercase;
+  display: block;
+  margin-top: clamp(-8px, -1vw, -12px);
+  opacity: 0;
+  transform: translateY(50px);
+  filter: blur(8px);
+  animation: slideUpBlur 1s cubic-bezier(0.2, 0.9, 0.4, 1.1) forwards;
+  animation-delay: 0.15s;
+}
+
+@keyframes slideUpBlur {
+  0%   { opacity: 0; transform: translateY(50px); filter: blur(10px); }
+  60%  { opacity: 1; transform: translateY(-4px); filter: blur(1px); }
+  100% { opacity: 1; transform: translateY(0); filter: blur(0); }
+}
+
+.hero-rule {
+  width: 0;
+  height: 2px;
+  background: linear-gradient(to right, var(--gold-dark), var(--gold-bright), var(--gold-deep));
+  margin: 20px auto 24px auto;
+  animation: ruleExpand 0.9s cubic-bezier(0.2, 0.9, 0.4, 1.1) 0.5s both;
+}
+
+@keyframes ruleExpand {
+  from { width: 0; opacity: 0; }
+  to { width: clamp(80px, 12vw, 160px); opacity: 1; }
+}
+
+.hero-dop {
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: clamp(0.6rem, 1.5vw, 0.75rem);
+  font-weight: 400;
+  letter-spacing: 0.52em;
+  text-transform: uppercase;
+  color: rgba(201, 165, 90, 0.85);
+  opacity: 0;
+  animation: fadeUp 0.8s cubic-bezier(0.2, 0.9, 0.4, 1.1) 0.7s forwards;
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Scroll indicator */
+.scroll-indicator {
+  position: absolute;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  opacity: 0;
+  animation: fadeUp 0.8s ease 1.2s forwards;
+}
+
+.scroll-indicator-line {
+  width: 1px;
+  height: 40px;
+  background: linear-gradient(to bottom, rgba(201,165,90,0.7), transparent);
+  animation: scrollPulse 2s ease-in-out infinite;
+}
+
+@keyframes scrollPulse {
+  0%, 100% { opacity: 0.4; transform: scaleY(1); transform-origin: top; }
+  50%       { opacity: 1;   transform: scaleY(1.2); transform-origin: top; }
+}
+
+.scroll-indicator-text {
+  font-size: 0.52rem;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: rgba(201,165,90,0.5);
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  margin-top: 4px;
+}
+
+/* ─── CONTAINER ─── */
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 48px;
+}
+
+/* ─── SECTION HEADERS ─── */
+.section-header {
+  margin: 70px 0 32px 0;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 12px;
+}
+
+.section-title {
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--gold-section);
+}
+
+/* ─── SHOWREEL ─── */
+.reel-wrapper {
+  position: relative;
+  padding-bottom: 56.25%;
+  background: #0f0f0f;
+  border: 1px solid var(--border);
+  overflow: hidden;
+  margin: 20px 0;
+}
+
+.reel-wrapper iframe {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  border: none;
+}
+
+.reel-caption {
+  text-align: center;
+  font-size: 0.6rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.25);
+  margin-top: 8px;
+}
+
+/* ─── FILM CREDITS ─── */
+.work-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+  margin: 32px 0 40px;
+}
+
+.work-card {
+  cursor: none;
+  transition: opacity 0.3s;
+  position: relative;
+}
+
+.work-card:hover { opacity: 0.85; }
+
+.work-image {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  background: #121212;
+  overflow: hidden;
+  margin-bottom: 0.8rem;
+  position: relative;
+}
+
+.work-image img,
+.work-image video {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s ease;
+}
+
+.work-card:hover .work-image img,
+.work-card:hover .work-image video {
+  transform: scale(1.03);
+}
+
+/* Year badge — appears on hover */
+.work-year-badge {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  font-size: 0.58rem;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.85);
+  background: rgba(5,5,5,0.75);
+  border: 1px solid rgba(255,255,255,0.12);
+  padding: 4px 9px;
+  opacity: 0;
+  transform: translateY(-4px);
+  transition: opacity 0.25s ease, transform 0.25s ease;
+  pointer-events: none;
+}
+
+.work-card:hover .work-year-badge {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.work-meta {
+  padding-right: 4px;
+}
+
+.work-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.3rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  color: #fff;
+  margin-bottom: 4px;
+  line-height: 1.2;
+}
+
+.work-role {
+  font-size: 0.58rem;
+  font-weight: 400;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--gold-section);
+}
+
+/* Hide old .work-year below image */
+.work-year { display: none; }
+
+/* ─── FRAMES ─── */
+.frames-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+  margin: 32px 0 60px;
+}
+
+.frame-card {
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  background: #0f0f0f;
+  overflow: hidden;
+  cursor: none;
+}
+
+.frame-card img,
+.frame-card video {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  transition: transform 0.7s ease;
+}
+
+.frame-card:hover img,
+.frame-card:hover video {
+  transform: scale(1.03);
+}
+
+/* ─── ABOUT + CONTACT ─── */
+.about-contact {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  margin: 60px 0 80px;
+  padding-top: 40px;
+  border-top: 1px solid var(--border);
+}
+
+.about-header {
+  margin-bottom: 20px;
+}
+
+.about-header .section-title {
+  display: inline-block;
+}
+
+.about-text p {
+  font-size: 0.9rem;
+  line-height: 1.7;
+  color: rgba(255,255,255,0.65);
+  margin-bottom: 1rem;
+}
+
+.contact-info {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.contact-line {
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 0.7rem;
+}
+
+.contact-label {
+  font-size: 0.6rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.35);
+  margin-bottom: 0.3rem;
+}
+
+.contact-value {
+  font-size: 0.9rem;
+  color: rgba(255,255,255,0.7);
+  transition: color 0.2s;
+  cursor: none;
+}
+
+.contact-value:hover { color: #fff; }
+
+.social-links {
+  display: flex;
+  gap: 1.8rem;
+  margin-top: 0.3rem;
+}
+
+.social-links a {
+  font-size: 0.7rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.45);
+  transition: color 0.2s;
+  cursor: none;
+}
+
+.social-links a:hover { color: #fff; }
+
+/* ─── MARQUEE ─── */
+.marquee {
+  overflow: hidden;
+  white-space: nowrap;
+  padding: 10px 0;
+  border-top: 1px solid rgba(255,255,255,0.05);
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+
+.marquee-inner {
+  display: inline-flex;
+  gap: 28px;
+  animation: marq 26s linear infinite;
+  font-size: 0.58rem;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  font-weight: 400;
+  color: rgba(255,255,255,0.25);
+}
+
+.marquee-dot { color: rgba(201,165,90,0.5); }
+
+@keyframes marq {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+/* ─── FOOTER ─── */
+footer {
+  padding: 28px 48px;
+  border-top: 1px solid rgba(255,255,255,0.04);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  font-size: 0.6rem;
+  letter-spacing: 0.1em;
+  color: rgba(255,255,255,0.2);
+}
+
+.foot-links {
+  display: flex;
+  gap: 2rem;
+}
+
+.foot-links a {
+  color: rgba(255,255,255,0.3);
+  transition: color 0.2s;
+  cursor: none;
+}
+
+.foot-links a:hover { color: #fff; }
+
+/* ─── FADE-UP ANIMATION ─── */
+.fade-up {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.7s cubic-bezier(0.2, 0.9, 0.4, 1.1),
+              transform 0.7s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+}
+
+.fade-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ─── RESPONSIVE ─── */
+@media (max-width: 900px) {
+  .container { padding: 0 32px; }
+  .work-grid  { gap: 1.5rem; }
+  .about-contact { gap: 2.5rem; }
+  nav { padding: 18px 32px; }
+  nav.scrolled { padding: 14px 32px; }
+}
+
+@media (max-width: 768px) {
+  body { cursor: auto; }
+  #cursor-dot, #cursor-ring { display: none; }
+
+  .nav-links { display: none; }
+  .nav-hamburger { display: flex; }
+  nav { padding: 18px 24px; }
+  nav.scrolled { padding: 14px 24px; }
+
+  .hero { padding: 0 20px; }
+  .hero-firstname { font-size: clamp(3rem, 13vw, 6rem); animation-duration: 0.6s; }
+  .hero-lastname  { font-size: clamp(2.5rem, 11vw, 5rem); margin-top: clamp(-5px, -1vw, -8px); animation-duration: 0.6s; }
+  .hero-rule { margin: 15px auto 18px auto; }
+  .hero-dop  { letter-spacing: 0.38em; }
+
+  .frames-grid { grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+  .frame-card:hover img, .frame-card:hover video { transform: none; }
+}
+
+@media (max-width: 650px) {
+  .container { padding: 0 24px; }
+  .work-grid  { grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+  .about-contact {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    padding-bottom: 60px;
   }
+  footer {
+    flex-direction: column;
+    text-align: center;
+    padding: 24px;
+    gap: 8px;
+  }
+  .foot-links { justify-content: center; }
+}
+
+@media (max-width: 480px) {
+  .hero-firstname { font-size: clamp(2.5rem, 11vw, 4.5rem); }
+  .hero-lastname  { font-size: clamp(2rem, 9vw, 4rem); }
+  .hero-dop { font-size: 0.55rem; letter-spacing: 0.35em; }
+  .work-title { font-size: 1rem; }
+  .frames-grid { grid-template-columns: repeat(2, 1fr); gap: 0.8rem; }
+}
 </style>
 </head>
 <body>
 
-<div class="container">
+<!-- Progress Bar -->
+<div id="progress-bar"></div>
 
-  <!-- Hero Section (Inspired by Fraser/Tamburini) -->
-  <section class="hero">
-    <h1>AZEEM MOHAMMAD</h1>
-    <p>Director of Photography</p>
-    <!-- Optional: Add a background video or image here -->
-  </section>
+<!-- Custom Cursor -->
+<div id="cursor-dot"></div>
+<div id="cursor-ring"></div>
 
-  <!-- Showreel Section (Essential for DOP) -->
-  <section class="showreel">
-    <div class="video-wrapper">
-      <!-- Replace with your YouTube/Vimeo embed code -->
-      <iframe src="https://www.youtube.com/embed/mV9BBwKsSp8?si=YOUR_REEL_ID" title="Showreel" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-    </div>
-  </section>
+<!-- Film Grain SVG (inline, reused via filter) -->
+<svg width="0" height="0" style="position:absolute">
+  <filter id="grain">
+    <feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch"/>
+    <feColorMatrix type="saturate" values="0"/>
+    <feBlend in="SourceGraphic" mode="overlay"/>
+  </filter>
+</svg>
 
-  <!-- Commercial Work Section (Inspired by Tamburini) -->
-  <section class="projects-section">
-    <h2 class="category-title">Commercial</h2>
-    <div class="project-grid">
-      <!-- Project 1 -->
-      <div class="project-item">
-        <div class="project-thumb">
-          <img src="https://placehold.co/600x400/333/fff?text=Brand+Campaign" alt="Project Thumbnail">
-        </div>
-        <div class="project-title">Bound By Nothing</div>
-        <div class="project-client">JENNAIR · Launch Trailer</div>
+<!-- ─── FIXED NAV ─── -->
+<nav id="main-nav">
+  <a class="nav-logo" href="#hero">AM</a>
+  <ul class="nav-links">
+    <li><a href="#showreel">Showreel</a></li>
+    <li><a href="#credits">Credits</a></li>
+    <li><a href="#frames">Frames</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <button class="nav-hamburger" id="hamburger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- Mobile Menu -->
+<div class="nav-mobile-menu" id="mobile-menu">
+  <a href="#showreel" class="mobile-link">Showreel</a>
+  <a href="#credits" class="mobile-link">Credits</a>
+  <a href="#frames" class="mobile-link">Frames</a>
+  <a href="#contact" class="mobile-link">Contact</a>
+</div>
+
+<main>
+
+  <!-- ─── HERO ─── -->
+  <section class="hero" id="hero">
+    <!-- Grain overlay via canvas (animated) -->
+    <canvas id="grain-canvas" class="hero-grain" aria-hidden="true"></canvas>
+
+    <div class="hero-content">
+      <div class="hero-name-block">
+        <span class="hero-firstname">AZEEM</span>
+        <span class="hero-lastname">MOHAMMAD</span>
       </div>
-      <!-- Add more commercial projects here -->
+      <div class="hero-rule"></div>
+      <div class="hero-dop">DIRECTOR OF PHOTOGRAPHY</div>
+    </div>
+
+    <div class="scroll-indicator">
+      <div class="scroll-indicator-line"></div>
+      <span class="scroll-indicator-text">Scroll</span>
     </div>
   </section>
 
-  <!-- Music Video Section (Inspired by Tamburini/Lyubimov) -->
-  <section class="projects-section">
-    <h2 class="category-title">Music Video</h2>
-    <div class="project-grid">
-      <!-- Project 1 -->
-      <div class="project-item">
-        <div class="project-thumb">
-          <img src="https://placehold.co/600x400/333/fff?text=Artist+Name" alt="Project Thumbnail">
-        </div>
-        <div class="project-title">Travel By Design</div>
-        <div class="project-client">MARRIOTT · Global Campaign</div>
+  <div class="container">
+
+    <!-- ─── SHOWREEL ─── -->
+    <div class="fade-up" id="showreel">
+      <div class="section-header">
+        <div class="section-title">SHOWREEL</div>
       </div>
-      <!-- Add more music video projects here -->
+      <div class="reel-wrapper">
+        <iframe src="https://www.youtube.com/embed/mV9BBwKsSp8?si=VyHZItNn1mUjOz5b&rel=0&modestbranding=1"
+          title="Azeem Mohammad Showreel" frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen></iframe>
+      </div>
+      <div class="reel-caption">CINEMATOGRAPHY SHOWREEL — SELECTED WORK</div>
     </div>
-  </section>
 
-  <!-- Footer / Contact (Inspired by Tamburini) -->
-  <footer class="footer">
-    <div>
-      <a href="mailto:hello@azeem.com">EMAIL</a>
-      <a href="#">INSTAGRAM</a>
-      <a href="#">IMDB</a>
+    <!-- ─── FILM CREDITS ─── -->
+    <div class="fade-up" id="credits">
+      <div class="section-header">
+        <div class="section-title">FILM CREDITS</div>
+      </div>
+      <div class="work-grid">
+
+        <div class="work-card">
+          <div class="work-image">
+            <img src="https://images.unsplash.com/photo-1485846234645-a62644f84728?w=800&q=80" alt="Epi">
+            <div class="work-year-badge">2025</div>
+          </div>
+          <div class="work-meta">
+            <div class="work-title">EPI</div>
+            <div class="work-role">Director of Photography</div>
+          </div>
+        </div>
+
+        <div class="work-card">
+          <div class="work-image">
+            <img src="https://images.unsplash.com/photo-1500210600724-67c5e2e06b0c?w=800&q=80" alt="Paper Boat">
+            <div class="work-year-badge">2024</div>
+          </div>
+          <div class="work-meta">
+            <div class="work-title">PAPERBOAT</div>
+            <div class="work-role">Director of Photography</div>
+          </div>
+        </div>
+
+        <div class="work-card">
+          <div class="work-image">
+            <img src="https://images.unsplash.com/photo-1536440136628-849c177e76a1?w=800&q=80" alt="Between Days">
+            <div class="work-year-badge">2024</div>
+          </div>
+          <div class="work-meta">
+            <div class="work-title">BETWEEN DAYS</div>
+            <div class="work-role">Director of Photography</div>
+          </div>
+        </div>
+
+        <div class="work-card">
+          <div class="work-image">
+            <img src="https://images.unsplash.com/photo-1478720568477-152d9b164e26?w=800&q=80" alt="Footfalls">
+            <div class="work-year-badge">2023</div>
+          </div>
+          <div class="work-meta">
+            <div class="work-title">FOOTFALLS</div>
+            <div class="work-role">Director of Photography</div>
+          </div>
+        </div>
+
+        <div class="work-card">
+          <div class="work-image">
+            <video autoplay loop muted playsinline>
+              <source src="https://assets.mixkit.co/videos/preview/mixkit-waves-on-the-sea-shore-1172-large.mp4" type="video/mp4">
+            </video>
+            <div class="work-year-badge">2024</div>
+          </div>
+          <div class="work-meta">
+            <div class="work-title">NIGHTSHIFT</div>
+            <div class="work-role">Director of Photography</div>
+          </div>
+        </div>
+
+        <div class="work-card">
+          <div class="work-image">
+            <img src="https://images.unsplash.com/photo-1440404653325-ab127d49abc1?w=800&q=80" alt="Memory Lane">
+            <div class="work-year-badge">2025</div>
+          </div>
+          <div class="work-meta">
+            <div class="work-title">MEMORY LANE</div>
+            <div class="work-role">Director of Photography</div>
+          </div>
+        </div>
+
+      </div>
     </div>
-    <p style="margin-top: 2rem; font-size: 0.7rem;">© 2024 Azeem Mohammad</p>
+
+    <!-- ─── FRAMES ─── -->
+    <div class="fade-up" id="frames">
+      <div class="section-header">
+        <div class="section-title">FRAMES</div>
+      </div>
+      <div class="frames-grid">
+        <div class="frame-card"><video autoplay loop muted playsinline><source src="vd/v1.mp4" type="video/mp4"></video></div>
+        <div class="frame-card"><video autoplay loop muted playsinline><source src="vd/v2.mp4" type="video/mp4"></video></div>
+        <div class="frame-card"><video autoplay loop muted playsinline><source src="vd/v7.mp4" type="video/mp4"></video></div>
+        <div class="frame-card"><img src="images/i2.jpeg" alt="Frame"></div>
+        <div class="frame-card"><img src="images/i3.jpeg" alt="Frame"></div>
+        <div class="frame-card"><img src="images/i4.jpeg" alt="Frame"></div>
+        <div class="frame-card"><img src="images/i5.jpeg" alt="Frame"></div>
+        <div class="frame-card"><img src="images/i6.jpeg" alt="Frame"></div>
+        <div class="frame-card"><img src="images/i7.jpeg" alt="Frame"></div>
+        <div class="frame-card"><img src="images/i8.jpeg" alt="Frame"></div>
+        <div class="frame-card"><img src="images/i9.jpeg" alt="Frame"></div>
+        <div class="frame-card"><img src="images/i10.jpeg" alt="Frame"></div>
+        <div class="frame-card"><img src="https://images.unsplash.com/photo-1593784991095-a205069470b6?w=900&q=85" alt="Frame"></div>
+        <div class="frame-card"><img src="https://images.unsplash.com/photo-1565120319398-da008925fc1d?w=900&q=85" alt="Frame"></div>
+      </div>
+    </div>
+
+    <!-- ─── ABOUT + CONTACT ─── -->
+    <div class="fade-up" id="contact">
+      <div class="about-contact">
+
+        <div>
+          <div class="about-header">
+            <div class="section-title">ABOUT</div>
+          </div>
+          <div class="about-text">
+            <p>Azeem Mohammad is a cinematographer based in Hyderabad, India. His work explores intimacy, memory, and time — often through natural light and grounded realism.</p>
+            <p>Each frame is guided by a commitment to visual honesty, translating story into imagery that breathes. He approaches every project by asking how light itself can carry emotion — favouring restraint over spectacle, and texture over polish.</p>
+            <p style="font-style: italic; color: rgba(255,255,255,0.4);">Working between India and the UK.</p>
+          </div>
+        </div>
+
+        <div class="contact-info">
+          <div class="contact-line">
+            <div class="contact-label">EMAIL</div>
+            <a href="mailto:azeem.mohd@gmail.com" class="contact-value">azeem.mohd@gmail.com →</a>
+          </div>
+          <div class="contact-line">
+            <div class="contact-label">BASED</div>
+            <div class="contact-value">Hyderabad, India / United Kingdom</div>
+          </div>
+          <div class="contact-line">
+            <div class="contact-label">SOCIAL</div>
+            <div class="social-links">
+              <a href="#" target="_blank">INSTAGRAM</a>
+              <a href="#" target="_blank">VIMEO</a>
+            </div>
+          </div>
+          <div class="contact-line">
+            <div class="contact-label">OPEN TO</div>
+            <div class="contact-value" style="font-size:0.8rem;">Feature Film · Short Film · Commercial · Collaborations</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ─── MARQUEE ─── -->
+  <div class="marquee">
+    <div class="marquee-inner">
+      <span>Natural Light</span><span class="marquee-dot">·</span>
+      <span>Camera Operation</span><span class="marquee-dot">·</span>
+      <span>Lens Design</span><span class="marquee-dot">·</span>
+      <span>Colour Grading</span><span class="marquee-dot">·</span>
+      <span>Visual Storytelling</span><span class="marquee-dot">·</span>
+      <span>Feature Film</span><span class="marquee-dot">·</span>
+      <span>Short Film</span><span class="marquee-dot">·</span>
+      <span>Hyderabad / India</span><span class="marquee-dot">·</span>
+      <span>Natural Light</span><span class="marquee-dot">·</span>
+      <span>Camera Operation</span><span class="marquee-dot">·</span>
+      <span>Lens Design</span><span class="marquee-dot">·</span>
+      <span>Colour Grading</span><span class="marquee-dot">·</span>
+      <span>Visual Storytelling</span><span class="marquee-dot">·</span>
+      <span>Feature Film</span><span class="marquee-dot">·</span>
+      <span>Short Film</span><span class="marquee-dot">·</span>
+      <span>Hyderabad / India</span><span class="marquee-dot">·</span>
+    </div>
+  </div>
+
+  <!-- ─── FOOTER ─── -->
+  <footer>
+    <span>AZEEM MOHAMMAD</span>
+    <div class="foot-links">
+      <a href="#" target="_blank">INSTAGRAM</a>
+      <a href="#" target="_blank">VIMEO</a>
+      <a href="mailto:azeem.mohd@gmail.com">EMAIL</a>
+    </div>
+    <span>© 2025</span>
   </footer>
 
-</div>
+</main>
+
+<script>
+// ─── PROGRESS BAR ───
+const bar = document.getElementById('progress-bar');
+let progress = 0;
+const interval = setInterval(() => {
+  progress += Math.random() * 18;
+  if (progress >= 90) { progress = 90; clearInterval(interval); }
+  bar.style.width = progress + '%';
+}, 120);
+window.addEventListener('load', () => {
+  clearInterval(interval);
+  bar.style.width = '100%';
+  setTimeout(() => { bar.style.opacity = '0'; bar.style.transition = 'opacity 0.5s ease'; }, 400);
+});
+
+// ─── FILM GRAIN (canvas) ───
+const canvas = document.getElementById('grain-canvas');
+const ctx = canvas.getContext('2d');
+function resizeGrain() {
+  canvas.width  = canvas.offsetWidth;
+  canvas.height = canvas.offsetHeight;
+}
+resizeGrain();
+window.addEventListener('resize', resizeGrain);
+
+function drawGrain() {
+  const w = canvas.width, h = canvas.height;
+  const image = ctx.createImageData(w, h);
+  const data = image.data;
+  for (let i = 0; i < data.length; i += 4) {
+    const v = Math.random() * 255 | 0;
+    data[i] = data[i+1] = data[i+2] = v;
+    data[i+3] = Math.random() * 18 | 0; // very subtle alpha
+  }
+  ctx.putImageData(image, 0, 0);
+  requestAnimationFrame(drawGrain);
+}
+drawGrain();
+
+// ─── CUSTOM CURSOR ───
+const dot  = document.getElementById('cursor-dot');
+const ring = document.getElementById('cursor-ring');
+let ringX = 0, ringY = 0, dotX = 0, dotY = 0;
+let rafCursor;
+
+document.addEventListener('mousemove', e => {
+  dotX = e.clientX; dotY = e.clientY;
+  dot.style.left  = dotX + 'px';
+  dot.style.top   = dotY + 'px';
+});
+
+function animateRing() {
+  ringX += (dotX - ringX) * 0.12;
+  ringY += (dotY - ringY) * 0.12;
+  ring.style.left = ringX + 'px';
+  ring.style.top  = ringY + 'px';
+  rafCursor = requestAnimationFrame(animateRing);
+}
+animateRing();
+
+// Hover state on interactive elements
+const hoverTargets = document.querySelectorAll('a, button, .work-card, .frame-card');
+hoverTargets.forEach(el => {
+  el.addEventListener('mouseenter', () => document.body.classList.add('cursor-hover'));
+  el.addEventListener('mouseleave', () => document.body.classList.remove('cursor-hover'));
+});
+
+// ─── NAV SCROLL BEHAVIOUR ───
+const nav = document.getElementById('main-nav');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 60);
+});
+
+// ─── HAMBURGER MENU ───
+const hamburger = document.getElementById('hamburger');
+const mobileMenu = document.getElementById('mobile-menu');
+hamburger.addEventListener('click', () => {
+  const open = mobileMenu.classList.toggle('open');
+  hamburger.classList.toggle('open', open);
+  document.body.style.overflow = open ? 'hidden' : '';
+});
+document.querySelectorAll('.mobile-link').forEach(link => {
+  link.addEventListener('click', () => {
+    mobileMenu.classList.remove('open');
+    hamburger.classList.remove('open');
+    document.body.style.overflow = '';
+  });
+});
+
+// ─── FADE-UP OBSERVER ───
+const fadeEls = document.querySelectorAll('.fade-up');
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+fadeEls.forEach(el => observer.observe(el));
+</script>
 </body>
 </html>
