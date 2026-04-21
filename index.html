@@ -1,607 +1,640 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>Azeem Mohammad Cinematographer | Hyderabad, India</title>
-    <meta name="description" content="Azeem Mohammad Cinematographer based in Hyderabad, India. Visual storytelling through light, lens, and intention.">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&display=swap" rel="stylesheet">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Azeem Mohammad — Cinematographer</title>
+<meta name="description" content="Azeem Mohammad — Director of Photography. Visual storytelling through natural light and grounded realism.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,700&family=Josefin+Sans:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-        body {
-            background-color: #050505;
-            color: #e8e8e8;
-            font-family: 'Inter', sans-serif;
-            font-weight: 400;
-            line-height: 1.5;
-            -webkit-font-smoothing: antialiased;
-        }
+body {
+  background-color: #050505;
+  color: #e8e8e8;
+  font-family: 'Josefin Sans', sans-serif;
+  font-weight: 300;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
 
-        a {
-            text-decoration: none;
-            color: inherit;
-        }
+img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
 
-        /* Navigation */
-        .nav {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            z-index: 100;
-            padding: 28px 56px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            mix-blend-mode: difference;
-            transition: all 0.25s ease;
-        }
+a {
+  text-decoration: none;
+  color: inherit;
+}
 
-        .nav.scrolled {
-            background: rgba(5, 5, 5, 0.85);
-            backdrop-filter: blur(16px);
-            mix-blend-mode: normal;
-            padding: 18px 56px;
-        }
+/* Container */
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 48px;
+}
 
-        .logo {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 1rem;
-            font-weight: 500;
-            letter-spacing: 0.12em;
-            color: #fff;
-        }
+/* Hero Section — clean centered */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background: #050505;
+  padding: 0 24px;
+}
 
-        .nav-links {
-            display: flex;
-            gap: 2.2rem;
-        }
+.hero-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2.8rem, 8vw, 5.5rem);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: #fff;
+  margin-bottom: 0.75rem;
+}
 
-        .nav-links a {
-            font-size: 0.7rem;
-            font-weight: 500;
-            letter-spacing: 0.24em;
-            text-transform: uppercase;
-            color: rgba(255, 255, 255, 0.55);
-            transition: color 0.2s;
-        }
+.hero-title {
+  font-size: 0.75rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.45);
+  margin-top: 0.5rem;
+}
 
-        .nav-links a:hover {
-            color: #fff;
-        }
+/* Section Headers */
+.section-header {
+  margin: 70px 0 32px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  padding-bottom: 12px;
+}
 
-        /* Container */
-        .container {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 0 56px;
-        }
+.section-title {
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.45);
+}
 
-        /* Hero Section - clean, no enter button */
-        .hero {
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            background: #050505;
-            padding: 0 24px;
-        }
+/* Showreel */
+.reel-wrapper {
+  position: relative;
+  padding-bottom: 56.25%;
+  background: #0f0f0f;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  overflow: hidden;
+  margin: 20px 0;
+}
 
-        .hero-name {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: clamp(3.5rem, 10vw, 6.5rem);
-            font-weight: 500;
-            letter-spacing: 0.02em;
-            color: #fff;
-            margin-bottom: 0.75rem;
-        }
+.reel-wrapper iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+}
 
-        .hero-location {
-            font-size: 0.75rem;
-            letter-spacing: 0.28em;
-            text-transform: uppercase;
-            color: rgba(255, 255, 255, 0.45);
-            margin-bottom: 1.2rem;
-        }
+.reel-caption {
+  text-align: center;
+  font-size: 0.6rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.25);
+  margin-top: 8px;
+}
 
-        .hero-title {
-            font-size: 0.7rem;
-            letter-spacing: 0.3em;
-            text-transform: uppercase;
-            color: rgba(255, 255, 255, 0.35);
-        }
+/* SELECTED WORK — 3 columns */
+.work-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.8rem;
+  margin: 32px 0 40px;
+}
 
-        /* Section Headers */
-        .section-header {
-            margin: 80px 0 32px 0;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
-            padding-bottom: 12px;
-        }
+.work-card {
+  cursor: pointer;
+  transition: opacity 0.3s;
+}
 
-        .section-title {
-            font-size: 0.7rem;
-            font-weight: 500;
-            letter-spacing: 0.32em;
-            text-transform: uppercase;
-            color: rgba(255, 255, 255, 0.45);
-        }
+.work-card:hover {
+  opacity: 0.85;
+}
 
-        /* Showreel - clean embed */
-        .reel-wrapper {
-            position: relative;
-            padding-bottom: 56.25%;
-            background: #0f0f0f;
-            border: 1px solid rgba(255, 255, 255, 0.06);
-            overflow: hidden;
-            margin-bottom: 20px;
-        }
+.work-image {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  background: #121212;
+  overflow: hidden;
+  margin-bottom: 0.8rem;
+}
 
-        .reel-wrapper iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            border: none;
-        }
+.work-image img,
+.work-image video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: grayscale(100%) brightness(0.7);
+  transition: transform 0.6s ease, filter 0.4s;
+}
 
-        .reel-caption {
-            text-align: center;
-            font-size: 0.6rem;
-            letter-spacing: 0.2em;
-            text-transform: uppercase;
-            color: rgba(255, 255, 255, 0.25);
-            margin-top: 10px;
-        }
+.work-card:hover .work-image img,
+.work-card:hover .work-image video {
+  transform: scale(1.04);
+  filter: grayscale(80%) brightness(0.8);
+}
 
-        /* Selected Work Grid - 3 columns */
-        .work-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 1.8rem;
-            margin: 32px 0 40px;
-        }
+.work-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  color: #fff;
+  margin-bottom: 4px;
+}
 
-        .work-card {
-            cursor: pointer;
-            transition: opacity 0.3s;
-        }
+.work-year {
+  font-size: 0.65rem;
+  letter-spacing: 0.1em;
+  color: rgba(255, 255, 255, 0.4);
+}
 
-        .work-card:hover {
-            opacity: 0.85;
-        }
+/* FRAMES — 2 columns, ALWAYS 2 even on mobile/tablet */
+.frames-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+  margin: 32px 0 60px;
+}
 
-        .work-media {
-            width: 100%;
-            aspect-ratio: 4 / 3;
-            background: #121212;
-            overflow: hidden;
-            margin-bottom: 0.8rem;
-        }
+.frame-card {
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  background: #0f0f0f;
+  overflow: hidden;
+  cursor: pointer;
+}
 
-        .work-media img,
-        .work-media video {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            filter: grayscale(100%) brightness(0.7);
-            transition: transform 0.6s ease, filter 0.4s;
-        }
+.frame-card img,
+.frame-card video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: grayscale(100%) brightness(0.68);
+  transition: transform 0.7s ease, filter 0.4s;
+}
 
-        .work-card:hover .work-media img,
-        .work-card:hover .work-media video {
-            transform: scale(1.04);
-            filter: grayscale(80%) brightness(0.8);
-        }
+.frame-card:hover img,
+.frame-card:hover video {
+  transform: scale(1.05);
+  filter: grayscale(80%) brightness(0.82);
+}
 
-        .work-title {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 1rem;
-            font-weight: 500;
-            letter-spacing: 0.02em;
-            color: #fff;
-            margin-bottom: 4px;
-        }
+/* ABOUT + CONTACT — 2 columns */
+.about-contact {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  margin: 60px 0 80px;
+  padding-top: 40px;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
 
-        .work-year {
-            font-size: 0.65rem;
-            letter-spacing: 0.1em;
-            color: rgba(255, 255, 255, 0.4);
-        }
+.about-text p {
+  font-size: 0.9rem;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.65);
+  margin-bottom: 1rem;
+}
 
-        /* Frames Grid - 3 columns, mix of images, GIFs, videos */
-        .frames-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 1.5rem;
-            margin: 32px 0 60px;
-        }
+.contact-info {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
 
-        .frame-card {
-            width: 100%;
-            aspect-ratio: 16 / 10;
-            background: #0f0f0f;
-            overflow: hidden;
-            cursor: pointer;
-        }
+.contact-line {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  padding-bottom: 0.7rem;
+}
 
-        .frame-card img,
-        .frame-card video {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            filter: grayscale(100%) brightness(0.68);
-            transition: transform 0.7s ease, filter 0.4s;
-        }
+.contact-label {
+  font-size: 0.6rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.35);
+  margin-bottom: 0.3rem;
+}
 
-        .frame-card:hover img,
-        .frame-card:hover video {
-            transform: scale(1.05);
-            filter: grayscale(80%) brightness(0.82);
-        }
+.contact-value {
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.7);
+  transition: color 0.2s;
+}
 
-        /* About + Contact - two columns */
-        .about-contact {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            margin: 60px 0 80px;
-            padding-top: 40px;
-            border-top: 1px solid rgba(255, 255, 255, 0.06);
-        }
+.contact-value:hover {
+  color: #fff;
+}
 
-        .about-text p {
-            font-size: 0.9rem;
-            line-height: 1.7;
-            color: rgba(255, 255, 255, 0.65);
-            margin-bottom: 1.2rem;
-        }
+.social-links {
+  display: flex;
+  gap: 1.8rem;
+  margin-top: 0.3rem;
+}
 
-        .contact-info {
-            display: flex;
-            flex-direction: column;
-            gap: 1.2rem;
-        }
+.social-links a {
+  font-size: 0.7rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.45);
+  transition: color 0.2s;
+}
 
-        .contact-line {
-            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
-            padding-bottom: 0.7rem;
-        }
+.social-links a:hover {
+  color: #fff;
+}
 
-        .contact-label {
-            font-size: 0.6rem;
-            letter-spacing: 0.2em;
-            text-transform: uppercase;
-            color: rgba(255, 255, 255, 0.35);
-            margin-bottom: 0.3rem;
-        }
+/* Marquee */
+.marquee {
+  overflow: hidden;
+  white-space: nowrap;
+  padding: 10px 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
 
-        .contact-value {
-            font-size: 0.9rem;
-            color: rgba(255, 255, 255, 0.7);
-            transition: color 0.2s;
-        }
+.marquee-inner {
+  display: inline-flex;
+  gap: 28px;
+  animation: marq 26s linear infinite;
+  font-size: 0.58rem;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.25);
+}
 
-        .contact-value:hover {
-            color: #fff;
-        }
+.marquee-dot {
+  color: rgba(201, 165, 90, 0.5);
+}
 
-        .social-links {
-            display: flex;
-            gap: 1.8rem;
-            margin-top: 0.3rem;
-        }
+@keyframes marq {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
 
-        .social-links a {
-            font-size: 0.7rem;
-            letter-spacing: 0.12em;
-            text-transform: uppercase;
-            color: rgba(255, 255, 255, 0.45);
-            transition: color 0.2s;
-        }
+/* Footer */
+footer {
+  padding: 28px 48px;
+  border-top: 1px solid rgba(255, 255, 255, 0.04);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  font-size: 0.6rem;
+  letter-spacing: 0.1em;
+  color: rgba(255, 255, 255, 0.2);
+}
 
-        .social-links a:hover {
-            color: #fff;
-        }
+.foot-links {
+  display: flex;
+  gap: 2rem;
+}
 
-        /* Footer */
-        .footer {
-            padding: 28px 56px;
-            border-top: 1px solid rgba(255, 255, 255, 0.04);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 1rem;
-            font-size: 0.6rem;
-            letter-spacing: 0.1em;
-            color: rgba(255, 255, 255, 0.2);
-        }
+.foot-links a {
+  color: rgba(255, 255, 255, 0.3);
+  transition: color 0.2s;
+}
 
-        /* Responsive */
-        @media (max-width: 950px) {
-            .nav {
-                padding: 22px 32px;
-            }
-            .nav.scrolled {
-                padding: 14px 32px;
-            }
-            .container {
-                padding: 0 32px;
-            }
-            .work-grid, .frames-grid {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 1.5rem;
-            }
-            .about-contact {
-                grid-template-columns: 1fr;
-                gap: 2.5rem;
-            }
-        }
+.foot-links a:hover {
+  color: #fff;
+}
 
-        @media (max-width: 650px) {
-            .nav-links {
-                display: none;
-            }
-            .work-grid, .frames-grid {
-                grid-template-columns: 1fr;
-                gap: 1.8rem;
-            }
-            .footer {
-                flex-direction: column;
-                text-align: center;
-                padding: 24px 28px;
-            }
-        }
+/* Fade-up animation */
+.fade-up {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.7s cubic-bezier(0.2, 0.9, 0.4, 1.1), transform 0.7s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+}
 
-        /* fade-up animation for all sections */
-        .fade-up {
-            opacity: 0;
-            transform: translateY(28px);
-            transition: opacity 0.7s cubic-bezier(0.2, 0.9, 0.4, 1.1), transform 0.7s cubic-bezier(0.2, 0.9, 0.4, 1.1);
-        }
+.fade-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
 
-        .fade-up.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-    </style>
+/* Responsive */
+@media (max-width: 900px) {
+  .container {
+    padding: 0 32px;
+  }
+  .work-grid {
+    gap: 1.2rem;
+  }
+  .about-contact {
+    gap: 2.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .work-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+  }
+  .work-title {
+    font-size: 0.85rem;
+  }
+}
+
+@media (max-width: 650px) {
+  .container {
+    padding: 0 24px;
+  }
+  .work-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.2rem;
+  }
+  .about-contact {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  footer {
+    flex-direction: column;
+    text-align: center;
+    padding: 24px 24px;
+  }
+  .foot-links {
+    justify-content: center;
+  }
+}
+
+/* FRAMES: ALWAYS 2 COLUMNS — no break to 1 column */
+@media (max-width: 768px) {
+  .frames-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .frames-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.8rem;
+  }
+}
+
+/* Additional tweaks */
+.work-image video {
+  filter: grayscale(100%) brightness(0.7);
+}
+
+.work-card:hover .work-image video {
+  filter: grayscale(80%) brightness(0.8);
+}
+</style>
 </head>
 <body>
 
-<nav class="nav" id="nav">
-    <div class="logo">AZEEM MOHAMMAD</div>
-    <div class="nav-links">
-        <a href="#showreel">SHOWREEL</a>
-        <a href="#work">WORK</a>
-        <a href="#frames">FRAMES</a>
-        <a href="#about">ABOUT</a>
-        <a href="#contact">CONTACT</a>
-    </div>
-</nav>
-
 <main>
-    <!-- Hero: Name + Location + Title (no ENTER button) -->
-    <section class="hero">
-        <div class="hero-name">Azeem Mohammad</div>
-        <div class="hero-location">Hyderabad, India</div>
-        <div class="hero-title">CINEMATOGRAPHER</div>
-    </section>
+  <!-- HERO SECTION: AZEEM MOHAMMAD / CINEMATOGRAPHER -->
+  <section class="hero">
+    <div class="hero-name">AZEEM MOHAMMAD</div>
+    <div class="hero-title">CINEMATOGRAPHER</div>
+  </section>
 
-    <div class="container">
+  <div class="container">
 
-        <!-- SHOWREEL Section -->
-        <div id="showreel" class="fade-up">
-            <div class="section-header">
-                <div class="section-title">SHOWREEL</div>
-            </div>
-            <div class="reel-wrapper">
-                <iframe src="https://www.youtube.com/embed/mV9BBwKsSp8?si=VyHZItNn1mUjOz5b&rel=0&modestbranding=1" title="Azeem Mohammad Showreel" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-            </div>
-            <div class="reel-caption">CINEMATOGRAPHY SHOWREEL — SELECTED WORK</div>
-        </div>
-
-        <!-- SELECTED WORK Section (3 columns) -->
-        <div id="work" class="fade-up">
-            <div class="section-header">
-                <div class="section-title">SELECTED WORK</div>
-            </div>
-            <div class="work-grid">
-                <!-- EPIC - image -->
-                <div class="work-card">
-                    <div class="work-media">
-                        <img src="https://images.unsplash.com/photo-1485846234645-a62644f84728?w=800&q=80" alt="Epic film still">
-                    </div>
-                    <div class="work-title">EPIC</div>
-                    <div class="work-year">2025</div>
-                </div>
-                <!-- PAPERBOAT - GIF (looping image) -->
-                <div class="work-card">
-                    <div class="work-media">
-                        <img src="https://media.giphy.com/media/3o7abB06u9bNzA8LC8/giphy.gif?cid=790b7611l0wj65srb8x3lwkm2olhq7u1y4d9h0lq1q0l0l0l&ep=v1_gifs_search&rid=giphy.gif&ct=g" alt="Paperboat GIF">
-                    </div>
-                    <div class="work-title">PAPERBOAT</div>
-                    <div class="work-year">2024</div>
-                </div>
-                <!-- BETWEEN DAYS - video clip (short loop) -->
-                <div class="work-card">
-                    <div class="work-media">
-                        <video autoplay loop muted playsinline>
-                            <source src="https://assets.mixkit.co/videos/preview/mixkit-forest-stream-in-slow-motion-855-large.mp4" type="video/mp4">
-                        </video>
-                    </div>
-                    <div class="work-title">BETWEEN DAYS</div>
-                    <div class="work-year">2024</div>
-                </div>
-                <!-- FOOTFALLS - image -->
-                <div class="work-card">
-                    <div class="work-media">
-                        <img src="https://images.unsplash.com/photo-1500210600724-67c5e2e06b0c?w=800&q=80" alt="Footfalls still">
-                    </div>
-                    <div class="work-title">FOOTFALLS</div>
-                    <div class="work-year">2023</div>
-                </div>
-                <!-- NIGHTSHIFT - video clip -->
-                <div class="work-card">
-                    <div class="work-media">
-                        <video autoplay loop muted playsinline>
-                            <source src="https://assets.mixkit.co/videos/preview/mixkit-waves-on-the-sea-shore-1172-large.mp4" type="video/mp4">
-                        </video>
-                    </div>
-                    <div class="work-title">NIGHTSHIFT</div>
-                    <div class="work-year">2024</div>
-                </div>
-                <!-- MEMORY LANE - GIF -->
-                <div class="work-card">
-                    <div class="work-media">
-                        <img src="https://media.giphy.com/media/l0HlNQ3JYlFqZRlmo/giphy.gif?cid=790b7611y0kbo9b6jjhv8rcq06v9o7m3e1z9h0lq1q0l0l0l&ep=v1_gifs_search&rid=giphy.gif&ct=g" alt="Memory Lane GIF">
-                    </div>
-                    <div class="work-title">MEMORY LANE</div>
-                    <div class="work-year">2025</div>
-                </div>
-            </div>
-        </div>
-
-        <!-- FRAMES Section — 3 columns, mixed images, GIFs, video loops (professional & clean) -->
-        <div id="frames" class="fade-up">
-            <div class="section-header">
-                <div class="section-title">FRAMES</div>
-            </div>
-            <div class="frames-grid">
-                <!-- Frame 1 - Image -->
-                <div class="frame-card">
-                    <img src="https://images.unsplash.com/photo-1440404653325-ab127d49abc1?w=900&q=85" alt="Cinematic frame">
-                </div>
-                <!-- Frame 2 - Video loop (silent) -->
-                <div class="frame-card">
-                    <video autoplay loop muted playsinline>
-                        <source src="https://assets.mixkit.co/videos/preview/mixkit-girl-running-in-a-wheat-field-1192-large.mp4" type="video/mp4">
-                    </video>
-                </div>
-                <!-- Frame 3 - GIF (cinematic) -->
-                <div class="frame-card">
-                    <img src="https://media.giphy.com/media/xT9IgzoKnwFNmISR8c/giphy.gif?cid=790b7611nq6m5z0a0x5lwkm2olhq7u1y4d9h0lq1q0l0l0l&ep=v1_gifs_search&rid=giphy.gif&ct=g" alt="Cinematic GIF">
-                </div>
-                <!-- Frame 4 - Image -->
-                <div class="frame-card">
-                    <img src="https://images.unsplash.com/photo-1536440136628-849c177e76a1?w=900&q=85" alt="Frame composition">
-                </div>
-                <!-- Frame 5 - Video loop (nature texture) -->
-                <div class="frame-card">
-                    <video autoplay loop muted playsinline>
-                        <source src="https://assets.mixkit.co/videos/preview/mixkit-water-ripple-in-a-pond-1184-large.mp4" type="video/mp4">
-                    </video>
-                </div>
-                <!-- Frame 6 - GIF -->
-                <div class="frame-card">
-                    <img src="https://media.giphy.com/media/l2JHRbQK6hYjRGy1W/giphy.gif?cid=790b7611nq6m5z0a0x5lwkm2olhq7u1y4d9h0lq1q0l0l0l&ep=v1_gifs_search&rid=giphy.gif&ct=g" alt="Atmosphere GIF">
-                </div>
-                <!-- Frame 7 - Image -->
-                <div class="frame-card">
-                    <img src="https://images.unsplash.com/photo-1478720568477-152d9b164e26?w=900&q=85" alt="Shadow texture">
-                </div>
-                <!-- Frame 8 - Video (slow movement) -->
-                <div class="frame-card">
-                    <video autoplay loop muted playsinline>
-                        <source src="https://assets.mixkit.co/videos/preview/mixkit-waves-crashing-on-the-shore-1574-large.mp4" type="video/mp4">
-                    </video>
-                </div>
-                <!-- Frame 9 - Image -->
-                <div class="frame-card">
-                    <img src="https://images.unsplash.com/photo-1593784991095-a205069470b6?w=900&q=85" alt="Portrait frame">
-                </div>
-            </div>
-        </div>
-
-        <!-- ABOUT + CONTACT (two columns, clean) -->
-        <div id="about" class="fade-up">
-            <div class="about-contact">
-                <div class="about-text">
-                    <p>Azeem Mohammad is a cinematographer based in Hyderabad, India. His work explores intimacy, memory, and time — often through natural light and grounded realism. Each frame is guided by a commitment to visual honesty, translating story into imagery that breathes.</p>
-                    <p style="font-style: italic; color: rgba(255,255,255,0.4);">Working between India and the UK.</p>
-                </div>
-                <div class="contact-info" id="contact">
-                    <div class="contact-line">
-                        <div class="contact-label">EMAIL</div>
-                        <a href="mailto:azeem.mohd@gmail.com" class="contact-value">azeem.mohd@gmail.com →</a>
-                    </div>
-                    <div class="contact-line">
-                        <div class="contact-label">BASED</div>
-                        <div class="contact-value">Hyderabad, India / United Kingdom</div>
-                    </div>
-                    <div class="contact-line">
-                        <div class="contact-label">SOCIAL</div>
-                        <div class="social-links">
-                            <a href="#" target="_blank">INSTAGRAM</a>
-                            <a href="#" target="_blank">VIMEO</a>
-                        </div>
-                    </div>
-                    <div class="contact-line">
-                        <div class="contact-label">OPEN TO</div>
-                        <div class="contact-value" style="font-size: 0.8rem;">Feature Film · Short Film · Commercial · Collaborations</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
+    <!-- SHOWREEL SECTION -->
+    <div class="fade-up">
+      <div class="section-header">
+        <div class="section-title">SHOWREEL</div>
+      </div>
+      <div class="reel-wrapper">
+        <iframe src="https://www.youtube.com/embed/mV9BBwKsSp8?si=VyHZItNn1mUjOz5b&rel=0&modestbranding=1" title="Azeem Mohammad Showreel" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+      <div class="reel-caption">CINEMATOGRAPHY SHOWREEL — SELECTED WORK</div>
     </div>
-</main>
 
-<footer class="footer">
+    <!-- SELECTED WORK SECTION — 3 columns -->
+    <div class="fade-up">
+      <div class="section-header">
+        <div class="section-title">SELECTED WORK</div>
+      </div>
+      <div class="work-grid">
+        <!-- EPIC -->
+        <div class="work-card">
+          <div class="work-image">
+            <img src="https://images.unsplash.com/photo-1485846234645-a62644f84728?w=800&q=80" alt="Epic">
+          </div>
+          <div class="work-title">EPIC</div>
+          <div class="work-year">2025</div>
+        </div>
+        <!-- PAPERBOAT -->
+        <div class="work-card">
+          <div class="work-image">
+            <img src="https://images.unsplash.com/photo-1500210600724-67c5e2e06b0c?w=800&q=80" alt="Paper Boat">
+          </div>
+          <div class="work-title">PAPERBOAT</div>
+          <div class="work-year">2024</div>
+        </div>
+        <!-- BETWEEN DAYS -->
+        <div class="work-card">
+          <div class="work-image">
+            <img src="https://images.unsplash.com/photo-1536440136628-849c177e76a1?w=800&q=80" alt="Between Days">
+          </div>
+          <div class="work-title">BETWEEN DAYS</div>
+          <div class="work-year">2024</div>
+        </div>
+        <!-- FOOTFALLS -->
+        <div class="work-card">
+          <div class="work-image">
+            <img src="https://images.unsplash.com/photo-1478720568477-152d9b164e26?w=800&q=80" alt="Footfalls">
+          </div>
+          <div class="work-title">FOOTFALLS</div>
+          <div class="work-year">2023</div>
+        </div>
+        <!-- NIGHTSHIFT -->
+        <div class="work-card">
+          <div class="work-image">
+            <video autoplay loop muted playsinline>
+              <source src="https://assets.mixkit.co/videos/preview/mixkit-waves-on-the-sea-shore-1172-large.mp4" type="video/mp4">
+            </video>
+          </div>
+          <div class="work-title">NIGHTSHIFT</div>
+          <div class="work-year">2024</div>
+        </div>
+        <!-- MEMORY LANE -->
+        <div class="work-card">
+          <div class="work-image">
+            <img src="https://images.unsplash.com/photo-1440404653325-ab127d49abc1?w=800&q=80" alt="Memory Lane">
+          </div>
+          <div class="work-title">MEMORY LANE</div>
+          <div class="work-year">2025</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- FRAMES SECTION — ALWAYS 2 COLUMNS (even on mobile) -->
+    <div class="fade-up">
+      <div class="section-header">
+        <div class="section-title">FRAMES</div>
+      </div>
+      <div class="frames-grid">
+        <div class="frame-card">
+          <video autoplay loop muted playsinline>
+            <source src="vd/v1.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="frame-card">
+          <video autoplay loop muted playsinline>
+            <source src="vd/v2.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="frame-card">
+          <video autoplay loop muted playsinline>
+            <source src="vd/v7.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="frame-card">
+          <img src="images/i2.jpeg" alt="Frame">
+        </div>
+        <div class="frame-card">
+          <img src="images/i3.jpeg" alt="Frame">
+        </div>
+        <div class="frame-card">
+          <img src="images/i4.jpeg" alt="Frame">
+        </div>
+        <div class="frame-card">
+          <img src="images/i5.jpeg" alt="Frame">
+        </div>
+        <div class="frame-card">
+          <img src="images/i6.jpeg" alt="Frame">
+        </div>
+        <div class="frame-card">
+          <img src="images/i7.jpeg" alt="Frame">
+        </div>
+        <div class="frame-card">
+          <img src="images/i8.jpeg" alt="Frame">
+        </div>
+        <div class="frame-card">
+          <img src="images/i9.jpeg" alt="Frame">
+        </div>
+        <div class="frame-card">
+          <img src="images/i10.jpeg" alt="Frame">
+        </div>
+        <div class="frame-card">
+          <img src="https://images.unsplash.com/photo-1593784991095-a205069470b6?w=900&q=85" alt="Frame">
+        </div>
+        <div class="frame-card">
+          <img src="https://images.unsplash.com/photo-1565120319398-da008925fc1d?w=900&q=85" alt="Frame">
+        </div>
+      </div>
+    </div>
+
+    <!-- ABOUT + CONTACT — 2 columns -->
+    <div class="fade-up">
+      <div class="about-contact">
+        <div class="about-text">
+          <p>Azeem Mohammad is a cinematographer based in Hyderabad, India. His work explores intimacy, memory, and time — often through natural light and grounded realism. Each frame is guided by a commitment to visual honesty, translating story into imagery that breathes.</p>
+          <p style="font-style: italic; color: rgba(255,255,255,0.4);">Working between India and the UK.</p>
+        </div>
+        <div class="contact-info">
+          <div class="contact-line">
+            <div class="contact-label">EMAIL</div>
+            <a href="mailto:azeem.mohd@gmail.com" class="contact-value">azeem.mohd@gmail.com →</a>
+          </div>
+          <div class="contact-line">
+            <div class="contact-label">BASED</div>
+            <div class="contact-value">Hyderabad, India / United Kingdom</div>
+          </div>
+          <div class="contact-line">
+            <div class="contact-label">SOCIAL</div>
+            <div class="social-links">
+              <a href="#" target="_blank">INSTAGRAM</a>
+              <a href="#" target="_blank">VIMEO</a>
+            </div>
+          </div>
+          <div class="contact-line">
+            <div class="contact-label">OPEN TO</div>
+            <div class="contact-value" style="font-size: 0.8rem;">Feature Film · Short Film · Commercial · Collaborations</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- MARQUEE -->
+  <div class="marquee">
+    <div class="marquee-inner">
+      <span>Natural Light</span><span class="marquee-dot">·</span>
+      <span>Camera Operation</span><span class="marquee-dot">·</span>
+      <span>Lens Design</span><span class="marquee-dot">·</span>
+      <span>Colour Grading</span><span class="marquee-dot">·</span>
+      <span>Visual Storytelling</span><span class="marquee-dot">·</span>
+      <span>Feature Film</span><span class="marquee-dot">·</span>
+      <span>Short Film</span><span class="marquee-dot">·</span>
+      <span>Hyderabad / India</span><span class="marquee-dot">·</span>
+      <span>Natural Light</span><span class="marquee-dot">·</span>
+      <span>Camera Operation</span><span class="marquee-dot">·</span>
+      <span>Lens Design</span><span class="marquee-dot">·</span>
+      <span>Colour Grading</span><span class="marquee-dot">·</span>
+      <span>Visual Storytelling</span><span class="marquee-dot">·</span>
+      <span>Feature Film</span><span class="marquee-dot">·</span>
+      <span>Short Film</span><span class="marquee-dot">·</span>
+      <span>Hyderabad / India</span><span class="marquee-dot">·</span>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
     <span>AZEEM MOHAMMAD</span>
-    <div class="footer-links">
-        <a href="#" target="_blank">INSTAGRAM</a>
-        <a href="#" target="_blank">VIMEO</a>
-        <a href="mailto:azeem.mohd@gmail.com">EMAIL</a>
+    <div class="foot-links">
+      <a href="#" target="_blank">INSTAGRAM</a>
+      <a href="#" target="_blank">VIMEO</a>
+      <a href="mailto:azeem.mohd@gmail.com">EMAIL</a>
     </div>
     <span>© 2025</span>
-</footer>
+  </footer>
+</main>
 
 <script>
-    // Navbar scroll effect
-    const nav = document.getElementById('nav');
-    window.addEventListener('scroll', () => {
-        if (window.scrollY > 50) {
-            nav.classList.add('scrolled');
-        } else {
-            nav.classList.remove('scrolled');
-        }
+  // Fade-up on scroll observer
+  const fadeElements = document.querySelectorAll('.fade-up');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
     });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
 
-    // Smooth scroll for anchor links
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function(e) {
-            const targetId = this.getAttribute('href');
-            if (targetId === "#" || targetId === "") return;
-            const target = document.querySelector(targetId);
-            if (target) {
-                e.preventDefault();
-                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-            }
-        });
+  fadeElements.forEach(el => observer.observe(el));
+
+  // Smooth scroll for any anchor links
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      const targetId = this.getAttribute('href');
+      if (targetId === "#" || targetId === "") return;
+      const target = document.querySelector(targetId);
+      if (target) {
+        e.preventDefault();
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
     });
-
-    // Fade-up on scroll observer
-    const fadeElements = document.querySelectorAll('.fade-up');
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('visible');
-                observer.unobserve(entry.target);
-            }
-        });
-    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
-
-    fadeElements.forEach(el => observer.observe(el));
+  });
 </script>
 </body>
 </html>
