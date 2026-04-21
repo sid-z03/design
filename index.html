@@ -44,48 +44,22 @@ a {
 }
 
 /* Hero Section */
-.hero {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  background: #050505;
-  padding: 0 24px;
-}
-
-.hero-name {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(2.8rem, 8vw, 5.5rem);
-  font-weight: 600;
-  letter-spacing: 0.04em;
-  color: #fff;
-  margin-bottom: 0.75rem;
-}
-
-.hero-title {
-  font-size: 0.75rem;
-  letter-spacing: 0.3em;
-  text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.45);
-  margin-top: 0.5rem;
-}
-/* Hero background image */
+/* Hero Section — left-bottom, golden name */
 .hero {
     position: relative;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
+    justify-content: flex-end;
+    align-items: flex-start;
     background: #050505;
-    padding: 0 24px;
+    padding: 0 48px 80px 48px;
     overflow: hidden;
 }
 
-.hero-bg {
+/* Add background image */
+.hero::before {
+    content: '';
     position: absolute;
     top: 0;
     left: 0;
@@ -93,23 +67,139 @@ a {
     height: 100%;
     background-image: url('images/t1.png');
     background-size: cover;
-    background-position: center;
+    background-position: center 30%;
     background-repeat: no-repeat;
-    opacity: 1
+    opacity: 0.3;
     z-index: 0;
 }
-  /* Make text stand out on bright background */
-.hero-name {
-    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
-}
-
-.hero-title {
-    text-shadow: 0 1px 5px rgba(0, 0, 0, 0.4);
-}
-
-.hero-name, .hero-title {
+/* Content container */
+.hero-content {
     position: relative;
-    z-index: 1;
+    z-index: 2;
+    max-width: 90%;
+}
+
+/* NAME BLOCK — golden gradient, left aligned */
+.hero-name-block {
+    position: relative;
+    line-height: 1;
+    margin-bottom: 20px;
+}
+
+/* FIRST NAME — rich gold gradient */
+.hero-firstname {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(3.5rem, 12vw, 9rem);
+    font-weight: 700;
+    font-style: normal;
+    letter-spacing: -0.02em;
+    line-height: 0.88;
+    background: linear-gradient(135deg, #ffd060 0%, #e8b84b 35%, #c9a040 65%, #a07828 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    text-transform: uppercase;
+    display: block;
+    opacity: 0;
+    transform: translateY(60px) skewY(4deg);
+    animation: slideUpGold 1s cubic-bezier(0.2, 0.9, 0.4, 1.1) forwards;
+}
+
+/* LAST NAME — rich gold gradient, slightly smaller */
+.hero-lastname {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(3rem, 10vw, 7.5rem);
+    font-weight: 700;
+    font-style: normal;
+    letter-spacing: -0.02em;
+    line-height: 0.9;
+    background: linear-gradient(135deg, #ffd060 0%, #e8b84b 35%, #c9a040 65%, #a07828 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    text-transform: uppercase;
+    display: block;
+    margin-top: clamp(-8px, -1vw, -12px);
+    opacity: 0;
+    transform: translateY(60px) skewY(4deg);
+    animation: slideUpGold 1s cubic-bezier(0.2, 0.9, 0.4, 1.1) forwards;
+    animation-delay: 0.15s;
+}
+
+@keyframes slideUpGold {
+    0% {
+        opacity: 0;
+        transform: translateY(60px) skewY(5deg);
+        filter: blur(6px);
+    }
+    40% {
+        opacity: 0.8;
+        transform: translateY(-5px) skewY(-1deg);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0) skewY(0);
+        filter: blur(0);
+    }
+}
+
+/* Golden Rule — animates between name and DOP text */
+.hero-rule {
+    width: 0;
+    height: 2px;
+    background: linear-gradient(to right, #c9a040, #ffd060, #a07828);
+    margin: 20px 0 24px 0;
+    animation: ruleExpand 0.9s cubic-bezier(0.2, 0.9, 0.4, 1.1) 0.5s both;
+}
+
+@keyframes ruleExpand {
+    from { width: 0; opacity: 0; }
+    to { width: clamp(80px, 12vw, 160px); opacity: 1; }
+}
+
+/* DOP subtitle — small spaced caps, golden tint */
+.hero-dop {
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: clamp(0.6rem, 1.2vw, 0.75rem);
+    font-weight: 400;
+    letter-spacing: 0.52em;
+    text-transform: uppercase;
+    color: rgba(201, 165, 90, 0.85);
+    opacity: 0;
+    animation: fadeUp 0.8s cubic-bezier(0.2, 0.9, 0.4, 1.1) 0.7s forwards;
+}
+
+@keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+  @media (max-width: 768px) {
+    .hero {
+        padding: 0 24px 60px 24px;
+    }
+    .hero-firstname {
+        font-size: clamp(2.5rem, 10vw, 5rem);
+    }
+    .hero-lastname {
+        font-size: clamp(2.2rem, 8.5vw, 4.2rem);
+        margin-top: clamp(-5px, -0.8vw, -8px);
+    }
+    .hero-rule {
+        margin: 15px 0 18px 0;
+    }
+    .hero-dop {
+        letter-spacing: 0.4em;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero {
+        padding: 0 20px 50px 20px;
+    }
+    .hero-dop {
+        font-size: 0.55rem;
+        letter-spacing: 0.35em;
+    }
 }
 /* Section Headers */
 .section-header {
@@ -430,11 +520,15 @@ footer {
 
 <main>
   <!-- HERO SECTION -->
-  <section class="hero">
-    <!-- Background image -->
-    <div class="hero-bg"></div>
-    <div class="hero-name">AZEEM MOHAMMAD</div>
-    <div class="hero-title">CINEMATOGRAPHER</div>
+ <section class="hero">
+    <div class="hero-content">
+        <div class="hero-name-block">
+            <span class="hero-firstname">AZEEM</span>
+            <span class="hero-lastname">MOHAMMAD</span>
+        </div>
+        <div class="hero-rule"></div>
+        <div class="hero-dop">DIRECTOR OF PHOTOGRAPHY</div>
+    </div>
 </section>
 
   <div class="container">
