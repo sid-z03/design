@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<title>Azeem Mohammad Cinematographerr</title>
-<meta name="description" content="Azeem Mohammad Director of Photography. Visual storytelling through natural light and grounded realism.">
+<title>Azeem Mohammad — Director of Photography</title>
+<meta name="description" content="Azeem Mohammad — Director of Photography. Visual storytelling through natural light and grounded realism.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,700&family=Josefin+Sans:wght@200;300;400;500;600&display=swap" rel="stylesheet">
@@ -43,164 +43,179 @@ a {
   padding: 0 48px;
 }
 
-/* Hero Section */
-/* Hero Section — left-bottom, golden name */
+/* Hero Section — CENTERED (like Shashank portfolio) */
 .hero {
-    position: relative;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    align-items: flex-start;
-    background: #050505;
-    padding: 0 48px 80px 48px;
-    overflow: hidden;
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background: #050505;
+  padding: 0 24px;
+  overflow: hidden;
 }
 
-/* Add background image */
+/* Background image */
 .hero::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-image: url('images/t1.png');
-    background-size: cover;
-    background-position: center 30%;
-    background-repeat: no-repeat;
-    opacity: 0.3;
-    z-index: 0;
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('images/t1.png');
+  background-size: cover;
+  background-position: center 30%;
+  background-repeat: no-repeat;
+  opacity: 0.35;
+  z-index: 0;
 }
-/* Content container */
+
+/* Content container - centered */
 .hero-content {
-    position: relative;
-    z-index: 2;
-    max-width: 90%;
+  position: relative;
+  z-index: 2;
+  max-width: 90%;
 }
 
-/* NAME BLOCK — golden gradient, left aligned */
+/* NAME BLOCK — golden gradient, CENTERED */
 .hero-name-block {
-    position: relative;
-    line-height: 1;
-    margin-bottom: 20px;
+  position: relative;
+  line-height: 1;
+  margin-bottom: 20px;
 }
 
-/* FIRST NAME — rich gold gradient */
+/* FIRST NAME — rich gold gradient, large on all devices */
 .hero-firstname {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(3.5rem, 12vw, 9rem);
-    font-weight: 700;
-    font-style: normal;
-    letter-spacing: -0.02em;
-    line-height: 0.88;
-    background: linear-gradient(135deg, #ffd060 0%, #e8b84b 35%, #c9a040 65%, #a07828 100%);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-    text-transform: uppercase;
-    display: block;
-    opacity: 0;
-    transform: translateY(60px) skewY(4deg);
-    animation: slideUpGold 1s cubic-bezier(0.2, 0.9, 0.4, 1.1) forwards;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(3rem, 12vw, 9rem);
+  font-weight: 700;
+  font-style: normal;
+  letter-spacing: -0.02em;
+  line-height: 0.88;
+  background: linear-gradient(135deg, #ffd060 0%, #e8b84b 35%, #c9a040 65%, #a07828 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  text-transform: uppercase;
+  display: block;
+  opacity: 0;
+  transform: translateY(60px) skewY(4deg);
+  animation: slideUpGold 1s cubic-bezier(0.2, 0.9, 0.4, 1.1) forwards;
 }
 
-/* LAST NAME — rich gold gradient, slightly smaller */
+/* LAST NAME — rich gold gradient */
 .hero-lastname {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(3rem, 10vw, 7.5rem);
-    font-weight: 700;
-    font-style: normal;
-    letter-spacing: -0.02em;
-    line-height: 0.9;
-    background: linear-gradient(135deg, #ffd060 0%, #e8b84b 35%, #c9a040 65%, #a07828 100%);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-    text-transform: uppercase;
-    display: block;
-    margin-top: clamp(-8px, -1vw, -12px);
-    opacity: 0;
-    transform: translateY(60px) skewY(4deg);
-    animation: slideUpGold 1s cubic-bezier(0.2, 0.9, 0.4, 1.1) forwards;
-    animation-delay: 0.15s;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2.5rem, 10vw, 7.5rem);
+  font-weight: 700;
+  font-style: normal;
+  letter-spacing: -0.02em;
+  line-height: 0.9;
+  background: linear-gradient(135deg, #ffd060 0%, #e8b84b 35%, #c9a040 65%, #a07828 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  text-transform: uppercase;
+  display: block;
+  margin-top: clamp(-8px, -1vw, -12px);
+  opacity: 0;
+  transform: translateY(60px) skewY(4deg);
+  animation: slideUpGold 1s cubic-bezier(0.2, 0.9, 0.4, 1.1) forwards;
+  animation-delay: 0.15s;
 }
 
 @keyframes slideUpGold {
-    0% {
-        opacity: 0;
-        transform: translateY(60px) skewY(5deg);
-        filter: blur(6px);
-    }
-    40% {
-        opacity: 0.8;
-        transform: translateY(-5px) skewY(-1deg);
-    }
-    100% {
-        opacity: 1;
-        transform: translateY(0) skewY(0);
-        filter: blur(0);
-    }
+  0% {
+    opacity: 0;
+    transform: translateY(60px) skewY(5deg);
+    filter: blur(6px);
+  }
+  40% {
+    opacity: 0.8;
+    transform: translateY(-5px) skewY(-1deg);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) skewY(0);
+    filter: blur(0);
+  }
 }
 
-/* Golden Rule — animates between name and DOP text */
+/* Golden Rule — centered */
 .hero-rule {
-    width: 0;
-    height: 2px;
-    background: linear-gradient(to right, #c9a040, #ffd060, #a07828);
-    margin: 20px 0 24px 0;
-    animation: ruleExpand 0.9s cubic-bezier(0.2, 0.9, 0.4, 1.1) 0.5s both;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(to right, #c9a040, #ffd060, #a07828);
+  margin: 20px auto 24px auto;
+  animation: ruleExpand 0.9s cubic-bezier(0.2, 0.9, 0.4, 1.1) 0.5s both;
 }
 
 @keyframes ruleExpand {
-    from { width: 0; opacity: 0; }
-    to { width: clamp(80px, 12vw, 160px); opacity: 1; }
+  from { width: 0; opacity: 0; }
+  to { width: clamp(80px, 12vw, 160px); opacity: 1; }
 }
 
-/* DOP subtitle — small spaced caps, golden tint */
+/* DOP subtitle — centered */
 .hero-dop {
-    font-family: 'Josefin Sans', sans-serif;
-    font-size: clamp(0.6rem, 1.2vw, 0.75rem);
-    font-weight: 400;
-    letter-spacing: 0.52em;
-    text-transform: uppercase;
-    color: rgba(201, 165, 90, 0.85);
-    opacity: 0;
-    animation: fadeUp 0.8s cubic-bezier(0.2, 0.9, 0.4, 1.1) 0.7s forwards;
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: clamp(0.6rem, 1.5vw, 0.75rem);
+  font-weight: 400;
+  letter-spacing: 0.52em;
+  text-transform: uppercase;
+  color: rgba(201, 165, 90, 0.85);
+  opacity: 0;
+  animation: fadeUp 0.8s cubic-bezier(0.2, 0.9, 0.4, 1.1) 0.7s forwards;
 }
 
 @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
 }
-  @media (max-width: 768px) {
-    .hero {
-        padding: 0 24px 60px 24px;
-    }
-    .hero-firstname {
-        font-size: clamp(2.5rem, 10vw, 5rem);
-    }
-    .hero-lastname {
-        font-size: clamp(2.2rem, 8.5vw, 4.2rem);
-        margin-top: clamp(-5px, -0.8vw, -8px);
-    }
-    .hero-rule {
-        margin: 15px 0 18px 0;
-    }
-    .hero-dop {
-        letter-spacing: 0.4em;
-    }
+
+/* Mobile optimizations - larger text, no lag */
+@media (max-width: 768px) {
+  .hero {
+    padding: 0 20px;
+  }
+  .hero-firstname {
+    font-size: clamp(3rem, 13vw, 6rem);
+  }
+  .hero-lastname {
+    font-size: clamp(2.5rem, 11vw, 5rem);
+    margin-top: clamp(-5px, -1vw, -8px);
+  }
+  .hero-rule {
+    margin: 15px auto 18px auto;
+  }
+  .hero-dop {
+    font-size: 0.6rem;
+    letter-spacing: 0.4em;
+  }
+  /* Remove heavy animations on mobile for performance */
+  .hero-firstname, .hero-lastname {
+    animation-duration: 0.6s;
+  }
+  .frame-card::after, .work-card::before {
+    display: none;
+  }
 }
 
 @media (max-width: 480px) {
-    .hero {
-        padding: 0 20px 50px 20px;
-    }
-    .hero-dop {
-        font-size: 0.55rem;
-        letter-spacing: 0.35em;
-    }
+  .hero-firstname {
+    font-size: clamp(2.5rem, 11vw, 4.5rem);
+  }
+  .hero-lastname {
+    font-size: clamp(2rem, 9vw, 4rem);
+  }
+  .hero-dop {
+    font-size: 0.55rem;
+    letter-spacing: 0.35em;
+  }
 }
+
 /* Section Headers */
 .section-header {
   margin: 70px 0 32px 0;
@@ -244,7 +259,7 @@ a {
   margin-top: 8px;
 }
 
-/* FILM CREDITS — 2 columns on ALL devices (laptop + mobile) */
+/* FILM CREDITS — 2 columns on ALL devices */
 .work-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -274,7 +289,6 @@ a {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  /* NO grayscale — full color */
   transition: transform 0.6s ease;
 }
 
@@ -298,7 +312,7 @@ a {
   color: rgba(255, 255, 255, 0.4);
 }
 
-/* FRAMES — 2 columns, ALWAYS 2 even on mobile — FULL COLOR (no grayscale) */
+/* FRAMES — 2 columns ALWAYS */
 .frames-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -319,7 +333,6 @@ a {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  /* FULL COLOR — removed grayscale and brightness filters */
   transition: transform 0.7s ease;
 }
 
@@ -478,7 +491,6 @@ footer {
   .container {
     padding: 0 24px;
   }
-  /* Film Credits: stays 2 columns even on mobile */
   .work-grid {
     grid-template-columns: repeat(2, 1fr);
     gap: 1rem;
@@ -497,7 +509,7 @@ footer {
   }
 }
 
-/* FRAMES: ALWAYS 2 COLUMNS — no break to 1 column */
+/* FRAMES: ALWAYS 2 COLUMNS */
 @media (max-width: 768px) {
   .frames-grid {
     grid-template-columns: repeat(2, 1fr);
@@ -519,17 +531,17 @@ footer {
 <body>
 
 <main>
-  <!-- HERO SECTION -->
- <section class="hero">
+  <!-- HERO SECTION — CENTERED, LARGE NAME -->
+  <section class="hero">
     <div class="hero-content">
-        <div class="hero-name-block">
-            <span class="hero-firstname">AZEEM</span>
-            <span class="hero-lastname">MOHAMMAD</span>
-        </div>
-        <div class="hero-rule"></div>
-        <div class="hero-dop">DIRECTOR OF PHOTOGRAPHY</div>
+      <div class="hero-name-block">
+        <span class="hero-firstname">AZEEM</span>
+        <span class="hero-lastname">MOHAMMAD</span>
+      </div>
+      <div class="hero-rule"></div>
+      <div class="hero-dop">DIRECTOR OF PHOTOGRAPHY</div>
     </div>
-</section>
+  </section>
 
   <div class="container">
 
@@ -544,13 +556,12 @@ footer {
       <div class="reel-caption">CINEMATOGRAPHY SHOWREEL — SELECTED WORK</div>
     </div>
 
-    <!-- FILM CREDITS SECTION — 2 columns on ALL devices -->
+    <!-- FILM CREDITS SECTION — 2 columns -->
     <div class="fade-up">
       <div class="section-header">
         <div class="section-title">FILM CREDITS</div>
       </div>
       <div class="work-grid">
-        <!-- EPIC -->
         <div class="work-card">
           <div class="work-image">
             <img src="https://images.unsplash.com/photo-1485846234645-a62644f84728?w=800&q=80" alt="Epic">
@@ -558,7 +569,6 @@ footer {
           <div class="work-title">EPIC</div>
           <div class="work-year">2025</div>
         </div>
-        <!-- PAPERBOAT -->
         <div class="work-card">
           <div class="work-image">
             <img src="https://images.unsplash.com/photo-1500210600724-67c5e2e06b0c?w=800&q=80" alt="Paper Boat">
@@ -566,7 +576,6 @@ footer {
           <div class="work-title">PAPERBOAT</div>
           <div class="work-year">2024</div>
         </div>
-        <!-- BETWEEN DAYS -->
         <div class="work-card">
           <div class="work-image">
             <img src="https://images.unsplash.com/photo-1536440136628-849c177e76a1?w=800&q=80" alt="Between Days">
@@ -574,7 +583,6 @@ footer {
           <div class="work-title">BETWEEN DAYS</div>
           <div class="work-year">2024</div>
         </div>
-        <!-- FOOTFALLS -->
         <div class="work-card">
           <div class="work-image">
             <img src="https://images.unsplash.com/photo-1478720568477-152d9b164e26?w=800&q=80" alt="Footfalls">
@@ -582,7 +590,6 @@ footer {
           <div class="work-title">FOOTFALLS</div>
           <div class="work-year">2023</div>
         </div>
-        <!-- NIGHTSHIFT -->
         <div class="work-card">
           <div class="work-image">
             <video autoplay loop muted playsinline>
@@ -592,7 +599,6 @@ footer {
           <div class="work-title">NIGHTSHIFT</div>
           <div class="work-year">2024</div>
         </div>
-        <!-- MEMORY LANE -->
         <div class="work-card">
           <div class="work-image">
             <img src="https://images.unsplash.com/photo-1440404653325-ab127d49abc1?w=800&q=80" alt="Memory Lane">
@@ -603,7 +609,7 @@ footer {
       </div>
     </div>
 
-    <!-- FRAMES SECTION — ALWAYS 2 COLUMNS, FULL COLOR -->
+    <!-- FRAMES SECTION — 2 COLUMNS -->
     <div class="fade-up">
       <div class="section-header">
         <div class="section-title">FRAMES</div>
@@ -704,14 +710,6 @@ footer {
       <span>Feature Film</span><span class="marquee-dot">·</span>
       <span>Short Film</span><span class="marquee-dot">·</span>
       <span>Hyderabad / India</span><span class="marquee-dot">·</span>
-      <span>Natural Light</span><span class="marquee-dot">·</span>
-      <span>Camera Operation</span><span class="marquee-dot">·</span>
-      <span>Lens Design</span><span class="marquee-dot">·</span>
-      <span>Colour Grading</span><span class="marquee-dot">·</span>
-      <span>Visual Storytelling</span><span class="marquee-dot">·</span>
-      <span>Feature Film</span><span class="marquee-dot">·</span>
-      <span>Short Film</span><span class="marquee-dot">·</span>
-      <span>Hyderabad / India</span><span class="marquee-dot">·</span>
     </div>
   </div>
 
@@ -740,19 +738,6 @@ footer {
   }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
 
   fadeElements.forEach(el => observer.observe(el));
-
-  // Smooth scroll for any anchor links
-  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function(e) {
-      const targetId = this.getAttribute('href');
-      if (targetId === "#" || targetId === "") return;
-      const target = document.querySelector(targetId);
-      if (target) {
-        e.preventDefault();
-        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      }
-    });
-  });
 </script>
 </body>
 </html>
