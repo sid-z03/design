@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<title>Azeem Mohammad — Cinematographer</title>
-<meta name="description" content="Azeem Mohammad — Director of Photography. Visual storytelling through natural light and grounded realism.">
+<title>Azeem Mohammad Cinematographer</title>
+<meta name="description" content="Azeem Mohammad Director of Photography. Visual storytelling through natural light and grounded realism.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,700&family=Josefin+Sans:wght@200;300;400;500;600&display=swap" rel="stylesheet">
@@ -43,7 +43,7 @@ a {
   padding: 0 48px;
 }
 
-/* Hero Section — clean centered */
+/* Hero Section */
 .hero {
   min-height: 100vh;
   display: flex;
@@ -71,7 +71,46 @@ a {
   color: rgba(255, 255, 255, 0.45);
   margin-top: 0.5rem;
 }
+/* Hero background image */
+.hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background: #050505;
+    padding: 0 24px;
+    overflow: hidden;
+}
 
+.hero-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('images/t1.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 1
+    z-index: 0;
+}
+  /* Make text stand out on bright background */
+.hero-name {
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+.hero-title {
+    text-shadow: 0 1px 5px rgba(0, 0, 0, 0.4);
+}
+
+.hero-name, .hero-title {
+    position: relative;
+    z-index: 1;
+}
 /* Section Headers */
 .section-header {
   margin: 70px 0 32px 0;
@@ -115,11 +154,11 @@ a {
   margin-top: 8px;
 }
 
-/* SELECTED WORK — 3 columns */
+/* FILM CREDITS — 2 columns on ALL devices (laptop + mobile) */
 .work-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1.8rem;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
   margin: 32px 0 40px;
 }
 
@@ -145,14 +184,13 @@ a {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  filter: grayscale(100%) brightness(0.7);
-  transition: transform 0.6s ease, filter 0.4s;
+  /* NO grayscale — full color */
+  transition: transform 0.6s ease;
 }
 
 .work-card:hover .work-image img,
 .work-card:hover .work-image video {
   transform: scale(1.04);
-  filter: grayscale(80%) brightness(0.8);
 }
 
 .work-title {
@@ -170,7 +208,7 @@ a {
   color: rgba(255, 255, 255, 0.4);
 }
 
-/* FRAMES — 2 columns, ALWAYS 2 even on mobile/tablet */
+/* FRAMES — 2 columns, ALWAYS 2 even on mobile — FULL COLOR (no grayscale) */
 .frames-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -191,14 +229,13 @@ a {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  filter: grayscale(100%) brightness(0.68);
-  transition: transform 0.7s ease, filter 0.4s;
+  /* FULL COLOR — removed grayscale and brightness filters */
+  transition: transform 0.7s ease;
 }
 
 .frame-card:hover img,
 .frame-card:hover video {
   transform: scale(1.05);
-  filter: grayscale(80%) brightness(0.82);
 }
 
 /* ABOUT + CONTACT — 2 columns */
@@ -340,20 +377,10 @@ footer {
     padding: 0 32px;
   }
   .work-grid {
-    gap: 1.2rem;
+    gap: 1.5rem;
   }
   .about-contact {
     gap: 2.5rem;
-  }
-}
-
-@media (max-width: 768px) {
-  .work-grid {
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1rem;
-  }
-  .work-title {
-    font-size: 0.85rem;
   }
 }
 
@@ -361,9 +388,10 @@ footer {
   .container {
     padding: 0 24px;
   }
+  /* Film Credits: stays 2 columns even on mobile */
   .work-grid {
     grid-template-columns: repeat(2, 1fr);
-    gap: 1.2rem;
+    gap: 1rem;
   }
   .about-contact {
     grid-template-columns: 1fr;
@@ -392,26 +420,22 @@ footer {
     grid-template-columns: repeat(2, 1fr);
     gap: 0.8rem;
   }
-}
-
-/* Additional tweaks */
-.work-image video {
-  filter: grayscale(100%) brightness(0.7);
-}
-
-.work-card:hover .work-image video {
-  filter: grayscale(80%) brightness(0.8);
+  .work-title {
+    font-size: 0.85rem;
+  }
 }
 </style>
 </head>
 <body>
 
 <main>
-  <!-- HERO SECTION: AZEEM MOHAMMAD / CINEMATOGRAPHER -->
+  <!-- HERO SECTION -->
   <section class="hero">
+    <!-- Background image -->
+    <div class="hero-bg"></div>
     <div class="hero-name">AZEEM MOHAMMAD</div>
     <div class="hero-title">CINEMATOGRAPHER</div>
-  </section>
+</section>
 
   <div class="container">
 
@@ -426,10 +450,10 @@ footer {
       <div class="reel-caption">CINEMATOGRAPHY SHOWREEL — SELECTED WORK</div>
     </div>
 
-    <!-- SELECTED WORK SECTION — 3 columns -->
+    <!-- FILM CREDITS SECTION — 2 columns on ALL devices -->
     <div class="fade-up">
       <div class="section-header">
-        <div class="section-title">SELECTED WORK</div>
+        <div class="section-title">FILM CREDITS</div>
       </div>
       <div class="work-grid">
         <!-- EPIC -->
@@ -485,7 +509,7 @@ footer {
       </div>
     </div>
 
-    <!-- FRAMES SECTION — ALWAYS 2 COLUMNS (even on mobile) -->
+    <!-- FRAMES SECTION — ALWAYS 2 COLUMNS, FULL COLOR -->
     <div class="fade-up">
       <div class="section-header">
         <div class="section-title">FRAMES</div>
