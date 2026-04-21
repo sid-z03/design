@@ -81,19 +81,16 @@
         }
 
         /* HERO with background image */
-        .hero {
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            position: relative;
-            background-image: linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.55)), url('image/i1.jpeg');
-            background-size: cover;
-            background-position: center 30%;
-            background-repeat: no-repeat;
-        }
+       .hero {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    position: relative;
+    /* remove background-image line */
+}
         /* fallback if image missing */
         .hero::before {
             content: '';
@@ -493,8 +490,13 @@
     </div>
 </nav>
 
-<!-- HERO SECTION with background image -->
+<!-- HERO SECTION -->
 <section class="hero" id="enter">
+    <!-- VIDEO BACKGROUND -->
+    <video autoplay loop muted playsinline style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 0; filter: brightness(0.55);">
+        <source src="vd/v7.mp4" type="video/mp4">
+    </video>
+    
     <div class="hero-name">
         <span>AZEEM</span>
         <span>MOHAMMAD</span>
