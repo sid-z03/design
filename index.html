@@ -3,14 +3,14 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
-<title>Azeem Mohammad Cinematographer </title>
+<title>Azeem Mohammad — Cinematographer | Frames & Composition</title>
 <meta name="description" content="Azeem Mohammad — Cinematographer. Visual storytelling, lighting design, emotionally driven cinema."/>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600;1,700&family=Josefin+Sans:wght@200;300;400;600;700&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet"/>
 <style>
 /* ═══════════════════════════════
-   DESIGN TOKENS — refined monochrome
+   MONOCHROME CINEMATIC THEME
 ═══════════════════════════════ */
 :root{
   --black:#050505;
@@ -18,16 +18,11 @@
   --panel:#0f0f0f;
   --surface:#151515;
   --surface2:#1c1c1c;
-  --surface3:#222;
   --border:rgba(255,255,255,.05);
   --border2:rgba(255,255,255,.1);
-  --border3:rgba(255,255,255,.18);
   --white:#ffffff;
-  --off-white:#f2f2f2;
   --silver:#c0c0c0;
   --silver-dim:rgba(192,192,192,.55);
-  --silver-faint:rgba(192,192,192,.15);
-  --accent:#f0f0f0;
   --display:'Cormorant Garamond',Georgia,serif;
   --head:'Josefin Sans',sans-serif;
   --body:'EB Garamond',Georgia,serif;
@@ -35,10 +30,8 @@
   --easeOut:cubic-bezier(.22,1,.36,1);
   --spring:cubic-bezier(.34,1.56,.64,1);
 }
-
-/* base reset */
-*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:smooth;font-size:16px}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
 body{
   background:var(--black);
   color:var(--silver);
@@ -50,14 +43,14 @@ body{
 }
 img{display:block;width:100%;height:100%;object-fit:cover}
 a{text-decoration:none;color:inherit}
-button{cursor:pointer;font-family:var(--head);border:none;background:none}
+button{cursor:pointer;font-family:var(--head);background:none;border:none}
 ul{list-style:none}
 ::selection{background:var(--white);color:var(--black)}
 ::-webkit-scrollbar{width:1px}
 ::-webkit-scrollbar-track{background:var(--black)}
 ::-webkit-scrollbar-thumb{background:rgba(255,255,255,.2)}
 
-/* CURSOR — refined split-ring */
+/* CURSOR */
 #cur{
   position:fixed;top:0;left:0;z-index:9999;
   width:5px;height:5px;border-radius:50%;
@@ -86,7 +79,7 @@ ul{list-style:none}
 body.hov #cur{width:8px;height:8px}
 body.hov #cur2{width:52px;height:52px;border-color:rgba(255,255,255,.45)}
 
-/* progress bar */
+/* PROGRESS BAR */
 #progress{
   position:fixed;top:0;left:0;z-index:9997;
   height:1px;background:rgba(255,255,255,.3);
@@ -113,10 +106,7 @@ body.hov #cur2{width:52px;height:52px;border-color:rgba(255,255,255,.45)}
   color:var(--white);
   display:flex;align-items:center;gap:12px;
 }
-.nav-logo-dot{
-  width:4px;height:4px;border-radius:50%;
-  background:rgba(255,255,255,.4);
-}
+.nav-logo-dot{width:4px;height:4px;border-radius:50%;background:rgba(255,255,255,.4);}
 .nav-links{display:flex;gap:44px;}
 .nav-links a{
   font-family:var(--head);font-size:.58rem;
@@ -138,8 +128,8 @@ body.hov #cur2{width:52px;height:52px;border-color:rgba(255,255,255,.45)}
   letter-spacing:.22em;text-transform:uppercase;
   border:1px solid rgba(255,255,255,.2);
   padding:10px 24px;color:var(--silver);
-  transition:background .3s,color .3s;
   position:relative;overflow:hidden;
+  transition:color .3s;
 }
 .nav-cta::before{
   content:'';position:absolute;inset:0;
@@ -169,12 +159,9 @@ body.hov #cur2{width:52px;height:52px;border-color:rgba(255,255,255,.45)}
   color:rgba(255,255,255,.35);transition:color .3s;
 }
 .moverlay a:hover{color:var(--white)}
-.moverlay-x{
-  position:absolute;top:26px;right:30px;
-  color:rgba(255,255,255,.25);font-size:1.3rem;
-}
+.moverlay-x{position:absolute;top:26px;right:30px;color:rgba(255,255,255,.25);font-size:1.3rem;}
 
-/* HERO SECTION */
+/* HERO */
 .hero{
   min-height:100svh;
   display:grid;grid-template-rows:1fr auto;
@@ -195,20 +182,6 @@ body.hov #cur2{width:52px;height:52px;border-color:rgba(255,255,255,.45)}
     linear-gradient(105deg, rgba(5,5,5,.92) 0%, rgba(5,5,5,.3) 50%, rgba(5,5,5,.1) 100%),
     linear-gradient(to top, rgba(5,5,5,1) 0%, rgba(5,5,5,.6) 30%, transparent 60%);
 }
-/* grain texture */
-.hero-bg::before{
-  content:'';position:absolute;inset:0;z-index:1;
-  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E");
-  background-repeat:repeat;background-size:180px;
-  opacity:.04;pointer-events:none;
-  animation:grain .9s steps(2) infinite;
-}
-@keyframes grain{
-  0%{transform:translate(0,0)}20%{transform:translate(-2%,-1%)}
-  40%{transform:translate(1%,2%)}60%{transform:translate(-1%,1%)}
-  80%{transform:translate(2%,-2%)}100%{transform:translate(0,0)}
-}
-
 .hero-content{
   position:relative;z-index:1;
   display:flex;flex-direction:column;justify-content:flex-end;
@@ -320,16 +293,8 @@ body.hov #cur2{width:52px;height:52px;border-color:rgba(255,255,255,.45)}
 .hero-stats{display:flex;align-items:center;gap:0}
 .hstat{text-align:right;padding:0 28px;border-right:1px solid var(--border);}
 .hstat:last-child{padding-right:0;border-right:none}
-.hstat-n{
-  display:block;font-family:var(--display);
-  font-size:1.6rem;font-weight:700;
-  color:var(--white);line-height:1;
-}
-.hstat-l{
-  display:block;font-family:var(--head);font-size:.5rem;
-  letter-spacing:.2em;text-transform:uppercase;
-  color:rgba(255,255,255,.3);margin-top:4px;
-}
+.hstat-n{display:block;font-family:var(--display);font-size:1.6rem;font-weight:700;color:var(--white);line-height:1;}
+.hstat-l{display:block;font-family:var(--head);font-size:.5rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.3);margin-top:4px;}
 
 /* MARQUEE */
 .marquee{
@@ -345,15 +310,8 @@ body.hov #cur2{width:52px;height:52px;border-color:rgba(255,255,255,.45)}
 .mi-item{padding:0 32px;display:flex;align-items:center;gap:28px}
 .mi-dot{width:3px;height:3px;border-radius:50%;background:rgba(0,0,0,.25);}
 @keyframes marq{from{transform:translateX(0)}to{transform:translateX(-50%)}}
-.marquee2{
-  overflow:hidden;white-space:nowrap;
-  border-top:1px solid var(--border);
-  border-bottom:1px solid var(--border);
-  padding:12px 0;
-}
-.marquee2 .marquee-inner{animation-direction:reverse;animation-duration:36s;color:rgba(255,255,255,.12);font-weight:200;}
 
-/* section utilities */
+/* SECTION UTILITIES */
 .sec-tag{
   font-family:var(--head);font-size:.56rem;
   letter-spacing:.32em;text-transform:uppercase;
@@ -378,26 +336,15 @@ body.hov #cur2{width:52px;height:52px;border-color:rgba(255,255,255,.45)}
 }
 .rv{opacity:0;transform:translateY(48px);transition:opacity 1s var(--easeOut),transform 1s var(--easeOut)}
 .rv.in{opacity:1;transform:translateY(0)}
-.rv-left{opacity:0;transform:translateX(-36px);transition:opacity .9s var(--easeOut),transform .9s var(--easeOut)}
-.rv-left.in{opacity:1;transform:translateX(0)}
-.rv-scale{opacity:0;transform:scale(.93);transition:opacity 1s var(--easeOut),transform 1s var(--easeOut)}
-.rv-scale.in{opacity:1;transform:scale(1)}
 
 /* SHOWREEL */
 .reel{padding:100px 120px;max-width:1600px;margin:0 auto}
-.reel-header{
-  display:flex;justify-content:space-between;align-items:flex-end;
-  margin-bottom:36px;
-}
-.reel-wrap{
-  position:relative;padding-bottom:56.25%;
-  border:1px solid var(--border);
-  background:var(--surface);
-}
+.reel-header{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:36px;}
+.reel-wrap{position:relative;padding-bottom:56.25%;border:1px solid var(--border);background:var(--surface);}
 .reel-wrap iframe{position:absolute;inset:0;width:100%;height:100%}
 .reel-note{text-align:center;margin-top:18px;font-family:var(--head);font-size:.54rem;letter-spacing:.24em;text-transform:uppercase;color:rgba(255,255,255,.1);}
 
-/* FILM CREDITS (poster grid) */
+/* FILM CREDITS */
 .films-section{padding:80px 120px 100px;border-top:1px solid var(--border);}
 .films-top{margin-bottom:56px}
 .poster-grid{
@@ -436,62 +383,69 @@ body.hov #cur2{width:52px;height:52px;border-color:rgba(255,255,255,.45)}
 .poster-card-label-meta{display:flex;justify-content:space-between}
 .poster-card-label-role{font-family:var(--head);font-size:.54rem;letter-spacing:.14em;color:rgba(255,255,255,.25);}
 
-/* FRAMES SECTION — pure image gallery, senior DOP framing */
+/* FRAMES & COMPOSITION — 16:9 full-width row (inspired by Federico Tamburini) */
 .frames-section{
-  padding:100px 120px;
+  padding:100px 0;
   border-top:1px solid var(--border);
   background:var(--ink);
 }
-.frames-header{margin-bottom:56px}
-.frames-grid{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:20px;
+.frames-header{
+  padding:0 120px;
+  margin-bottom:56px;
 }
-.frame-item{
-  position:relative;
+.frames-row{
+  display:flex;
+  flex-direction:column;
+  gap:4px;
+}
+.frame-block{
+  width:100%;
+  aspect-ratio:16 / 9;
   overflow:hidden;
-  aspect-ratio:4/3;
-  background:var(--surface);
+  position:relative;
+  background:var(--black);
 }
-.frame-item.large{
-  grid-column:span 1;
-  aspect-ratio:3/4;
-}
-.frame-item.wide{
-  grid-column:span 2;
-  aspect-ratio:16/9;
-}
-.frame-img{
-  width:100%;height:100%;
-}
-.frame-img img{
-  width:100%;height:100%;
+.frame-block img{
+  width:100%;
+  height:100%;
   object-fit:cover;
-  filter:grayscale(100%) brightness(.6);
-  transition:transform 1.1s var(--easeOut),filter .6s;
+  filter:grayscale(100%) brightness(.55);
+  transition:transform 1.4s var(--easeOut), filter .7s;
+  will-change:transform;
 }
-.frame-item:hover .frame-img img{
-  transform:scale(1.05);
-  filter:grayscale(80%) brightness(.75);
+.frame-block:hover img{
+  transform:scale(1.03);
+  filter:grayscale(80%) brightness(.7);
 }
-.frame-caption{
+.frame-caption-overlay{
   position:absolute;
-  bottom:0;left:0;right:0;
-  padding:20px;
-  background:linear-gradient(to top, rgba(0,0,0,.9), transparent);
+  bottom:0; left:0; right:0;
+  padding:32px 48px;
+  background:linear-gradient(to top, rgba(0,0,0,.8), transparent);
   transform:translateY(100%);
-  transition:transform .4s var(--ease);
+  transition:transform .5s var(--ease);
   font-family:var(--head);
-  font-size:.6rem;
-  letter-spacing:.2em;
+  font-size:.7rem;
+  letter-spacing:.24em;
   text-transform:uppercase;
-  color:rgba(255,255,255,.6);
+  color:rgba(255,255,255,.7);
+  pointer-events:none;
 }
-.frame-item:hover .frame-caption{transform:translateY(0);}
+.frame-block:hover .frame-caption-overlay{
+  transform:translateY(0);
+}
+/* subtle divider between frames */
+.frame-block:not(:last-child)::after{
+  content:'';
+  position:absolute;
+  bottom:0; left:5%; right:5%;
+  height:1px;
+  background:rgba(255,255,255,.08);
+  z-index:2;
+}
 
-/* GALLERY (horizontal scroll) */
-.gallery{border-top:1px solid var(--border);overflow:hidden}
+/* GALLERY horizontal */
+.gallery{border-top:1px solid var(--border);overflow:hidden; margin-top:0}
 .gscroll{display:flex;gap:3px;overflow-x:auto;padding:3px;scroll-snap-type:x mandatory;cursor:grab;}
 .gscroll:active{cursor:grabbing}
 .gscroll::-webkit-scrollbar{display:none}
@@ -501,7 +455,7 @@ body.hov #cur2{width:52px;height:52px;border-color:rgba(255,255,255,.45)}
 .gi:hover img,.gi-t:hover img{transform:scale(1.07);filter:grayscale(100%) brightness(1);}
 .ghint{text-align:center;padding:12px;font-family:var(--head);font-size:.52rem;letter-spacing:.24em;color:rgba(255,255,255,.08);}
 
-/* ABOUT (stats updated: removed top3/distinction) */
+/* ABOUT */
 .about{
   padding:120px;
   display:grid;grid-template-columns:1fr 1.5fr;gap:100px;
@@ -525,7 +479,6 @@ body.hov #cur2{width:52px;height:52px;border-color:rgba(255,255,255,.45)}
 .astat:hover{padding-left:10px}
 .astat-l{font-family:var(--head);font-size:.58rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.3);}
 .astat-n{font-family:var(--display);font-size:1.8rem;font-weight:700;color:var(--white);line-height:1;text-align:right;}
-
 .aportrait{position:relative;aspect-ratio:3/4;overflow:hidden;}
 .aportrait img{width:100%;height:100%;object-fit:cover;filter:grayscale(100%) contrast(1.1);transition:filter .7s,transform .9s;}
 .aportrait:hover img{filter:grayscale(80%) brightness(1.08);transform:scale(1.03);}
@@ -540,27 +493,12 @@ body.hov #cur2{width:52px;height:52px;border-color:rgba(255,255,255,.45)}
 .ablk p{font-size:.86rem;color:var(--silver-dim);line-height:1.95}
 .skills{display:flex;flex-wrap:wrap;gap:8px;margin-top:4px}
 .skill{font-family:var(--head);font-size:.54rem;letter-spacing:.18em;border:1px solid var(--border2);padding:7px 14px;color:rgba(255,255,255,.4);transition:all .3s;}
-.skill:hover{border-color:var(--border3);color:var(--white);background:rgba(255,255,255,.04)}
+.skill:hover{border-color:var(--border2);color:var(--white);background:rgba(255,255,255,.04)}
 .edu{background:var(--surface);border:1px solid var(--border);border-left:1px solid rgba(255,255,255,.25);padding:28px;display:flex;gap:22px;}
 .edu-badge{font-family:var(--head);font-size:1.2rem;font-weight:700;border:1px solid rgba(255,255,255,.12);padding:12px 14px;}
 .edu-info strong{font-size:.9rem;color:var(--white);font-weight:400}
 .edu-info span{font-size:.78rem;color:var(--silver-dim)}
 .edu-note{font-size:.72rem!important;color:rgba(255,255,255,.22)!important;margin-top:6px;font-style:italic}
-
-/* SERVICES */
-.services{padding:100px 120px;border-top:1px solid var(--border);}
-.services-top{margin-bottom:60px}
-.sgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border);}
-.scard{background:var(--panel);padding:44px 30px;transition:background .4s;}
-.scard::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:var(--white);transform:scaleX(0);transition:transform .5s var(--ease);transform-origin:left;}
-.scard{position:relative;overflow:hidden}
-.scard:hover{background:var(--surface)}
-.scard:hover::before{transform:scaleX(1)}
-.scard-num{font-family:var(--display);font-size:3.5rem;font-weight:700;font-style:italic;color:rgba(255,255,255,.04);line-height:1;margin-bottom:24px;transition:color .5s;}
-.scard:hover .scard-num{color:rgba(255,255,255,.14);}
-.scard h3{font-family:var(--display);font-size:1.15rem;font-weight:700;color:rgba(255,255,255,.55);margin-bottom:14px;}
-.scard:hover h3{color:var(--white)}
-.scard p{font-size:.8rem;color:rgba(255,255,255,.28);line-height:1.9}
 
 /* CONTACT */
 .contact{padding:120px;border-top:1px solid var(--border);background:var(--ink);}
@@ -583,7 +521,7 @@ body.hov #cur2{width:52px;height:52px;border-color:rgba(255,255,255,.45)}
 .ffld input,.ffld textarea{background:transparent;border:none;border-bottom:1px solid rgba(255,255,255,.08);color:var(--white);font-family:var(--body);font-size:.88rem;padding:13px 0;outline:none;transition:border-color .3s;}
 .ffld input:focus,.ffld textarea:focus{border-color:rgba(255,255,255,.4);}
 .fsubmit{display:flex;align-items:center;gap:14px;background:var(--white);color:var(--black);font-family:var(--head);font-size:.6rem;font-weight:600;letter-spacing:.22em;padding:16px 34px;position:relative;overflow:hidden;transition:color .4s,gap .3s;}
-.fsubmit::before{content:'';position:absolute;inset:0;background:var(--surface3);transform:translateX(-101%);transition:transform .45s var(--ease);}
+.fsubmit::before{content:'';position:absolute;inset:0;background:var(--surface);transform:translateX(-101%);transition:transform .45s var(--ease);}
 .fsubmit:hover{color:var(--white);gap:22px}
 .fsubmit:hover::before{transform:translateX(0)}
 .fsubmit span,.fsubmit svg{position:relative;z-index:1}
@@ -601,24 +539,24 @@ footer{padding:32px 120px;border-top:1px solid var(--border);display:grid;grid-t
 
 /* RESPONSIVE */
 @media(max-width:1200px){
-  .nav,.reel,.films-section,.frames-section,.about,.services,.contact,footer{padding-left:56px;padding-right:56px}
+  .nav,.reel,.films-section,.frames-section .frames-header,.about,.contact,footer{padding-left:56px;padding-right:56px}
   .hero-content{padding-left:80px;padding-right:80px}
   .hero-scroll{padding-left:80px;padding-right:80px}
   .poster-grid{grid-template-columns:repeat(3,1fr)}
-  .frames-grid{grid-template-columns:repeat(2,1fr)}
-  .sgrid{grid-template-columns:repeat(2,1fr)}
+  .frames-header{padding-left:56px;padding-right:56px}
 }
 @media(max-width:900px){
   .nav-links,.nav-cta{display:none}
   .burger{display:flex}
   .hero-content{padding:0 28px 56px}
   .hero-scroll{padding:20px 28px}
-  .reel,.films-section,.frames-section,.about,.services,.contact,footer{padding-left:28px;padding-right:28px}
+  .reel,.films-section,.frames-section .frames-header,.about,.contact,footer{padding-left:28px;padding-right:28px}
   .about{grid-template-columns:1fr;gap:60px}
   .cbody{grid-template-columns:1fr;gap:52px}
   .poster-grid{grid-template-columns:repeat(2,1fr)}
-  .frames-grid{grid-template-columns:1fr}
   .hero-bottom{flex-direction:column;align-items:flex-start}
+  .frames-header{padding-left:28px;padding-right:28px}
+  .frame-caption-overlay{transform:translateY(0); background:linear-gradient(to top, rgba(0,0,0,.7), transparent); padding:24px;}
 }
 @media(max-width:580px){
   .frow{grid-template-columns:1fr}
@@ -640,7 +578,6 @@ footer{padding:32px 120px;border-top:1px solid var(--border);display:grid;grid-t
     <a href="#about">About</a>
     <a href="#work">Films</a>
     <a href="#frames">Frames</a>
-    <a href="#services">Services</a>
     <a href="#contact">Contact</a>
   </nav>
   <a href="#contact" class="nav-cta"><span>Hire Me</span></a>
@@ -652,7 +589,6 @@ footer{padding:32px 120px;border-top:1px solid var(--border);display:grid;grid-t
   <a href="#about">About</a>
   <a href="#work">Films</a>
   <a href="#frames">Frames</a>
-  <a href="#services">Services</a>
   <a href="#contact">Contact</a>
 </div>
 
@@ -681,7 +617,7 @@ footer{padding:32px 120px;border-top:1px solid var(--border);display:grid;grid-t
   </div>
 </section>
 
-<div class="marquee"><div class="marquee-inner"><span class="mi-item">Lighting Design<span class="mi-dot"></span></span><span class="mi-item">Camera Operation<span class="mi-dot"></span></span><span class="mi-item">Music Videos<span class="mi-dot"></span></span><span class="mi-item">Lens Selection<span class="mi-dot"></span></span><span class="mi-item">Color Grading<span class="mi-dot"></span></span><span class="mi-item">Visual Storytelling<span class="mi-dot"></span></span><span class="mi-item">Film Production<span class="mi-dot"></span></span><span class="mi-item">Mindscreen<span class="mi-dot"></span></span></div></div>
+<div class="marquee"><div class="marquee-inner"><span class="mi-item">Lighting Design<span class="mi-dot"></span></span><span class="mi-item">Camera Operation<span class="mi-dot"></span></span><span class="mi-item">Music Videos<span class="mi-dot"></span></span><span class="mi-item">Lens Selection<span class="mi-dot"></span></span><span class="mi-item">Color Grading<span class="mi-dot"></span></span><span class="mi-item">Visual Storytelling<span class="mi-dot"></span></span><span class="mi-item">Film Production<span class="mi-dot"></span></span></div></div>
 
 <div class="reel rv" id="mywork">
   <div class="reel-header"><div><p class="sec-tag">Showreel</p><h2 class="sec-h">My <em>Work</em></h2></div></div>
@@ -701,36 +637,31 @@ footer{padding:32px 120px;border-top:1px solid var(--border);display:grid;grid-t
   </div>
 </section>
 
-<!-- FRAMES SECTION: dedicated gallery for cinematographer's framing -->
+<!-- FRAMES & COMPOSITION: full-width 16:9 row layout, minimal and cinematic -->
 <section class="frames-section" id="frames">
   <div class="frames-header rv"><p class="sec-tag">Visual Language</p><h2 class="sec-h">Frames <em>& Composition</em></h2></div>
-  <div class="frames-grid">
-    <div class="frame-item rv"><div class="frame-img"><img src="https://images.unsplash.com/photo-1485846234645-a62644f84728?w=800&q=85" alt="Frame 1"/></div><div class="frame-caption">Depth & Negative Space</div></div>
-    <div class="frame-item rv"><div class="frame-img"><img src="https://images.unsplash.com/photo-1500210600724-67c5e2e06b0c?w=800&q=85" alt="Frame 2"/></div><div class="frame-caption">Available Light Poetry</div></div>
-    <div class="frame-item wide rv"><div class="frame-img"><img src="https://images.unsplash.com/photo-1536440136628-849c177e76a1?w=1200&q=85" alt="Frame 3"/></div><div class="frame-caption">Cinematic Widescreen</div></div>
-    <div class="frame-item large rv"><div class="frame-img"><img src="https://images.unsplash.com/photo-1478720568477-152d9b164e26?w=800&q=85" alt="Frame 4"/></div><div class="frame-caption">Shadow & Texture</div></div>
-    <div class="frame-item rv"><div class="frame-img"><img src="https://images.unsplash.com/photo-1565120319398-da008925fc1d?w=800&q=85" alt="Frame 5"/></div><div class="frame-caption">Layered Composition</div></div>
-    <div class="frame-item rv"><div class="frame-img"><img src="https://images.unsplash.com/photo-1593784991095-a205069470b6?w=800&q=85" alt="Frame 6"/></div><div class="frame-caption">Mood & Atmosphere</div></div>
+  <div class="frames-row">
+    <div class="frame-block rv"><img src="https://images.unsplash.com/photo-1485846234645-a62644f84728?w=1600&q=85" alt="Frame composition 1"/><div class="frame-caption-overlay">Depth & Negative Space</div></div>
+    <div class="frame-block rv"><img src="https://images.unsplash.com/photo-1500210600724-67c5e2e06b0c?w=1600&q=85" alt="Frame composition 2"/><div class="frame-caption-overlay">Available Light Poetry</div></div>
+    <div class="frame-block rv"><img src="https://images.unsplash.com/photo-1536440136628-849c177e76a1?w=1600&q=85" alt="Frame composition 3"/><div class="frame-caption-overlay">Cinematic Widescreen</div></div>
+    <div class="frame-block rv"><img src="https://images.unsplash.com/photo-1478720568477-152d9b164e26?w=1600&q=85" alt="Frame composition 4"/><div class="frame-caption-overlay">Shadow & Texture</div></div>
+    <div class="frame-block rv"><img src="https://images.unsplash.com/photo-1593784991095-a205069470b6?w=1600&q=85" alt="Frame composition 5"/><div class="frame-caption-overlay">Mood & Atmosphere</div></div>
   </div>
 </section>
 
-
+<section class="gallery rv"><div class="gscroll" id="gscroll"><div class="gi"><img src="https://images.unsplash.com/photo-1440404653325-ab127d49abc1?w=800&q=85" alt=""/></div><div class="gi gi-t"><img src="https://images.unsplash.com/photo-1478720568477-152d9b164e26?w=800&q=85" alt=""/></div><div class="gi"><img src="https://images.unsplash.com/photo-1536440136628-849c177e76a1?w=800&q=85" alt=""/></div><div class="gi gi-t"><img src="https://images.unsplash.com/photo-1565120319398-da008925fc1d?w=800&q=85" alt=""/></div><div class="gi"><img src="https://images.unsplash.com/photo-1500210600724-67c5e2e06b0c?w=800&q=85" alt=""/></div><div class="gi"><img src="https://images.unsplash.com/photo-1485846234645-a62644f84728?w=800&q=85" alt=""/></div><div class="gi gi-t"><img src="https://images.unsplash.com/photo-1593784991095-a205069470b6?w=800&q=85" alt=""/></div></div><p class="ghint">← drag to explore →</p></section>
 
 <section class="about" id="about">
-  <div class="about-left rv-left"><p class="sec-tag">About</p><p class="about-quote">Each frame shaped by experience and anchored in a pursuit of <strong>visual truth.</strong>
+  <div class="about-left rv"><p class="sec-tag">About</p><p class="about-quote">“Each frame guided by lived experience and a commitment to <strong>visual authenticity.</strong>”</p>
     <div class="astats"><div class="astat"><span class="astat-l">Years on set</span><span class="astat-n">3+</span></div><div class="astat"><span class="astat-l">Mindscreen Film Institute</span><span class="astat-n">MFI</span></div></div>
   </div>
-  <div class="about-right rv-scale"><div class="aportrait"><img src="h2.jpg" alt="Azeem Mohammad"/><div class="aportrait-chip">Hyderabad, India</div></div>
+  <div class="about-right rv"><div class="aportrait"><img src="h2.jpg" alt="Azeem Mohammad"/><div class="aportrait-chip">Hyderabad, India</div></div>
     <div class="abio"><div class="ablk"><p class="ablk-lbl">Bio</p><p>Cinematographer focused on visual storytelling, combining technical expertise in camera systems, lens selection, and lighting design with a strong cinematic sensibility. Experienced in collaborating with agencies and creative teams to deliver emotionally driven visuals — from concept to final frame.</p></div>
     <div class="ablk"><p class="ablk-lbl">Approach</p><p>I approach cinematography where emotion, environment, and narrative intersect through the lens. Each frame is guided by lived experience and a commitment to visual authenticity — translating story into immersive imagery.</p></div>
     <div class="ablk"><p class="ablk-lbl">Skills</p><ul class="skills"><li class="skill">Lighting Design</li><li class="skill">Day & Night Setups</li><li class="skill">Camera Operation</li><li class="skill">Lens Handling</li><li class="skill">Visual Storytelling</li><li class="skill">Color Grading</li></ul></div>
-    
+    <div class="ablk"><p class="ablk-lbl">Education</p><div class="edu"><div class="edu-badge">MFI</div><div class="edu-info"><strong>Mindscreen Film Institute</strong><span>Diploma in Cinematography — Graduated with Distinction</span><span class="edu-note">Specialised in camera operations & advanced lighting techniques.</span></div></div></div>
   </div></div>
 </section>
-
-<div class="marquee2"><div class="marquee-inner"><span class="mi-item">Concept to Final Frame</span><span class="mi-item">Day & Night Lighting</span><span class="mi-item">Creative Decks</span><span class="mi-item">Shot Breakdowns</span><span class="mi-item">Post-Production</span><span class="mi-item">Brand Identity</span><span class="mi-item">Reels & YouTube</span></div></div>
-
-
 
 <section class="contact" id="contact"><div class="ctop rv"><p class="sec-tag">Contact</p><h2 class="cheading"><span class="ct1">Let’s talk</span><span class="ct2">and see <em>where</em><br/>it takes us.</span></h2></div>
 <div class="cbody rv"><div class="clinks"><a href="mailto:Armansing5120@gmail.com" class="clink"><span class="clink-lbl">Email</span><span class="clink-val">Armansing5120@gmail.com →</span></a><a href="tel:+918368084966" class="clink"><span class="clink-lbl">Phone</span><span class="clink-val">(+91) 83680 84966 →</span></a><a href="https://www.instagram.com/ig_shashanksinghh" target="_blank" class="clink"><span class="clink-lbl">Instagram</span><span class="clink-val">@ig_shashanksinghh →</span></a><a href="https://www.imdb.com/name/nm13694200/" target="_blank" class="clink"><span class="clink-lbl">IMDB</span><span class="clink-val">Azeem Mohammad →</span></a><div class="clink" style="cursor:default"><span class="clink-lbl">Open to</span><span class="clink-val" style="font-size:.8rem;">Music Videos · Brand Films · Short Films · Collabs</span></div></div>
@@ -744,6 +675,7 @@ footer{padding:32px 120px;border-top:1px solid var(--border);display:grid;grid-t
 <footer><div><span class="flogo">Azeem Mohammad</span><span class="fsub">Cinematographer · Hyderabad, India</span></div><div class="flinks"><a href="https://www.instagram.com/ig_shashanksinghh" target="_blank">Instagram</a><a href="https://www.imdb.com/name/nm13694200/" target="_blank">IMDB</a><a href="mailto:Armansing5120@gmail.com">Email</a></div><p class="fcopy">© 2026 Azeem Mohammad. All rights reserved.</p></footer>
 
 <script>
+// Progress bar, cursor, nav, mobile menu, reveal, gallery drag, smooth scroll, form
 const progress = document.getElementById('progress');
 window.addEventListener('scroll', () => { const pct = scrollY / (document.documentElement.scrollHeight - innerHeight) * 100; progress.style.width = Math.min(pct,100)+'%'; }, {passive:true});
 const cur = document.getElementById('cur'), cur2 = document.getElementById('cur2');
@@ -751,7 +683,7 @@ if(cur && window.matchMedia('(pointer:fine)').matches){
   let mx=0,my=0,cx=0,cy=0;
   document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cur.style.left=mx+'px';cur.style.top=my+'px';},{passive:true});
   if(cur2){ (function tick(){ cx+=(mx-cx)*.11; cy+=(my-cy)*.11; cur2.style.left=cx+'px'; cur2.style.top=cy+'px'; requestAnimationFrame(tick); })(); }
-  document.querySelectorAll('a,button,.poster-card,.frame-item,.gi,.scard,.skill').forEach(el=>{ el.addEventListener('mouseenter',()=>document.body.classList.add('hov')); el.addEventListener('mouseleave',()=>document.body.classList.remove('hov')); });
+  document.querySelectorAll('a,button,.poster-card,.frame-block,.gi,.skill,.clink').forEach(el=>{ el.addEventListener('mouseenter',()=>document.body.classList.add('hov')); el.addEventListener('mouseleave',()=>document.body.classList.remove('hov')); });
 }
 const nav=document.getElementById('nav');
 window.addEventListener('scroll',()=>nav.classList.toggle('stuck',scrollY>50),{passive:true});
@@ -759,7 +691,7 @@ const burger=document.getElementById('burger'), mo=document.getElementById('move
 burger.addEventListener('click',()=>{const o=mo.classList.toggle('open'); burger.classList.toggle('open',o); document.body.style.overflow=o?'hidden':'';});
 mx2.addEventListener('click',()=>{mo.classList.remove('open'); burger.classList.remove('open'); document.body.style.overflow='';});
 function closeM(){mo.classList.remove('open'); burger.classList.remove('open'); document.body.style.overflow='';}
-const rvEls=document.querySelectorAll('.rv,.rv-left,.rv-scale');
+const rvEls=document.querySelectorAll('.rv');
 const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in'); obs.unobserve(e.target);}});},{threshold:.06});
 rvEls.forEach(el=>obs.observe(el));
 const gs=document.getElementById('gscroll');
@@ -768,7 +700,7 @@ document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click'
 const form=document.getElementById('contactForm'), fok=document.getElementById('fsuccess');
 if(form){form.addEventListener('submit',async e=>{e.preventDefault(); const btn=form.querySelector('.fsubmit'); btn.style.opacity='.5'; btn.style.pointerEvents='none'; try{const r=await fetch(form.action,{method:'POST',body:new FormData(form),headers:{Accept:'application/json'}}); if(r.ok){form.reset(); fok.classList.add('show'); setTimeout(()=>fok.classList.remove('show'),8000);}}catch{} btn.style.opacity='1'; btn.style.pointerEvents='auto';});}
 const secs=document.querySelectorAll('section[id]'), nls=document.querySelectorAll('.nav-links a');
-window.addEventListener('scroll',()=>{let cur=''; secs.forEach(s=>{if(scrollY>=s.offsetTop-180)cur=s.id;}); nls.forEach(a=>{a.classList.toggle('active',a.getAttribute('href')===('#'+cur));});},{passive:true});
+window.addEventListener('scroll',()=>{let curSec=''; secs.forEach(s=>{if(scrollY>=s.offsetTop-180)curSec=s.id;}); nls.forEach(a=>{a.classList.toggle('active',a.getAttribute('href')===('#'+curSec));});},{passive:true});
 </script>
 </body>
 </html>
