@@ -1178,8 +1178,6 @@ footer {
     <div class="fc-track" id="fc-track">
       <div class="fc-card">
         <img class="fc-img" src="images/poster-90s.jpg" alt="#90s Middle Class Biopic">
-        <video class="fc-vid" loop muted playsinline preload="none"
-          src="https://youtu.be/7zzlOolbhFY?si=SOCkxsYDfwiFR3ES"></video>
         <span class="fc-num">01</span>
         <div class="fc-year">2024</div>
         <div class="fc-info">
@@ -1190,8 +1188,6 @@ footer {
       </div>
       <div class="fc-card">
         <img class="fc-img" src="images/poster-g2.png" alt="Goodachari 2">
-        <video class="fc-vid" loop muted playsinline preload="none"
-          src="https://youtu.be/snx398zoixA?si=3YylsVGBPVqcvc1m"></video>
         <span class="fc-num">02</span>
         <div class="fc-year">2026</div>
         <div class="fc-info">
@@ -1203,8 +1199,7 @@ footer {
 
       <div class="fc-card">
         <img class="fc-img" src="images/poster-epic.png" alt="EPIC">
-        <video class="fc-vid" loop muted playsinline preload="none"
-          src="https://youtu.be/Rh-o_LoIywU?si=5UDGLgJkPHL9UOke"></video>
+        
         <span class="fc-num">03</span>
         <div class="fc-year">2026</div>
         <div class="fc-info">
@@ -1220,8 +1215,7 @@ footer {
 
       <div class="fc-card">
         <img class="fc-img" src="images/kb.jpg" alt="Kadaseela Biriyani">
-        <video class="fc-vid" loop muted playsinline preload="none"
-          src="https://youtu.be/0VEEhrl5T5o?si=yvkvdFVnfw8e_ZgN"></video>
+        
         <span class="fc-num">04</span>
         <div class="fc-year">2021</div>
         <div class="fc-info">
@@ -1232,7 +1226,7 @@ footer {
       </div>
       <div class="fc-card">
         <img class="fc-img" src="images/th.jpg" alt="Theatre">
-        <video class="fc-vid" loop muted playsinline preload="none"
+        
         <span class="fc-num">05</span>
         <div class="fc-year">2025</div>
         <div class="fc-info">
@@ -1244,8 +1238,7 @@ footer {
 
       <div class="fc-card">
         <img class="fc-img" src="images/sin.png" alt="Sin">
-        <video class="fc-vid" loop muted playsinline preload="none"
-          src="https://www.imdb.com/video/vi1388625433/?ref_=ext_shr_lnk"></video>
+        
         <span class="fc-num">06</span>
         <div class="fc-year">2020</div>
         <div class="fc-info">
@@ -1259,8 +1252,7 @@ footer {
 
       <div class="fc-card">
         <img class="fc-img" src="images/bro.jpg" alt="Bro">
-        <video class="fc-vid" loop muted playsinline preload="none"
-          src="https://youtu.be/TocRApyQvpk?si=7LSxrOSA8E9W936T"></video>
+        
         <span class="fc-num">07</span>
         <div class="fc-year">2021</div>
         <div class="fc-info">
@@ -1408,22 +1400,25 @@ window.addEventListener('load', () => {
 
 /* grain canvas */
 const canvas = document.getElementById('grain-canvas');
-const ctx = canvas.getContext('2d');
-function resizeGrain() { canvas.width = canvas.offsetWidth; canvas.height = canvas.offsetHeight; }
-resizeGrain(); window.addEventListener('resize', resizeGrain);
-function drawGrain() {
-  const w = canvas.width, h = canvas.height;
-  const img = ctx.createImageData(w, h);
-  const d = img.data;
-  for (let i = 0; i < d.length; i += 4) {
-    const v = (Math.random() * 48) | 0;
-    d[i] = d[i+1] = d[i+2] = v + 200;
-    d[i+3] = (Math.random() * 12) | 0;
+if (canvas) {
+  const ctx = canvas.getContext('2d');
+  function resizeGrain() { canvas.width = canvas.offsetWidth; canvas.height = canvas.offsetHeight; }
+  resizeGrain(); window.addEventListener('resize', resizeGrain);
+  function drawGrain() {
+    const w = canvas.width, h = canvas.height;
+    if (w <= 0 || h <= 0) return;
+    const img = ctx.createImageData(w, h);
+    const d = img.data;
+    for (let i = 0; i < d.length; i += 4) {
+      const v = (Math.random() * 48) | 0;
+      d[i] = d[i+1] = d[i+2] = v + 200;
+      d[i+3] = (Math.random() * 12) | 0;
+    }
+    ctx.putImageData(img, 0, 0);
+    requestAnimationFrame(drawGrain);
   }
-  ctx.putImageData(img, 0, 0);
-  requestAnimationFrame(drawGrain);
+  drawGrain();
 }
-drawGrain();
 
 /* custom cursor */
 const dot = document.getElementById('cursor-dot');
@@ -1431,30 +1426,32 @@ const ring = document.getElementById('cursor-ring');
 let rx=0,ry=0,dx=0,dy=0;
 document.addEventListener('mousemove', e => {
   dx=e.clientX; dy=e.clientY;
-  dot.style.left=dx+'px'; dot.style.top=dy+'px';
+  if (dot) dot.style.left=dx+'px'; dot.style.top=dy+'px';
 });
 (function loop() {
   rx+=(dx-rx)*.12; ry+=(dy-ry)*.12;
-  ring.style.left=rx+'px'; ring.style.top=ry+'px';
+  if (ring) { ring.style.left=rx+'px'; ring.style.top=ry+'px'; }
   requestAnimationFrame(loop);
 })();
-document.querySelectorAll('a,button,.credit-card,.frame-card').forEach(el => {
+document.querySelectorAll('a,button,.fc-card,.frame-card').forEach(el => {
   el.addEventListener('mouseenter', () => document.body.classList.add('ch'));
   el.addEventListener('mouseleave', () => document.body.classList.remove('ch'));
 });
 
 /* mobile top nav scroll */
 const topnav = document.getElementById('topnav');
-window.addEventListener('scroll', () => topnav.classList.toggle('scrolled', scrollY > 60), { passive:true });
+window.addEventListener('scroll', () => topnav?.classList.toggle('scrolled', scrollY > 60), { passive:true });
 
 /* mobile hamburger */
 const burger = document.getElementById('burger');
 const mm = document.getElementById('mobile-menu');
-burger.addEventListener('click', () => {
-  const o = mm.classList.toggle('open');
-  burger.classList.toggle('open', o);
-  document.body.style.overflow = o ? 'hidden' : '';
-});
+if (burger) {
+  burger.addEventListener('click', () => {
+    const o = mm.classList.toggle('open');
+    burger.classList.toggle('open', o);
+    document.body.style.overflow = o ? 'hidden' : '';
+  });
+}
 document.querySelectorAll('.mlink').forEach(l => l.addEventListener('click', () => {
   mm.classList.remove('open'); burger.classList.remove('open');
   document.body.style.overflow = '';
@@ -1479,10 +1476,10 @@ window.addEventListener('scroll', setActive, { passive:true });
 setActive();
 
 /* fade-up observer */
-const io = new IntersectionObserver(entries => {
-  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
+const fadeIO = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); fadeIO.unobserve(e.target); } });
 }, { threshold:.07, rootMargin:'0px 0px -28px 0px' });
-document.querySelectorAll('.fade-up').forEach(el => io.observe(el));
+document.querySelectorAll('.fade-up').forEach(el => fadeIO.observe(el));
 
 /* scroll parallax zoom */
 const parallaxEls = document.querySelectorAll('[data-parallax]');
@@ -1502,10 +1499,10 @@ window.addEventListener('scroll', () => requestAnimationFrame(updateParallax), {
 updateParallax();
 
 /* ═══════════════════════════════════════════════
-   FILM CREDITS — improved smooth drag + momentum
+   FILM CREDITS — smooth drag + momentum
 ═══════════════════════════════════════════════ */
 const fcTrack = document.getElementById('fc-track');
-const fcSection = document.getElementById('fc-section');
+const fcSectionEl = document.getElementById('fc-section');
 const fcCur = document.querySelector('.fc-cur');
 const fcHint = document.querySelector('.fc-hint');
 
@@ -1515,41 +1512,41 @@ let rafId = null;
 
 function updateCounter() {
   if (!fcTrack || !fcCur) return;
-  const cardW = fcTrack.querySelector('.fc-card').offsetWidth;
+  const cards = fcTrack.querySelectorAll('.fc-card');
+  if (cards.length === 0) return;
+  const cardW = cards[0].offsetWidth;
   const idx = Math.round(fcTrack.scrollLeft / cardW) + 1;
-  fcCur.textContent = String(Math.min(idx, 8)).padStart(2, '0');
+  fcCur.textContent = String(Math.min(idx, cards.length)).padStart(2, '0');
 }
 
 function updateEdgeFade() {
+  if (!fcTrack || !fcSectionEl) return;
   const { scrollLeft: sl, scrollWidth: sw, clientWidth: cw } = fcTrack;
-  fcSection.classList.toggle('at-start', sl <= 5);
-  fcSection.classList.toggle('at-end', sl >= sw - cw - 5);
+  fcSectionEl.classList.toggle('at-start', sl <= 5);
+  fcSectionEl.classList.toggle('at-end', sl >= sw - cw - 5);
 }
 
-/* momentum RAF loop */
 function runMomentum() {
   if (Math.abs(velocity) < 0.4) { velocity = 0; return; }
-  fcTrack.scrollLeft -= velocity;
-  velocity *= 0.94; /* friction — higher = longer glide */
+  if (fcTrack) fcTrack.scrollLeft -= velocity;
+  velocity *= 0.94;
   updateCounter();
   updateEdgeFade();
   rafId = requestAnimationFrame(runMomentum);
 }
 
 if (fcTrack) {
-  /* hide hint after first interaction */
   fcTrack.addEventListener('scroll', () => {
     if (fcHint) fcHint.style.opacity = '0';
     updateCounter();
     updateEdgeFade();
-
-    /* scrolling class for counter visibility */
-    fcSection.classList.add('scrolling');
-    clearTimeout(fcSection._scrollTimer);
-    fcSection._scrollTimer = setTimeout(() => fcSection.classList.remove('scrolling'), 900);
+    if (fcSectionEl) {
+      fcSectionEl.classList.add('scrolling');
+      clearTimeout(fcSectionEl._scrollTimer);
+      fcSectionEl._scrollTimer = setTimeout(() => fcSectionEl.classList.remove('scrolling'), 900);
+    }
   }, { passive: true });
 
-  /* ── MOUSE drag ── */
   fcTrack.addEventListener('mousedown', e => {
     isDown = true;
     fcTrack.classList.add('dragging');
@@ -1558,14 +1555,13 @@ if (fcTrack) {
     lastX = e.pageX;
     lastTime = performance.now();
     velocity = 0;
-    cancelAnimationFrame(rafId);
+    if (rafId) cancelAnimationFrame(rafId);
   });
 
   document.addEventListener('mouseup', () => {
     if (!isDown) return;
     isDown = false;
     fcTrack.classList.remove('dragging');
-    /* kick off momentum */
     rafId = requestAnimationFrame(runMomentum);
   });
 
@@ -1575,19 +1571,17 @@ if (fcTrack) {
     const x = e.pageX - fcTrack.offsetLeft;
     const walk = (x - startX) * 1.2;
     fcTrack.scrollLeft = scrollLeft - walk;
-
     const now = performance.now();
     const dt = Math.max(now - lastTime, 1);
-    velocity = (lastX - e.pageX) / dt * 14; /* px per ms → tune multiplier */
+    velocity = (lastX - e.pageX) / dt * 14;
     lastX = e.pageX;
     lastTime = now;
   });
 
-  /* ── WHEEL — natural horizontal scroll + momentum ── */
   fcTrack.addEventListener('wheel', e => {
     if (Math.abs(e.deltaY) > Math.abs(e.deltaX)) {
       e.preventDefault();
-      cancelAnimationFrame(rafId);
+      if (rafId) cancelAnimationFrame(rafId);
       velocity = 0;
       fcTrack.scrollLeft += e.deltaY * 1.4;
       updateCounter();
@@ -1595,22 +1589,19 @@ if (fcTrack) {
     }
   }, { passive: false });
 
-  /* ── VIDEO hover (desktop only) ── */
   document.querySelectorAll('.fc-card').forEach(card => {
     const vid = card.querySelector('.fc-vid');
-    if (!vid) return;
-    card.addEventListener('mouseenter', () => {
-      if (isDown) return;
-      vid.currentTime = 0;
-      vid.play().catch(() => {});
-    });
-    card.addEventListener('mouseleave', () => {
-      vid.pause();
-      vid.currentTime = 0;
-    });
+    if (vid && vid.tagName === 'VIDEO') {
+      card.addEventListener('mouseenter', () => {
+        if (!isDown) vid.play().catch(() => {});
+      });
+      card.addEventListener('mouseleave', () => {
+        vid.pause();
+        vid.currentTime = 0;
+      });
+    }
   });
 
-  /* initial edge state */
   updateEdgeFade();
   updateCounter();
 }
@@ -1622,13 +1613,138 @@ const ctaBtn = document.getElementById('cta-float');
 function dismissLoader() {
   if (loader) {
     loader.classList.add('done');
-    setTimeout(() => { loader.remove(); }, 800);
+    setTimeout(() => { if (loader) loader.remove(); }, 800);
   }
   setTimeout(() => { if (ctaBtn) ctaBtn.classList.add('visible'); }, 2600);
 }
 setTimeout(dismissLoader, 2300);
 
-<script>
+/* ═══════════════════════════════════════════════
+   SHOWREEL VIDEO PLAYER - FIXED FOR GOOGLE DRIVE
+═══════════════════════════════════════════════ */
+const reelVideo = document.getElementById('reel-video');
+const reelPP = document.getElementById('reel-playpause');
+const reelFill = document.getElementById('reel-progress-fill');
+const reelProgWrap = document.getElementById('reel-progress-wrap');
+const reelTimeSpan = document.getElementById('reel-time');
+const reelSoundBtn = document.getElementById('reel-sound');
+const reelFullBtn = document.getElementById('reel-full');
+const reelPlayBig = document.getElementById('reel-play-big');
+const iconPlay = document.getElementById('reel-icon-play');
+const iconPause = document.getElementById('reel-icon-pause');
+const iconSoundOn = document.getElementById('reel-icon-sound-on');
+const iconMuted = document.getElementById('reel-icon-muted');
+
+function formatTime(seconds) {
+  if (isNaN(seconds) || !isFinite(seconds)) return '0:00';
+  const mins = Math.floor(seconds / 60);
+  const secs = String(Math.floor(seconds % 60)).padStart(2, '0');
+  return `${mins}:${secs}`;
+}
+
+if (reelVideo) {
+  reelVideo.load();
+  
+  reelVideo.addEventListener('error', function(e) {
+    console.log('Video error, trying fallback...');
+    const fallbackSrc = 'https://drive.google.com/uc?export=download&id=1779UM3elyUSHGaTUslw0QdxtkP1UFRAL';
+    if (reelVideo.src !== fallbackSrc) {
+      reelVideo.src = fallbackSrc;
+      reelVideo.load();
+    }
+  });
+  
+  function togglePlay() {
+    if (reelVideo.paused) {
+      reelVideo.play().catch(err => console.log('Playback prevented:', err));
+    } else {
+      reelVideo.pause();
+    }
+  }
+  
+  reelVideo.addEventListener('play', () => {
+    if (iconPlay) iconPlay.style.display = 'none';
+    if (iconPause) iconPause.style.display = '';
+    if (reelPlayBig) reelPlayBig.classList.add('hidden');
+  });
+  
+  reelVideo.addEventListener('pause', () => {
+    if (iconPlay) iconPlay.style.display = '';
+    if (iconPause) iconPause.style.display = 'none';
+    if (reelPlayBig) reelPlayBig.classList.remove('hidden');
+  });
+  
+  reelVideo.addEventListener('timeupdate', () => {
+    if (reelVideo.duration && !isNaN(reelVideo.duration)) {
+      const percent = (reelVideo.currentTime / reelVideo.duration) * 100;
+      if (reelFill) reelFill.style.width = percent + '%';
+      if (reelTimeSpan) {
+        reelTimeSpan.textContent = `${formatTime(reelVideo.currentTime)} / ${formatTime(reelVideo.duration)}`;
+      }
+    }
+  });
+  
+  if (reelProgWrap) {
+    reelProgWrap.addEventListener('click', (e) => {
+      const rect = reelProgWrap.getBoundingClientRect();
+      const percent = (e.clientX - rect.left) / rect.width;
+      if (reelVideo.duration) {
+        reelVideo.currentTime = percent * reelVideo.duration;
+      }
+    });
+  }
+  
+  if (reelPP) reelPP.addEventListener('click', togglePlay);
+  
+  const reelWrap = document.getElementById('reel-wrap');
+  if (reelWrap) {
+    reelWrap.addEventListener('click', (e) => {
+      if (!e.target.closest('.reel-controls')) togglePlay();
+    });
+  }
+  
+  if (reelSoundBtn) {
+    reelSoundBtn.addEventListener('click', () => {
+      reelVideo.muted = !reelVideo.muted;
+      if (iconSoundOn) iconSoundOn.style.display = reelVideo.muted ? 'none' : '';
+      if (iconMuted) iconMuted.style.display = reelVideo.muted ? '' : 'none';
+    });
+  }
+  
+  if (reelFullBtn) {
+    reelFullBtn.addEventListener('click', () => {
+      const elem = document.getElementById('reel-wrap');
+      if (!document.fullscreenElement) {
+        elem?.requestFullscreen().catch(err => console.log(err));
+      } else {
+        document.exitFullscreen();
+      }
+    });
+  }
+  
+  reelVideo.addEventListener('ended', () => {
+    reelVideo.currentTime = 0;
+    reelVideo.play().catch(() => {});
+  });
+  
+  setTimeout(() => {
+    reelVideo.play().catch(() => {
+      console.log('Autoplay prevented');
+      if (reelPlayBig) reelPlayBig.classList.remove('hidden');
+    });
+  }, 500);
+}
+
+/* floating CTA */
+const contactSection = document.getElementById('contact');
+function updateCTA() {
+  if (!ctaBtn || !contactSection) return;
+  const r = contactSection.getBoundingClientRect();
+  ctaBtn.classList.toggle('near-contact', r.top < window.innerHeight * 0.9);
+}
+window.addEventListener('scroll', updateCTA, { passive: true });
+updateCTA();
+</script>
 // SHOWREEL VIDEO PLAYER - OPTIMIZED FOR GOOGLE DRIVE
 const reelVideo = document.getElementById('reel-video');
 const reelPP = document.getElementById('reel-playpause');
