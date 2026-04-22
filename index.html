@@ -1426,7 +1426,7 @@ const ring = document.getElementById('cursor-ring');
 let rx=0,ry=0,dx=0,dy=0;
 document.addEventListener('mousemove', e => {
   dx=e.clientX; dy=e.clientY;
-  if (dot) dot.style.left=dx+'px'; dot.style.top=dy+'px';
+  if (dot) { dot.style.left=dx+'px'; dot.style.top=dy+'px'; }
 });
 (function loop() {
   rx+=(dx-rx)*.12; ry+=(dy-ry)*.12;
@@ -1453,7 +1453,8 @@ if (burger) {
   });
 }
 document.querySelectorAll('.mlink').forEach(l => l.addEventListener('click', () => {
-  mm.classList.remove('open'); burger.classList.remove('open');
+  mm.classList.remove('open'); 
+  if (burger) burger.classList.remove('open');
   document.body.style.overflow = '';
 }));
 
@@ -1498,9 +1499,7 @@ function updateParallax() {
 window.addEventListener('scroll', () => requestAnimationFrame(updateParallax), { passive:true });
 updateParallax();
 
-/* ═══════════════════════════════════════════════
-   FILM CREDITS — smooth drag + momentum
-═══════════════════════════════════════════════ */
+/* FILM CREDITS — smooth drag + momentum */
 const fcTrack = document.getElementById('fc-track');
 const fcSectionEl = document.getElementById('fc-section');
 const fcCur = document.querySelector('.fc-cur');
@@ -1589,19 +1588,6 @@ if (fcTrack) {
     }
   }, { passive: false });
 
-  document.querySelectorAll('.fc-card').forEach(card => {
-    const vid = card.querySelector('.fc-vid');
-    if (vid && vid.tagName === 'VIDEO') {
-      card.addEventListener('mouseenter', () => {
-        if (!isDown) vid.play().catch(() => {});
-      });
-      card.addEventListener('mouseleave', () => {
-        vid.pause();
-        vid.currentTime = 0;
-      });
-    }
-  });
-
   updateEdgeFade();
   updateCounter();
 }
@@ -1619,9 +1605,7 @@ function dismissLoader() {
 }
 setTimeout(dismissLoader, 2300);
 
-/* ═══════════════════════════════════════════════
-   SHOWREEL VIDEO PLAYER - FIXED FOR GOOGLE DRIVE
-═══════════════════════════════════════════════ */
+/* SHOWREEL VIDEO PLAYER - GOOGLE DRIVE */
 const reelVideo = document.getElementById('reel-video');
 const reelPP = document.getElementById('reel-playpause');
 const reelFill = document.getElementById('reel-progress-fill');
@@ -1743,141 +1727,6 @@ function updateCTA() {
   ctaBtn.classList.toggle('near-contact', r.top < window.innerHeight * 0.9);
 }
 window.addEventListener('scroll', updateCTA, { passive: true });
-updateCTA();
-</script>
-// SHOWREEL VIDEO PLAYER - OPTIMIZED FOR GOOGLE DRIVE
-const reelVideo = document.getElementById('reel-video');
-const reelPP = document.getElementById('reel-playpause');
-const reelFill = document.getElementById('reel-progress-fill');
-const reelProgWrap = document.getElementById('reel-progress-wrap');
-const reelTimeSpan = document.getElementById('reel-time');
-const reelSoundBtn = document.getElementById('reel-sound');
-const reelFullBtn = document.getElementById('reel-full');
-const reelPlayBig = document.getElementById('reel-play-big');
-const iconPlay = document.getElementById('reel-icon-play');
-const iconPause = document.getElementById('reel-icon-pause');
-const iconSoundOn = document.getElementById('reel-icon-sound-on');
-const iconMuted = document.getElementById('reel-icon-muted');
-
-function formatTime(seconds) {
-  if (isNaN(seconds)) return '0:00';
-  const mins = Math.floor(seconds / 60);
-  const secs = String(Math.floor(seconds % 60)).padStart(2, '0');
-  return `${mins}:${secs}`;
-}
-
-if (reelVideo) {
-  // Force video to load properly
-  reelVideo.load();
-  
-  // Handle video loading errors (for large Drive files)
-  reelVideo.addEventListener('error', function(e) {
-    console.log('Video error, retrying with alternative URL...');
-    // Fallback URL if first one fails
-    const fallbackSrc = 'https://drive.google.com/uc?export=download&id=1779UM3elyUSHGaTUslw0QdxtkP1UFRAL';
-    if (reelVideo.src !== fallbackSrc) {
-      reelVideo.src = fallbackSrc;
-      reelVideo.load();
-    }
-  });
-  
-  // Play button toggle
-  function togglePlay() {
-    if (reelVideo.paused) {
-      reelVideo.play().catch(err => console.log('Playback prevented:', err));
-    } else {
-      reelVideo.pause();
-    }
-  }
-  
-  // Update UI when video plays
-  reelVideo.addEventListener('play', () => {
-    if (iconPlay) iconPlay.style.display = 'none';
-    if (iconPause) iconPause.style.display = '';
-    if (reelPlayBig) reelPlayBig.classList.add('hidden');
-  });
-  
-  reelVideo.addEventListener('pause', () => {
-    if (iconPlay) iconPlay.style.display = '';
-    if (iconPause) iconPause.style.display = 'none';
-    if (reelPlayBig) reelPlayBig.classList.remove('hidden');
-  });
-  
-  // Progress bar update
-  reelVideo.addEventListener('timeupdate', () => {
-    if (reelVideo.duration && !isNaN(reelVideo.duration)) {
-      const percent = (reelVideo.currentTime / reelVideo.duration) * 100;
-      if (reelFill) reelFill.style.width = percent + '%';
-      if (reelTimeSpan) {
-        reelTimeSpan.textContent = `${formatTime(reelVideo.currentTime)} / ${formatTime(reelVideo.duration)}`;
-      }
-    }
-  });
-  
-  // Click to seek
-  if (reelProgWrap) {
-    reelProgWrap.addEventListener('click', (e) => {
-      const rect = reelProgWrap.getBoundingClientRect();
-      const percent = (e.clientX - rect.left) / rect.width;
-      if (reelVideo.duration) {
-        reelVideo.currentTime = percent * reelVideo.duration;
-      }
-    });
-  }
-  
-  // Play/Pause button
-  if (reelPP) reelPP.addEventListener('click', togglePlay);
-  
-  // Click on video
-  document.getElementById('reel-wrap')?.addEventListener('click', (e) => {
-    if (!e.target.closest('.reel-controls')) togglePlay();
-  });
-  
-  // Sound toggle
-  if (reelSoundBtn) {
-    reelSoundBtn.addEventListener('click', () => {
-      reelVideo.muted = !reelVideo.muted;
-      if (iconSoundOn) iconSoundOn.style.display = reelVideo.muted ? 'none' : '';
-      if (iconMuted) iconMuted.style.display = reelVideo.muted ? '' : 'none';
-    });
-  }
-  
-  // Fullscreen
-  if (reelFullBtn) {
-    reelFullBtn.addEventListener('click', () => {
-      const elem = document.getElementById('reel-wrap');
-      if (!document.fullscreenElement) {
-        elem?.requestFullscreen().catch(err => console.log(err));
-      } else {
-        document.exitFullscreen();
-      }
-    });
-  }
-  
-  // Loop when ended
-  reelVideo.addEventListener('ended', () => {
-    reelVideo.currentTime = 0;
-    reelVideo.play().catch(() => {});
-  });
-  
-  // Try to autoplay
-  setTimeout(() => {
-    reelVideo.play().catch(() => {
-      console.log('Autoplay prevented - user interaction needed');
-      if (reelPlayBig) reelPlayBig.classList.remove('hidden');
-    });
-  }, 100);
-}
-</script>
-
-/* floating CTA — hide near contact section */
-const contactSection = document.getElementById('contact');
-function updateCTA() {
-  if (!ctaBtn || !contactSection) return;
-  const r = contactSection.getBoundingClientRect();
-  ctaBtn.classList.toggle('near-contact', r.top < window.innerHeight * .9);
-}
-window.addEventListener('scroll', updateCTA, { passive:true });
 updateCTA();
 </script>
 </body>
