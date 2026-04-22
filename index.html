@@ -120,102 +120,115 @@ nav.scrolled {
 .nav-mobile-menu a:hover { color: #fff; }
 
 /* =====================
-   HERO — name LEFT
+   HERO — 16:9 image fully visible, name bottom-left
 ===================== */
 .hero {
-  position: relative; min-height: 100vh;
-  display: flex; flex-direction: column; justify-content: flex-end;
-  background: var(--bg); overflow: hidden;
-  padding-bottom: clamp(48px, 8vh, 80px);
+  position: relative;
+  aspect-ratio: 16 / 9;
+  min-height: min(56.25vw, 95vh);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: var(--bg);
+  overflow: hidden;
+}
+
+/* On mobile the 16:9 would be too short — allow a taller min */
+@media (max-width: 768px) {
+  .hero {
+    aspect-ratio: unset;
+    min-height: 100svh;
+  }
 }
 
 .hero-bg {
   position: absolute; inset: 0; z-index: 0;
   background-image: url('images/t1.png');
-  background-size: cover; background-position: center 25%;
-  opacity: .4;
+  /* contain keeps the full 16:9 image visible */
+  background-size: cover;
+  background-position: center center;
+  opacity: .5;
 }
 .hero-bg::after {
   content: ''; position: absolute; inset: 0;
+  /* heavier on the left/bottom so text stays readable */
   background: linear-gradient(
     115deg,
-    rgba(5,5,5,.75) 0%,
-    rgba(5,5,5,.35) 55%,
-    rgba(5,5,5,.08) 100%
+    rgba(5,5,5,.80) 0%,
+    rgba(5,5,5,.40) 50%,
+    rgba(5,5,5,.05) 100%
   );
 }
 
 .hero-grain {
   position: absolute; inset: 0; z-index: 1;
-  pointer-events: none; opacity: .45;
+  pointer-events: none; opacity: .40;
 }
 
 .hero-content {
   position: relative; z-index: 2;
   padding: 0 var(--pad);
-  max-width: 900px;
+  max-width: 860px;
+  margin-bottom: 0;
 }
 
 .hero-eyebrow {
-  font-size: clamp(.55rem, 1.2vw, .65rem);
+  font-size: clamp(.5rem, 1vw, .62rem);
   letter-spacing: .38em; text-transform: uppercase;
-  color: var(--gold-muted); margin-bottom: clamp(12px,2vw,20px);
+  color: var(--gold-muted); margin-bottom: clamp(10px,1.8vw,18px);
   opacity: 0; animation: fadeUp .7s ease .2s forwards;
 }
 
 .hero-name {
   font-family: 'Cormorant Garamond', serif;
-  font-weight: 700; letter-spacing: -.015em; line-height: .9;
+  font-weight: 700; letter-spacing: -.015em; line-height: .88;
   text-transform: uppercase;
-  color: #fff;
 }
+/* AZEEM — bright white */
 .hero-name .line1 {
-  display: block; font-size: clamp(3rem, 9.5vw, 8.5rem);
-  opacity: 0; transform: translateY(40px); filter: blur(8px);
+  display: block;
+  font-size: clamp(2.4rem, 7.5vw, 7rem);
+  color: #ffffff;
+  opacity: 0; transform: translateY(36px); filter: blur(8px);
   animation: slideUpBlur .9s cubic-bezier(.2,.9,.4,1.1) .35s forwards;
 }
+/* MOHAMMAD — visibly dimmed */
 .hero-name .line2 {
-  display: block; font-size: clamp(3rem, 9.5vw, 8.5rem);
-  opacity: 0; transform: translateY(40px); filter: blur(8px);
+  display: block;
+  font-size: clamp(2.4rem, 7.5vw, 7rem);
+  color: rgba(255,255,255,.38);
+  opacity: 0; transform: translateY(36px); filter: blur(8px);
   animation: slideUpBlur .9s cubic-bezier(.2,.9,.4,1.1) .52s forwards;
 }
 
 .hero-rule {
   width: 0; height: 1px;
-  background: linear-gradient(to right, rgba(201,165,90,.7), transparent);
-  margin: clamp(14px,2.5vw,22px) 0;
+  background: linear-gradient(to right, rgba(201,165,90,.65), transparent);
+  margin: clamp(12px,2vw,20px) 0;
   animation: ruleExpand .9s ease .85s both;
 }
 
 .hero-dop {
-  font-size: clamp(.56rem, 1.2vw, .68rem); letter-spacing: .38em;
-  text-transform: uppercase; color: rgba(201,165,90,.72);
+  font-size: clamp(.52rem, 1vw, .65rem); letter-spacing: .38em;
+  text-transform: uppercase; color: rgba(201,165,90,.70);
   opacity: 0; animation: fadeUp .8s ease .95s forwards;
 }
 
-.hero-enter {
-  display: inline-block; margin-top: clamp(22px,3.5vw,34px);
-  font-size: .6rem; letter-spacing: .28em; text-transform: uppercase;
-  color: rgba(255,255,255,.5);
-  border-bottom: 1px solid rgba(255,255,255,.18); padding-bottom: 3px;
-  cursor: none; opacity: 0; animation: fadeUp .8s ease 1.1s forwards;
-  transition: color .2s, border-color .2s;
-}
-.hero-enter:hover { color: #fff; border-color: rgba(255,255,255,.55); }
+/* no .hero-enter */
 
 .scroll-cue {
-  position: absolute; bottom: clamp(26px,4.5vh,46px); right: var(--pad); z-index: 2;
+  position: absolute; bottom: clamp(20px,3.5vh,40px); right: var(--pad); z-index: 2;
   display: flex; flex-direction: column; align-items: center; gap: 8px;
-  opacity: 0; animation: fadeUp .8s ease 1.3s forwards;
+  opacity: 0; animation: fadeUp .8s ease 1.2s forwards;
 }
 .scroll-cue-line {
-  width: 1px; height: 36px;
-  background: linear-gradient(to bottom, rgba(201,165,90,.65), transparent);
+  width: 1px; height: 34px;
+  background: linear-gradient(to bottom, rgba(201,165,90,.6), transparent);
   animation: scrollPulse 2s ease-in-out infinite;
 }
 .scroll-cue-text {
-  font-size: .5rem; letter-spacing: .28em; text-transform: uppercase;
-  color: rgba(201,165,90,.4);
+  font-size: .48rem; letter-spacing: .28em; text-transform: uppercase;
+  color: rgba(201,165,90,.38);
   writing-mode: vertical-rl; transform: rotate(180deg);
 }
 
@@ -446,8 +459,8 @@ footer {
   .nav-links { display: none; }
   .nav-hamburger { display: flex; }
 
-  .hero-name .line1, .hero-name .line2 { font-size: clamp(2.8rem, 11vw, 5rem); }
-  .scroll-cue { display: none; }
+  .hero { aspect-ratio: unset; min-height: 100svh; }
+  .hero-name .line1, .hero-name .line2 { font-size: clamp(2.2rem, 10vw, 3.8rem); }
   .about-contact { grid-template-columns: 1fr; gap: 2.2rem; }
   .frames-grid { gap: .65rem; }
 }
@@ -513,7 +526,6 @@ footer {
       </h1>
       <div class="hero-rule"></div>
       <p class="hero-dop">DIRECTOR OF PHOTOGRAPHY</p>
-      <a href="#showreel" class="hero-enter">ENTER</a>
     </div>
 
     <div class="scroll-cue">
