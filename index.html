@@ -124,8 +124,7 @@ nav.scrolled {
 ===================== */
 .hero {
   position: relative;
-  aspect-ratio: 16 / 9;
-  min-height: min(56.25vw, 95vh);
+  aspect-ratio: 4 / 3;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -133,21 +132,21 @@ nav.scrolled {
   overflow: hidden;
 }
 
-/* On mobile the 16:9 would be too short — allow a taller min */
 @media (max-width: 768px) {
   .hero {
-    aspect-ratio: unset;
-    min-height: 100svh;
+    aspect-ratio: 4 / 3;
+    min-height: auto;
   }
 }
 
 .hero-bg {
   position: absolute; inset: 0; z-index: 0;
-  background-image: url('images/t1.png');
-  /* contain keeps the full 16:9 image visible */
-  background-size: cover;
+  background-image: url('images/t2.png');
+  background-size: contain;
   background-position: center center;
-  opacity: .5;
+  background-repeat: no-repeat;
+  background-color: var(--bg);
+  opacity: 1;
 }
 .hero-bg::after {
   content: ''; position: absolute; inset: 0;
