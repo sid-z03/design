@@ -69,7 +69,7 @@ body.ch #cursor-dot  { width:10px; height:10px; background:var(--gold-bright); }
 body.ch #cursor-ring { width:48px; height:48px; border-color:rgba(201,165,90,.6); }
 
 /* ═══════════════════════════
-   SIDE NAV — FIX: proper spacing so links don't overlap
+   SIDE NAV
 ═══════════════════════════ */
 .sidenav {
   position: fixed;
@@ -97,29 +97,24 @@ body.ch #cursor-ring { width:48px; height:48px; border-color:rgba(201,165,90,.6)
   line-height: 1;
 }
 
-/* FIX: give links area proper flex so they spread evenly without overlap */
 .sidenav-links {
   list-style: none;
   display: flex;
   flex-direction: column;
   align-items: center;
-  /* CHANGED: use space-evenly so items never stack on each other */
   justify-content: space-evenly;
   flex: 1;
   width: 100%;
-  /* CHANGED: add vertical padding so items don't kiss the dividers */
   padding: 12px 0;
   gap: 0;
 }
 
 .sidenav-links li {
   width: 100%;
-  /* CHANGED: let the li grow equally */
   flex: 1;
   display: flex;
   align-items: center;
   justify-content: center;
-  /* CHANGED: ensure minimum tap/click height so nothing overlaps */
   min-height: 44px;
 }
 
@@ -129,13 +124,11 @@ body.ch #cursor-ring { width:48px; height:48px; border-color:rgba(201,165,90,.6)
   justify-content: center;
   width: 100%;
   height: 100%;
-  /* CHANGED: remove fixed 52px height — let parent li control height */
   position: relative;
   cursor: none;
   padding: 6px 0;
 }
 
-/* The actual text — rotated */
 .sidenav-links a span {
   font-size: .52rem;
   font-weight: 500;
@@ -146,11 +139,9 @@ body.ch #cursor-ring { width:48px; height:48px; border-color:rgba(201,165,90,.6)
   transform: rotate(180deg);
   transition: color .25s, letter-spacing .25s;
   white-space: nowrap;
-  /* CHANGED: prevent text from being clipped */
   display: block;
 }
 
-/* Active / hover state */
 .sidenav-links a::before {
   content: '';
   position: absolute;
@@ -263,7 +254,7 @@ body.ch #cursor-ring { width:48px; height:48px; border-color:rgba(201,165,90,.6)
 .hero-bg-img {
   position: absolute; inset: -6%;
   width: 112%; height: 112%;
-  background-image: url('images/t1.png');
+  background-image: url('images/t2.png');
   background-size: cover;
   background-position: center center;
   opacity: .55;
@@ -679,10 +670,8 @@ body.ch #cursor-ring { width:48px; height:48px; border-color:rgba(201,165,90,.6)
   text-transform:uppercase; color:rgba(255,255,255,.16); margin-top:10px;
 }
 
-/* ... keep all your existing styles until the FILM CREDITS section ... */
-
 /* ═══════════════════════════════════════════════
-   FILM CREDITS — Updated for 2:3 portrait ratio
+   FILM CREDITS — 2:3 portrait ratio, all breakpoints
 ═══════════════════════════════════════════════ */
 .film-credits-section {
   position: relative;
@@ -704,31 +693,44 @@ body.ch #cursor-ring { width:48px; height:48px; border-color:rgba(201,165,90,.6)
 .film-credits-section.at-start::before { opacity: 0; }
 .film-credits-section.at-end::after { opacity: 0; }
 
-/* Track height adjusted for 2:3 cards */
+/*
+  FIX: card width defined by a CSS var so height always = width * 1.5 (2:3 portrait)
+  Desktop: cards ~38vw wide
+  Tablet: cards ~55vw wide  
+  Mobile: cards ~80vw wide
+  Small mobile: cards ~88vw wide
+*/
+:root {
+  --fc-card-w: clamp(260px, 38vw, 580px);
+}
+
 .fc-track {
   display: flex;
   gap: 0;
   overflow-x: auto;
   overflow-y: hidden;
   cursor: grab;
-  scroll-snap-type: x mandatory;
+  /* FIX: use mandatory snap for crisper feel but allow smooth momentum */
+  scroll-snap-type: x proximity;
   -webkit-overflow-scrolling: touch;
   scrollbar-width: none;
-  scroll-behavior: smooth; /* smoother native scroll */
-  height: calc(clamp(380px, 52vw, 820px) * 3 / 2); /* 2:3 ratio → height = width * 1.5 */
+  /* FIX: removed scroll-behavior:smooth here — JS handles momentum, native handles touch */
+  height: calc(var(--fc-card-w) * 1.5); /* 2:3 = height is 1.5× width */
   align-items: stretch;
+  /* FIX: smooth deceleration on touch devices */
+  -webkit-overflow-scrolling: touch;
 }
 .fc-track::-webkit-scrollbar { display: none; }
-.fc-track.dragging { 
-  cursor: grabbing; 
-  scroll-snap-type: none; /* important for smooth drag */
+.fc-track.dragging {
+  cursor: grabbing;
+  scroll-snap-type: none;
 }
 
-/* Card: fixed to 2:3 portrait */
+/* Card width always matches the CSS var */
 .fc-card {
   position: relative;
-  flex: 0 0 clamp(260px, 38vw, 580px); /* narrower for portrait feel */
-  height: 100%; /* fills the taller track */
+  flex: 0 0 var(--fc-card-w);
+  height: 100%;
   overflow: hidden;
   scroll-snap-align: start;
   border-right: 1px solid rgba(255,255,255,.06);
@@ -736,11 +738,10 @@ body.ch #cursor-ring { width:48px; height:48px; border-color:rgba(201,165,90,.6)
 }
 .fc-card:last-child { border-right: none; }
 
-/* Image + Video layering */
 .fc-card img,
 .fc-card video {
   position: absolute; inset: 0;
-  width: 100%; height: 100%; 
+  width: 100%; height: 100%;
   object-fit: cover;
   will-change: transform;
 }
@@ -763,8 +764,6 @@ body.ch #cursor-ring { width:48px; height:48px; border-color:rgba(201,165,90,.6)
   opacity: 1;
   transform: scale(1.0);
 }
-
-/* Rest of .fc-info, .fc-year, .fc-num, .fc-rule, .fc-title, .fc-role, .fc-hint, .fc-counter stay the same */
 
 .fc-card::after {
   content: ''; position: absolute; inset: 0; z-index: 1;
@@ -974,15 +973,14 @@ footer {
 .fade-up.visible { opacity:1; transform:translateY(0); }
 
 /* ═══════════════════════════
-   RESPONSIVE
+   RESPONSIVE — FIX: 2:3 portrait at all sizes
 ═══════════════════════════ */
 @media (max-width:1100px) {
-  .fc-track { height: calc(clamp(260px, 60vw, 560px) * 9 / 16); }
-  .fc-card  { flex: 0 0 clamp(260px, 60vw, 560px); }
+  :root { --fc-card-w: clamp(260px, 55vw, 480px); }
 }
 
 @media (max-width:900px) {
-  :root { --sidenav-w: 0px; }
+  :root { --sidenav-w: 0px; --fc-card-w: 80vw; }
   .sidenav  { display: none; }
   .topnav   { display: flex; }
   .page-body { margin-left: 0; }
@@ -998,13 +996,10 @@ footer {
   #cursor-dot, #cursor-ring { display: none; }
 
   .film-credits-section { width: 100vw; }
-  .fc-track { height: calc(85vw * 9 / 16); }
-  .fc-card  { flex: 0 0 85vw; }
 }
 
 @media (max-width:600px) {
-  .fc-track { height: calc(90vw * 9 / 16); }
-  .fc-card  { flex: 0 0 90vw; }
+  :root { --fc-card-w: 88vw; }
   .frames-grid { gap:.45rem; }
   footer { flex-direction:column; text-align:center; }
   .foot-links { justify-content:center; }
@@ -1013,8 +1008,7 @@ footer {
 }
 
 @media (max-width:380px) {
-  .fc-track { height: calc(95vw * 9 / 16); }
-  .fc-card  { flex: 0 0 95vw; }
+  :root { --fc-card-w: 93vw; }
 }
 </style>
 </head>
@@ -1417,12 +1411,15 @@ function resizeGrain() { canvas.width = canvas.offsetWidth; canvas.height = canv
 resizeGrain(); window.addEventListener('resize', resizeGrain);
 function drawGrain() {
   const w = canvas.width, h = canvas.height;
-  const img = ctx.createImageData(w, h); const d = img.data;
+  const img = ctx.createImageData(w, h);
+  const d = img.data;
   for (let i = 0; i < d.length; i += 4) {
-    const v = Math.random() * 255 | 0;
-    d[i] = d[i+1] = d[i+2] = v; d[i+3] = Math.random() * 15 | 0;
+    const v = (Math.random() * 48) | 0;
+    d[i] = d[i+1] = d[i+2] = v + 200;
+    d[i+3] = (Math.random() * 12) | 0;
   }
-  ctx.putImageData(img, 0, 0); requestAnimationFrame(drawGrain);
+  ctx.putImageData(img, 0, 0);
+  requestAnimationFrame(drawGrain);
 }
 drawGrain();
 
@@ -1502,85 +1499,106 @@ function updateParallax() {
 window.addEventListener('scroll', () => requestAnimationFrame(updateParallax), { passive:true });
 updateParallax();
 
-/* ... keep all your existing scripts up to the film credits part ... */
-
-/* Improved drag-to-scroll for film credits */
+/* ═══════════════════════════════════════════════
+   FILM CREDITS — improved smooth drag + momentum
+═══════════════════════════════════════════════ */
 const fcTrack = document.getElementById('fc-track');
 const fcSection = document.getElementById('fc-section');
+const fcCur = document.querySelector('.fc-cur');
+const fcHint = document.querySelector('.fc-hint');
 
-let isDown = false, startX = 0, scrollLeft = 0, velocity = 0, lastX = 0, lastTime = 0;
+let isDown = false, startX = 0, scrollLeft = 0;
+let velocity = 0, lastX = 0, lastTime = 0;
+let rafId = null;
+
+function updateCounter() {
+  if (!fcTrack || !fcCur) return;
+  const cardW = fcTrack.querySelector('.fc-card').offsetWidth;
+  const idx = Math.round(fcTrack.scrollLeft / cardW) + 1;
+  fcCur.textContent = String(Math.min(idx, 8)).padStart(2, '0');
+}
+
+function updateEdgeFade() {
+  const { scrollLeft: sl, scrollWidth: sw, clientWidth: cw } = fcTrack;
+  fcSection.classList.toggle('at-start', sl <= 5);
+  fcSection.classList.toggle('at-end', sl >= sw - cw - 5);
+}
+
+/* momentum RAF loop */
+function runMomentum() {
+  if (Math.abs(velocity) < 0.4) { velocity = 0; return; }
+  fcTrack.scrollLeft -= velocity;
+  velocity *= 0.94; /* friction — higher = longer glide */
+  updateCounter();
+  updateEdgeFade();
+  rafId = requestAnimationFrame(runMomentum);
+}
 
 if (fcTrack) {
-  // Mouse down
+  /* hide hint after first interaction */
+  fcTrack.addEventListener('scroll', () => {
+    if (fcHint) fcHint.style.opacity = '0';
+    updateCounter();
+    updateEdgeFade();
+
+    /* scrolling class for counter visibility */
+    fcSection.classList.add('scrolling');
+    clearTimeout(fcSection._scrollTimer);
+    fcSection._scrollTimer = setTimeout(() => fcSection.classList.remove('scrolling'), 900);
+  }, { passive: true });
+
+  /* ── MOUSE drag ── */
   fcTrack.addEventListener('mousedown', e => {
     isDown = true;
     fcTrack.classList.add('dragging');
     startX = e.pageX - fcTrack.offsetLeft;
     scrollLeft = fcTrack.scrollLeft;
     lastX = e.pageX;
-    lastTime = Date.now();
+    lastTime = performance.now();
     velocity = 0;
+    cancelAnimationFrame(rafId);
   });
 
-  // Mouse leave / up
-  const endDrag = () => {
+  document.addEventListener('mouseup', () => {
+    if (!isDown) return;
     isDown = false;
     fcTrack.classList.remove('dragging');
-    
-    // Add momentum (simple inertia)
-    if (Math.abs(velocity) > 2) {
-      const momentum = setInterval(() => {
-        fcTrack.scrollLeft += velocity;
-        velocity *= 0.92; // friction
-        if (Math.abs(velocity) < 0.5) clearInterval(momentum);
-      }, 16);
-    }
-  };
+    /* kick off momentum */
+    rafId = requestAnimationFrame(runMomentum);
+  });
 
-  document.addEventListener('mouseup', endDrag);
-  fcTrack.addEventListener('mouseleave', endDrag);
-
-  // Mouse move - smoother calculation
   fcTrack.addEventListener('mousemove', e => {
     if (!isDown) return;
     e.preventDefault();
     const x = e.pageX - fcTrack.offsetLeft;
-    const walk = (x - startX) * 1.35; // sensitivity
+    const walk = (x - startX) * 1.2;
     fcTrack.scrollLeft = scrollLeft - walk;
 
-    // Calculate velocity for momentum
-    const now = Date.now();
-    const deltaTime = now - lastTime || 16;
-    velocity = (e.pageX - lastX) / deltaTime * 28; // tune this number
+    const now = performance.now();
+    const dt = Math.max(now - lastTime, 1);
+    velocity = (lastX - e.pageX) / dt * 14; /* px per ms → tune multiplier */
     lastX = e.pageX;
     lastTime = now;
   });
 
-  // Wheel support (horizontal scroll with mouse wheel)
+  /* ── WHEEL — natural horizontal scroll + momentum ── */
   fcTrack.addEventListener('wheel', e => {
     if (Math.abs(e.deltaY) > Math.abs(e.deltaX)) {
       e.preventDefault();
-      fcTrack.scrollLeft += e.deltaY * 1.6;
+      cancelAnimationFrame(rafId);
+      velocity = 0;
+      fcTrack.scrollLeft += e.deltaY * 1.4;
+      updateCounter();
+      updateEdgeFade();
     }
   }, { passive: false });
 
-  fcTrack.addEventListener('scroll', () => {
-    updateEdgeFade();
-    // counter update logic remains the same
-  }, { passive: true });
-
-  function updateEdgeFade() {
-    const { scrollLeft: sl, scrollWidth: sw, clientWidth: cw } = fcTrack;
-    fcSection.classList.toggle('at-start', sl <= 5);
-    fcSection.classList.toggle('at-end', sl >= sw - cw - 5);
-  }
-  updateEdgeFade();
-
-  /* Video hover */
+  /* ── VIDEO hover (desktop only) ── */
   document.querySelectorAll('.fc-card').forEach(card => {
     const vid = card.querySelector('.fc-vid');
     if (!vid) return;
     card.addEventListener('mouseenter', () => {
+      if (isDown) return;
       vid.currentTime = 0;
       vid.play().catch(() => {});
     });
@@ -1589,25 +1607,15 @@ if (fcTrack) {
       vid.currentTime = 0;
     });
   });
-}
 
-/* Optional: slight performance boost for grain canvas */
-function drawGrain() {
-  const w = canvas.width, h = canvas.height;
-  const img = ctx.createImageData(w, h);
-  const d = img.data;
-  for (let i = 0; i < d.length; i += 4) {
-    const v = (Math.random() * 48) | 0; // softer grain
-    d[i] = d[i+1] = d[i+2] = v + 200; // lighter grain
-    d[i+3] = (Math.random() * 12) | 0;
-  }
-  ctx.putImageData(img, 0, 0);
-  requestAnimationFrame(drawGrain);
+  /* initial edge state */
+  updateEdgeFade();
+  updateCounter();
 }
 
 /* intro loader */
-const loader  = document.getElementById('intro-loader');
-const ctaBtn  = document.getElementById('cta-float');
+const loader = document.getElementById('intro-loader');
+const ctaBtn = document.getElementById('cta-float');
 
 function dismissLoader() {
   if (loader) {
