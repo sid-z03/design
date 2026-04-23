@@ -6,7 +6,7 @@
 <title>Azeem Mohammad — Cinematographer</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800;900&family=Barlow:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:wght@700;800;900&family=Barlow:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -50,21 +50,53 @@ body.hov #cur-ring { width: 52px; height: 52px; }
 
 /* HEADER */
 header {
+  position: relative;
   text-align: center;
-  padding: clamp(44px,7vw,78px) 40px clamp(24px,3.5vw,38px);
-  background: var(--bg);
+  padding: clamp(60px,9vw,100px) 40px clamp(32px,4.5vw,52px);
   border-bottom: 1px solid var(--border);
+  overflow: hidden;
+  isolation: isolate;
 }
+
+/* background image */
+header::before {
+  content: '';
+  position: absolute; inset: 0; z-index: 0;
+  background: url('images/t1.jpg') center center / cover no-repeat;
+  opacity: 0.22;
+  filter: saturate(0.5) brightness(0.7);
+  transform: scale(1.04);
+  animation: bgDrift 18s ease-in-out infinite alternate;
+}
+@keyframes bgDrift {
+  from { transform: scale(1.04) translate(0,0); }
+  to   { transform: scale(1.08) translate(-10px,-6px); }
+}
+
+/* dark gradient vignette over the bg */
+header::after {
+  content: '';
+  position: absolute; inset: 0; z-index: 1;
+  background:
+    radial-gradient(ellipse at center, rgba(20,18,18,0.1) 0%, rgba(20,18,18,0.72) 100%),
+    linear-gradient(to bottom, rgba(20,18,18,0.55) 0%, rgba(20,18,18,0.25) 50%, rgba(20,18,18,0.7) 100%);
+}
+
+header > * { position: relative; z-index: 2; }
+
 .site-name {
   display: block;
-  font-family: 'Barlow Condensed', sans-serif;
-  font-weight: 900;
-  font-size: clamp(3.4rem, 10vw, 9rem);
-  line-height: 0.88;
-  letter-spacing: 0.045em;
+  font-family: 'Bebas Neue', 'Barlow Condensed', sans-serif;
+  font-weight: 400;
+  font-size: clamp(4rem, 12vw, 11rem);
+  line-height: 0.92;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
-  color: var(--red);
-  text-shadow: 0 0 80px rgba(232,72,58,0.15), 0 2px 0 rgba(0,0,0,0.5);
+  color: #ffffff;
+  text-shadow:
+    0 0 60px rgba(232,72,58,0.22),
+    0 0 120px rgba(232,72,58,0.1),
+    0 3px 0 rgba(0,0,0,0.6);
   animation: nameIn 0.9s cubic-bezier(0.2,0.9,0.4,1.1) 0.05s both;
 }
 @keyframes nameIn {
@@ -73,16 +105,18 @@ header {
 }
 .site-role {
   display: inline-block;
-  margin-top: 13px;
+  margin-top: 16px;
   font-family: 'Barlow Condensed', sans-serif;
   font-weight: 700;
   font-size: clamp(0.68rem, 1.3vw, 0.98rem);
   letter-spacing: 0.4em;
   text-transform: uppercase;
-  color: var(--muted);
-  border: 1px solid rgba(106,100,96,0.4);
+  color: rgba(216,212,208,0.55);
+  border: 1px solid rgba(216,212,208,0.2);
   padding: 6px 18px 5px;
   animation: fadeUp 0.7s ease 0.45s both;
+  backdrop-filter: blur(4px);
+  background: rgba(20,18,18,0.3);
 }
 @keyframes fadeUp {
   from { opacity:0; transform:translateY(12px); }
@@ -92,14 +126,42 @@ header {
 /* NAV */
 nav {
   position: sticky; top: 0; z-index: 200;
-  background: var(--bg);
+  background: rgba(20,18,18,0.96);
   border-bottom: 1px solid var(--border);
-  padding: clamp(16px,2.5vw,26px) 40px;
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  padding: clamp(14px,2.2vw,22px) 40px;
   display: flex;
+  align-items: center;
   justify-content: center;
   gap: clamp(24px,5vw,72px);
   animation: fadeUp 0.6s ease 0.65s both;
+  transition: background 0.3s;
 }
+
+/* AM logo — hidden by default, slides in on scroll */
+.nav-am {
+  position: absolute;
+  left: 28px;
+  font-family: 'Bebas Neue', 'Barlow Condensed', sans-serif;
+  font-size: 1.55rem;
+  letter-spacing: 0.06em;
+  color: var(--red);
+  text-decoration: none;
+  cursor: none;
+  opacity: 0;
+  transform: translateX(-10px);
+  transition: opacity 0.35s cubic-bezier(0.2,0.9,0.4,1.1), transform 0.35s cubic-bezier(0.2,0.9,0.4,1.1);
+  pointer-events: none;
+  user-select: none;
+  line-height: 1;
+}
+nav.am-visible .nav-am {
+  opacity: 1;
+  transform: translateX(0);
+  pointer-events: all;
+}
+
 nav a {
   font-family: 'Barlow Condensed', sans-serif;
   font-weight: 700;
@@ -434,6 +496,7 @@ footer {
 
 <!-- NAV -->
 <nav id="main-nav">
+  <span class="nav-am">AM</span>
   <div class="desk-links" id="desk-links">
     <a href="#" class="nav-link active" data-sec="selected">Selected Work</a>
     <a href="#" class="nav-link" data-sec="films">Film Credits</a>
@@ -464,8 +527,8 @@ footer {
       </video>
       <div class="work-overlay">
         <div class="work-label">
-          <div class="work-title"></div>
-          <div class="work-sub"></div>
+          <div class="work-title">Goodachari 2</div>
+          <div class="work-sub">Director of Photography</div>
         </div>
       </div>
     </div>
@@ -476,8 +539,8 @@ footer {
       </video>
       <div class="work-overlay">
         <div class="work-label">
-          <div class="work-title"></div>
-          <div class="work-sub"></div>
+          <div class="work-title">#90's Middle Class</div>
+          <div class="work-sub">Director of Photography</div>
         </div>
       </div>
     </div>
@@ -488,53 +551,20 @@ footer {
       </video>
       <div class="work-overlay">
         <div class="work-label">
-          <div class="work-title"></div>
-          <div class="work-sub"></div>
+          <div class="work-title">Theatre</div>
+          <div class="work-sub">Cinematographer</div>
         </div>
       </div>
     </div>
 
     <div class="work-cell fade d3">
       <video autoplay loop muted playsinline preload="metadata">
-        <source src="vd/v5.mp4" type="video/mp4">
-      </video>
-      <div class="work-overlay">
-        <div class="work-label">
-          <div class="work-title"></div>
-          <div class="work-sub"></div>
-        </div>
-      </div>
-    </div>
-    <div class="work-cell fade d3">
-      <video autoplay loop muted playsinline preload="metadata">
         <source src="vd/v3.mp4" type="video/mp4">
       </video>
       <div class="work-overlay">
         <div class="work-label">
-          <div class="work-title"></div>
-          <div class="work-sub"></div>
-        </div>
-      </div>
-    </div>
-    <div class="work-cell fade d3">
-      <video autoplay loop muted playsinline preload="metadata">
-        <source src="vd/v3.mp4" type="video/mp4">
-      </video>
-      <div class="work-overlay">
-        <div class="work-label">
-          <div class="work-title"></div>
-          <div class="work-sub"></div>
-        </div>
-      </div>
-    </div>
-    <div class="work-cell fade d3">
-      <video autoplay loop muted playsinline preload="metadata">
-        <source src="vd/v3.mp4" type="video/mp4">
-      </video>
-      <div class="work-overlay">
-        <div class="work-label">
-          <div class="work-title"></div>
-          <div class="work-sub"></div>
+          <div class="work-title">Kadaseela Biriyani</div>
+          <div class="work-sub">Director of Photography</div>
         </div>
       </div>
     </div>
@@ -796,6 +826,16 @@ setTimeout(()=>{
     setTimeout(()=>el.classList.add('in'), 100+i*60);
   });
 },100);
+
+/* AM logo on scroll */
+const mainNav = document.getElementById('main-nav');
+const headerEl = document.querySelector('header');
+function updateAM() {
+  const headerBottom = headerEl.getBoundingClientRect().bottom;
+  mainNav.classList.toggle('am-visible', headerBottom < 10);
+}
+window.addEventListener('scroll', updateAM, { passive: true });
+updateAM();
 
 /* burger */
 const burger = document.getElementById('burger');
