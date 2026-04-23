@@ -281,7 +281,34 @@ nav a.active::after { width: 100%; }
   font-size: 0.52rem; letter-spacing: 0.3em;
   text-transform: uppercase; color: rgba(106,100,96,0.4);
 }
+/* SECTION SPACING */
+.section {
+  padding-top: 20px;
+  padding-bottom: 60px;
+}
 
+/* Additional spacing between grid items */
+.work-grid {
+  margin-bottom: 20px;
+}
+
+.films-grid {
+  margin-bottom: 20px;
+}
+
+/* Space between nav and content */
+#sec-selected, #sec-films, #sec-about, #sec-contact {
+  margin-top: 10px;
+  margin-bottom: 40px;
+}
+
+/* Better spacing on mobile */
+@media (max-width: 860px) {
+  .section {
+    padding-top: 10px;
+    padding-bottom: 40px;
+  }
+}
 /* FILM CREDITS */
 #sec-films { padding: clamp(20px,3vw,36px) clamp(16px,3vw,40px); }
 
@@ -579,8 +606,7 @@ footer {
 
     <a class="film-card fade" href="https://www.youtube.com/results?search_query=%2390s+middle+class+biopic+trailer" target="_blank" rel="noopener">
       <div class="film-poster-wrap">
-        <img src="images/poster-90s.jpg" alt="#90s Middle Class Biopic"
-          onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+       <img src="images/poster-90s.jpg" loading="lazy" decoding="async" alt="#90s Middle Class Biopic">
         <div class="film-ph" style="display:none"><span class="pnum">01</span></div>
         <div class="film-poster-overlay">
           <div class="trailer-btn">
@@ -710,8 +736,7 @@ footer {
 <div class="section" id="sec-about">
   <div class="about-layout">
     <div class="about-img fade">
-      <img src="images/t2.png" alt="Azeem Mohammad"
-        onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+      <img src="images/t2.png" loading="lazy" decoding="async" alt="Azeem Mohammad">
       <div class="about-img-ph" style="display:none">AM</div>
     </div>
     <div class="about-text fade d1">
